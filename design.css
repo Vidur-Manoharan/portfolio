@@ -1,0 +1,1454 @@
+/* GENERAL */
+
+@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body .logo{
+    font-family: "Rock Salt", sans-serif;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+p{
+    color: rgb(85, 85, 85);
+}
+
+/* TRANSITION */
+
+a, .btn {
+transition: all 0.3s ease;
+}
+
+/* DESKTOP NAV */
+
+nav, 
+.nav-links {
+    display: flex;
+}
+
+nav {
+    justify-content: space-around;
+    align-items: center;
+    height: 17vh;
+}
+
+.nav-links {
+    gap: 2rem;
+    list-style: none;
+    font-size: 1.5rem;
+}
+
+a{
+    color: black;
+    text-decoration: none;
+    text-decoration-color: white ;
+}
+
+a:hover{
+    color: grey;
+    text-decoration: underline;
+    text-underline-offset: 1rem;
+    text-decoration-color: rgb(181, 181, 181) ;
+}
+
+.logo{
+    font-size: 2rem;
+}
+
+.logo:hover{
+    cursor: default;
+}
+
+/* HAMBURGER MENU */
+
+#hamburger-nav{
+    display: none;
+}
+
+.hamburger-menu{
+    position: relative;
+    display: inline-block;
+}
+
+.hamburger-icon{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 24px;
+    width: 30px;
+    cursor: pointer;
+}
+
+.hamburger-icon span{
+    width: 100%;
+    height: 2px;
+    background-color: black;
+    transition: all 0.3s ease-in-out;
+}
+
+.menu-links{
+    position: absolute;
+    top: 100%;
+    right: 0%;
+    background-color: white;
+    width: fit-content;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+.menu-links a{
+    display: block;
+    padding: 10px;
+    text-align: center;
+    font-size: 1.5rem;
+    color: black;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.menu-links li{
+    list-style:none;
+}
+
+.menu-links.open{
+    max-height: 300px;
+}
+
+.hamburger-icon.open span:first-child{
+    transform: rotate(45deg) translate(10px, 5px);
+}
+
+.hamburger-icon.open span:nth-child(2){
+    opacity: 0;
+}
+.hamburger-icon.open span:last-child{
+    transform: rotate(-45deg) translate(10px, -5px);
+}
+
+.hamburger-icon span:first-child{
+    transform: none;
+    opacity: 1;
+}
+
+/* SECTION */
+
+#sections{
+    padding-top: 4vh;
+    height: 96vh;
+    margin: 0 10rem;
+    box-sizing: border-box;
+    min-height: fit-content;
+}
+
+.section-container{
+    display: flex;
+}
+
+/* PROFILE */
+
+#profile{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    height: 80vh;
+}
+
+.section__pic-container img{
+    border-radius: 5rem;
+}
+.section__pic-container img {
+    max-width: 300%; /* Ensures the image doesn't exceed the container width */
+    max-height: 100%; /* Ensures the image doesn't exceed the container height */
+    object-fit: cover; /* Adjusts how the image fits within the container */
+    border-radius: 20px; /* Keeps the rounded corners like your other images */
+    display: block; /* Removes any extra spacing below the image */
+}
+
+.section__text{
+    align-self: center;
+    text-align: center;
+    padding-left: 10rem;
+}
+
+.section__text_p1{
+    max-width: 600;
+    padding-bottom:2vh;
+    font-size: 2rem;
+}
+
+.section__text_p2{
+    max-width: 500;
+    padding-top: 2rem;
+    padding-bottom:2vh;
+    font-size: 2rem;
+}
+
+.dynamic-text{
+    margin-left: 15px;
+    height: 85PX;
+    line-height: 90px;
+    overflow: hidden;
+}
+
+.dynamic-text li{
+    color: #a6988c;
+    list-style: none;
+    font-size: 1.75rem;
+    font-weight: 500;
+    position: relative;
+    top: 0;
+    animation: slide 8s steps(4) infinite;
+}
+
+@keyframes slide{ 
+    100%{
+        top: -360px;
+
+    }
+}
+
+.dynamic-text li span{
+    position: relative;
+}
+
+.dynamic-text li span::after{
+    content:"";
+    position: absolute;
+    left: 0;
+    height: 120%;
+    width: 120%;
+    background:none;
+    border-left: none;
+    animation: slide 2s steps(18) infinite;
+}
+
+@keyframes typing{ 
+    100%{
+        left: 100%;
+        margin: 0 -35px 0 35px;
+    }
+}
+
+.title{
+    font-size: 3rem;
+    text-align: center;
+}
+
+.social-containers {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    gap: 1rem;
+    font-size: 2rem;
+}
+
+/* ICONS */
+
+.icon{
+    cursor: pointer;
+    height: 2rem;
+}
+
+/* BUTTONS */
+
+/* Hero section button styles only */
+.btn-containers {
+    display: flex;
+    gap: 30px;
+    margin-top: 50px;
+    flex-wrap: wrap;
+}
+
+/* Base hero button */
+.btn-containers .hero-btn {
+     width: 180px;   /* same width for all buttons */
+    padding: 14px 0; /* equal top/bottom padding */
+
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: inherit;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* Primary button */
+.btn-containers .hero-btn-primary {
+    color: black;
+    border: 2px solid black;
+}
+
+.btn-containers .hero-btn-primary:hover {
+    background: black;
+    color: white;
+    transform: translateY(-3px);
+}
+
+/*================================================ About =========================================================================================*/
+
+#about{
+    margin: auto;
+    padding: 7rem 0;
+}
+
+/* outer container */
+.abt{
+    display: flex;
+    justify-content: center;
+    padding-top: 2rem;
+}
+
+/* wrapper */
+.about-details-container{
+    width: 100%;
+    padding: 0 5rem;
+}
+
+/* cards container */
+.about-containers{
+    display: flex;
+    justify-content: center;
+    align-items: stretch; /* all cards same height */
+    gap: 6rem; /* equal spacing */
+    flex-wrap: wrap;
+}
+
+/* individual cards */
+.details-container{
+    flex: 1 1 300px; /* equal width */
+    max-width: 550px;
+
+    padding: 2rem;
+    background: white;
+    border-radius: 2rem;
+    border: 0.2rem solid rgb(163,163,163);
+
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* text styling */
+.details-container h3{
+    font-size: 2rem;
+    margin: 1rem 0;
+}
+
+.details-container p{
+    font-size: 1.5rem;
+    white-space: nowrap; /* prevents wrapping */
+    line-height: 1.6;
+    overflow: hidden;
+}
+
+.skills-text{
+    text-align: left;
+    line-height: 1.6;
+    padding-left: 6rem
+}
+
+/* icons */
+.icon{
+    height: 60px;
+    width: 60px;
+}
+
+/*================================================ Design =========================================================================================*/
+
+#designworks{
+    padding: 0;
+}
+
+.design-desc{
+    color: gray;   /* change based on your theme */
+    font-size: 25px;
+    padding: 2rem 5rem;
+    line-height: 2.5rem;
+}
+/* =========================================================
+   TAB LINKS STYLING
+========================================================= */
+
+.tab-titles{
+    display: flex;
+    gap: 40px;
+    margin: 40px 0;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.tab-links{
+    position: relative;
+    font-size: 25px;
+    font-weight: 600;
+    color: grey;
+    cursor: pointer;
+    padding: 12px 28px;
+    border-radius: 12px;
+    transition: all 0.35s ease;
+    backdrop-filter: blur(8px);
+    overflow: hidden;
+}
+
+/* Hover Effect */
+.tab-links:hover{
+    color: gray;
+    transform: translateY(-3px);
+    background: rgba(255,255,255,0.08);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+/* Active Tab */
+.tab-links.active-link{
+    color: #ffffff;
+    background: linear-gradient(135deg, #00bcd4, #0077ff);
+    box-shadow: 0 10px 25px rgba(0, 119, 255, 0.35);
+}
+
+/* Animated Underline */
+.tab-links::after{
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0%;
+    height: 3px;
+    background: #ffffff;
+    border-radius: 10px;
+    transition: all 0.35s ease;
+    transform: translateX(-50%);
+}
+
+.tab-links:hover::after{
+    width: 70%;
+}
+
+.tab-links.active-link::after{
+    width: 80%;
+}
+
+/* =========================================================
+   TAB CONTENT DISPLAY
+========================================================= */
+
+.tab-contents{
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+.tab-contents.active-tab{
+    display: block;
+}
+
+/* =========================================================
+   SMOOTH FADE ANIMATION
+========================================================= */
+
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN
+========================================================= */
+
+@media (max-width: 768px){
+
+    .tab-titles{
+        gap: 18px;
+    }
+
+    .tab-links{
+        font-size: 15px;
+        padding: 10px 20px;
+    }
+
+}
+
+/*=============================================== 3D Print =================================================*/
+
+.abt-picture{
+    padding: 1rem 5rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 8rem;
+}
+
+.printer-pic{
+    aspect-ratio: 5/4;
+    width: clamp(280px, 60vw, 750px);
+    height: clamp(280px, 60vw, 750px);
+    border-radius: 1.5rem;
+    object-fit: cover;
+}
+
+.printer-container h4{
+    font-size: 2.5rem;
+    padding-top: 2rem;
+} 
+
+.printer-container p{
+    font-size: 1.5rem;
+    padding-top: 5rem;
+    text-align: justify;
+}
+
+/*========================================= Fusion 360 ==============================================*/
+
+.strip{
+    display: block;
+    width: 100%;
+    height: 1.5px;
+    background:linear-gradient(45deg, #913049,#f5e1e6);
+}
+
+.design{
+    display:flex;
+    align-items: center;
+    grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
+    grid-gap: 40px;
+    margin-top:50px;
+    padding-left: 30px;
+    padding-bottom: 50px;
+}
+
+.design img{
+    width: 30%;
+    border-radius: 20px;
+    display: block;
+}
+
+.design h1{
+    font-size: 40px;
+    padding-top: 50px;
+    margin-left: 80PX;
+    color: #656875;
+    width: 400px;
+}
+.design p{
+    margin: 0;
+    font-size: 25px;
+    font-weight: 450;
+    text-align: right;
+    padding-right: 150px;
+    flex-grow: 1;
+    color: #7e8680;
+    line-height: 35px;
+    display: block;
+    text-align: justify;
+    width: 40px;
+}
+
+.design a{
+    font-size: 20px;
+    color: #d9dad7;
+    text-decoration: none;
+}
+.design a:hover{
+    color: #2f00ff;
+    transition: 0.5s;
+}
+
+/* Hide checkboxes */
+input[type="checkbox"] {
+    display: none;
+}
+
+/* Default content state is hidden */
+.content {
+    display: none;
+    transition: 0.5s linear;
+}
+
+/* Styling for labels */
+label {
+    display: flex;
+    justify-content: center;
+    color: #2f00ff;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+/* When checkbox is checked, display the content */
+#check-0:checked + label + .content,
+#check-1:checked + label + .content,
+#check-2:checked + label + .content,
+#check-3:checked + label + .content,
+#check-4:checked + label + .content,
+#check-5:checked + label + .content,
+#check-6:checked + label + .content,
+#check-7:checked + label + .content,
+#check-8:checked + label + .content{
+    display: block;
+}
+
+/* Hide "View More" label when checkbox is checked */
+#check-0:checked + label,
+#check-1:checked + label,
+#check-2:checked + label,
+#check-3:checked + label,
+#check-4:checked + label,
+#check-5:checked + label,
+#check-6:checked + label,
+#check-7:checked + label,
+#check-8:checked + label {
+    visibility: hidden;
+}
+
+/* Replace "View More" with "Show Less" */
+#check-0:checked + label:after,
+#check-1:checked + label:after,
+#check-2:checked + label:after,
+#check-3:checked + label:after,
+#check-4:checked + label:after,
+#check-5:checked + label:after,
+#check-6:checked + label:after,
+#check-7:checked + label:after,
+#check-8:checked + label:after{
+    content: 'Show Less';
+    display: block;
+    visibility: visible;
+}
+
+label:hover{
+    color: #913049;
+    box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
+}
+    /*=============================== Slider =================================*/
+
+.img-container{
+    padding: 2rem;
+}
+
+.slider-wrapper0, 
+.slider-wrapper1,
+.slider-wrapper2,
+.slider-wrapper3,
+.slider-wrapper4,
+.slider-wrapper5,
+.slider-wrapper6,
+.slider-wrapper7,
+.slider-wrapper8{
+    position: relative;
+    max-width: 70rem;
+    margin: 0 auto;
+}
+
+.slider0,
+.slider1,
+.slider2,
+.slider3,
+.slider4,
+.slider5,
+.slider6,
+.slider7,
+.slider8{
+    display: flex;
+    aspect-ratio: 16/9;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
+    border-radius: 0.5rem;
+
+    /* Hide scrollbar */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+.slider0::-webkit-scrollbar,
+.slider1::-webkit-scrollbar,
+.slider2::-webkit-scrollbar,
+.slider3::-webkit-scrollbar,
+.slider4::-webkit-scrollbar,
+.slider5::-webkit-scrollbar,
+.slider6::-webkit-scrollbar,
+.slider7::-webkit-scrollbar,
+.slider8::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Edge */
+}
+
+
+.slider0 img,
+.slider1 img,
+.slider2 img,
+.slider3 img,
+.slider4 img,
+.slider5 img,
+.slider6 img,
+.slider7 img,
+.slider8 img{
+    flex: 1 0 100%;
+    scroll-snap-align: start;
+    object-fit: cover;
+}
+
+.slider-nav0,
+.slider-nav1,
+.slider-nav2,
+.slider-nav3,
+.slider-nav4,
+.slider-nav5,
+.slider-nav6,
+.slider-nav7,
+.slider-nav8{
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    z-index: 10;
+    padding: 0 10px;
+}
+
+.slider-nav0 button,
+.slider-nav1 button,
+.slider-nav2 button,
+.slider-nav3 button,
+.slider-nav4 button,
+.slider-nav5 button,
+.slider-nav6 button,
+.slider-nav7 button,
+.slider-nav8 button{
+    pointer-events: auto;
+    width: 45px;
+    height: 45px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: 0.3s;
+}
+
+.slider-nav0 button:hover,
+.slider-nav1 button:hover,
+.slider-nav2 button:hover,
+.slider-nav3 button:hover,
+.slider-nav4 button:hover,
+.slider-nav5 button:hover,
+.slider-nav6 button:hover,
+.slider-nav7 button:hover,
+.slider-nav8 button:hover{
+    background-color: #c32148; /* Your accent color */
+}
+
+/*================================================ SolidWorks ==============================================*/
+
+.solidcontainer{
+    position: relative;
+}
+
+.solid-picture{
+    padding: 1rem 5rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 8rem;
+}
+
+.solid-pic{
+    width: clamp(280px, 60vw, 650px);
+    height: clamp(280px, 60vw, 650px);
+    aspect-ratio: 5 / 4;
+    object-fit: cover;
+    border-radius: 1.5rem;
+    display: block;
+}
+
+.solid-container h4{
+    font-size: 2.5rem;
+} 
+
+.solid-container p{
+    font-size: 1.5rem;
+    padding-top: 5rem;
+    text-align: justify;
+}
+
+
+.solid-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
+    gap: 40px;
+    margin-top: 100px;
+    padding: 0 5rem;
+}
+
+.solid{
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.solid img{
+    width: 100%;
+    display: block;
+    border-radius: 15px;
+    transition: transform 0.5s ease;
+}
+
+.solid:hover img{
+    transform: scale(1.08);
+}
+
+
+/* ===========================
+   HOVER LAYER
+=========================== */
+
+.layer{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 20%;
+
+    background: linear-gradient(
+        rgba(0,0,0,0.5),
+        #31473a
+    );
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 15px;
+
+    transition: 0.4s ease;
+}
+
+.solid:hover .layer{
+    height: 100%;
+}
+
+.layer h3{
+    color: white;
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+
+/* ===========================
+   EXPLORE BUTTON
+=========================== */
+
+.explore-btn{
+    display: none;
+
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+
+    background: white;
+    color: #111;
+
+    font-weight: 600;
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.explore-btn:hover{
+    background: #c32148;
+    color: white;
+}
+
+.solid:hover .explore-btn{
+    display: block;
+}
+
+
+/* ===========================
+   MODAL POPUP
+=========================== */
+
+.slider-modal{
+    position: fixed;
+    inset: 0;
+
+    width: 100%;   /* change from 50% */
+    height: 100%;  /* change from 60% */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    visibility: hidden;
+    background: rgba(17, 17, 17, 0.85);
+    z-index: 1000;
+}
+
+.slider-modal.show{
+    opacity: 1;
+    visibility: visible;
+}
+/* ===========================
+   SLIDER BOX
+=========================== */
+.slider-content{
+    width: 80%;
+    padding: 20px;
+    background: #fff;
+    border-radius: 20px;
+    position: relative;
+}
+
+
+/* ===========================
+   CLOSE BUTTON
+=========================== */
+
+.close-btn{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+
+    width: 45px;
+    height: 45px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: crimson;
+    color: white;
+
+    font-size: 18px;
+    cursor: pointer;
+
+    z-index: 10;
+}
+
+.close-btn:hover{
+    background: red;
+}
+
+
+/* ===========================
+   SLIDER
+=========================== */
+
+.slider-wrapper{
+    position: relative;
+    width: 100%;
+}
+
+.slider{
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+
+    border-radius: 12px;
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.slider::-webkit-scrollbar{
+    display: none;
+}
+
+.slider img{
+    flex: 0 0 100%;
+
+    width: 100%;
+    height: 800px;
+
+    object-fit: contain;
+
+    scroll-snap-align: start;
+}
+
+
+/* ===========================
+   ARROWS
+=========================== */
+
+.prev-btn,
+.next-btn{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 55px;
+    height: 55px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: red;
+    color: white;
+
+    font-size: 18px;
+    cursor: pointer;
+
+    z-index: 100;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: 0.3s;
+}
+
+.prev-btn:hover,
+.next-btn:hover{
+    background: #c32148;
+}
+
+/* KEEP THEM INSIDE THE SLIDER */
+.prev-btn{
+    left: 15px;
+}
+
+.next-btn{
+    right: 15px;
+}
+
+
+/*================================================ Contact =========================================================================================*/
+#contact {
+    padding:0;
+}
+
+.contact-right{
+    flex-basis: 60%;
+    padding-left: 50px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.containers {
+    padding: 2rem;
+}
+
+.contact-buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    margin-top: 80px;
+    align-items: flex-start;
+    padding-left: 120px;
+}
+
+.btn1{
+    display: flex;              /* better for icon + text alignment */
+    justify-content: center;    /* centers content horizontally */
+    align-items: center;        /* centers content vertically */
+    
+    width: 250px;               /* same width for all buttons */
+    height: 55px;               /* same height for all buttons */
+    text-decoration: none;
+    border: 1px solid black;
+    border-radius: 6px;
+    
+    color: black;
+    font-size: 20px;
+    transition: 0.5s;
+    box-sizing: border-box;
+}
+
+.btn1:hover{
+    background: black;
+    border-color: black;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+
+.btn2{
+    display: block;
+    margin: 50px auto;
+    width: fit-content;
+    border: 1px solid black;
+    padding: 14px 50px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: black;
+    font-size: bold;
+    font-size: 20px;
+    background: none;
+}
+.btn2:hover{
+    background: black;
+    border: black;
+    color: white;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.contact-right form{
+    width:500px;
+}
+
+form input, form textarea{
+    width: 150%;
+    border: 0;
+    outline: none;
+    background: #262626;
+    padding: 30px;
+    margin: 20px;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+.copyright{
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    background: #262626;
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
+.copyright p{
+    color: whitesmoke;
+}
+
+/*==============================================================================================================================================*/
+/*================================================ Small Screen =========================================================================================*/
+
+@media only screen and (max-width: 500px){
+
+#hamburger-nav{
+    padding-right: 100px;
+}
+
+    #profile {
+        flex-direction: column;
+        height: auto;
+        padding: 2rem 1rem;
+        text-align: center;
+    }
+
+    .section__pic-container img {
+        max-width: 250px;
+        height: 460px;
+        border-radius: 20px;
+    }
+
+    .section__text {
+        padding: 1rem 0;
+    }
+
+.section__text_p1{
+    max-width: 200;
+    font-size: 1.5rem;
+    padding-right: 0px;
+}
+
+.section__text_p2{
+    max-width: 150;
+    padding-bottom:2vh;
+    font-size: 1rem;
+    padding-right: 70px;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #262626;
+    background:#fff;
+}
+
+.details-container{
+    padding: 1.5rem;
+    flex: 1.5;
+    background: white;
+    border-radius: 2rem;
+    border:rgb(53,53,53) 0.2rem solid;
+    border-color: rgb(163,163,163);
+    text-align: left;
+    padding-left: 3rem;
+}
+
+/*========================= About ========================================*/
+
+#about{
+   justify-content: center;
+    margin: auto;
+    padding-top: 2rem;
+    flex-wrap: wrap;
+    padding-bottom: 2rem;
+}
+
+.abt{
+    display: flex;
+    text-align: center;
+}
+
+.about-containers{
+    display: flex;
+    justify-content: center;
+    align-items: stretch; /* all cards same height */
+    gap: 6rem; /* equal spacing */
+    flex-wrap: wrap;
+}
+
+.details-container p{
+    font-size: 1.5rem;
+    white-space: wrap; /* prevents wrapping */
+    line-height: 1.6;
+    overflow: hidden;
+}
+
+.details-container{
+    flex: 1 1 300px; /* equal width */
+    max-width: 400px;
+
+    padding: 2rem;
+    background: white;
+    border-radius: 2rem;
+    border: 0.2rem solid rgb(163,163,163);
+
+    text-align: center;
+    box-sizing: border-box;
+}
+.section__pic-container {
+   padding-left: 30px;
+}
+.section__pic-container img {
+    max-width: 500%; /* Ensures the image doesn't exceed the container width */
+    max-height: 84%; /* Ensures the image doesn't exceed the container height */
+    object-fit: cover; /* Adjusts how the image fits within the container */
+    border-radius: 20px; /* Keeps the rounded corners like your other images */
+    display: block; /* Removes any extra spacing below the image */
+}
+
+    .printer-container h4{
+        margin-top: -5rem;
+    }
+
+    .printer-container p {
+        padding-top: 1rem;
+    }
+
+    .printer-pic {
+       display: none;
+    }
+
+
+.title{
+    font-size: 2rem;
+    text-align: center;
+    padding-right: 70px;
+}
+
+.strip{
+    display: block;
+    width: 100%;
+    height: 1.1px;
+    background:linear-gradient(45deg, #913049,#f5e1e6);
+}
+
+
+
+/*========================= My Design ========================================*/
+
+#designworks{
+    padding: 2rem;
+}
+
+.design-desc{
+    color: gray;   /* change based on your theme */
+    font-size: 25px;
+    padding: 2rem 2.5rem;
+    line-height: 1.5rem;
+}
+
+.design{
+    display:flex;
+    align-items: center;
+    grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
+    grid-gap: 20px;
+    margin-top:40px;
+    padding-left: 10px;
+    padding-bottom: 20px;
+}
+
+.design img{
+    width: 45%;
+    border-radius: 20px;
+    display: block;
+}
+
+.design h1{
+    font-size: 15px;
+    padding-top: 15px;
+    margin-left: 1PX;
+    color: #656875;
+    width: 100px;
+}
+.design p {
+margin: auto 0;
+font-size: 15px;
+font-weight: 450;
+text-align: right, justify;
+padding-right: 5px;
+flex-grow: 1;
+color: gray;
+line-height: 20px;
+display: block;
+    text-align: justify;
+    width: 15px;
+}
+
+.design a{
+    font-size: 8px;
+    color: #d9dad7;
+    text-decoration: none;
+}
+.design a:hover{
+    color: #2f00ff;
+    transition: 0.5s;
+}
+
+.btn-container{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding-right: 80px;
+}
+
+
+.dynamic-text li{
+    font-size: 30px;
+    padding-right: 85px;
+}
+
+.social-containers {
+    padding-right: 80px;
+}
+
+.section__pic-containers{
+    display: none;
+    
+}
+
+.about-details-container{
+    padding-right: 90px;
+    justify-content: center;
+}
+
+label {
+    font-size: 15px;
+}
+
+.slider-wrapper1,.slider-wrapper2,.slider-wrapper3,.slider-wrapper4{
+    position: relative;
+    max-width: 30rem;
+    margin: 0 auto;
+}
+
+.img-container{
+    padding: 2rem;
+}
+
+
+.solid-pic{
+    display: none;
+}
+
+.slider img{
+    flex: 0 0 100%;
+
+    width: 100%;
+    height: 600px;
+
+    object-fit: contain;
+
+    scroll-snap-align: start;
+}
+
+/*========================= Contact ========================================*/
+
+#contact {
+   padding: 0;
+   margin-top: -3rem;
+}
+
+form input, form textarea{
+    width: 50%;
+    border: 0;
+    outline: none;
+    background: #262626;
+    padding: 30px;
+    margin: 20px;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+.contact-left p{
+    margin-top: 30px;
+    padding-left: 1rem;
+}
+
+.contact-left p{
+font-size: 20px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.containers {
+    padding: 2rem;
+}
+
+.contact-buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    margin-top: 20px;
+    align-items: flex-start;
+    padding-left: 120px;
+}
+
+}

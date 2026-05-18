@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vidur Manoharan • Design Portfolio</title>
+    <link rel="icon" type="image/x-icon" href="Icons/desfavicon.png">
+    <link rel="stylesheet" href="design.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
+    <script src="https://kit.fontawesome.com/58934e4ab9.js" crossorigin="anonymous"></script>
+</head>
+
+<!--=================================================== Home Page ===============================================================================-->
+
+<body>
+
+    <nav id="desktop-nav">
+        <div class="logo">VIDUR .</div>
+        <div>
+            <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#designworks">My Design</a></li>
+                    <li><a href="#contact">Contact</a></li>                        
+                </ul>
+            </div>
+    </nav>
+
+    <nav id="hamburger-nav">
+        <div class="logo">VIDUR .</div>
+        <div class="hamburger-menu">
+            <div class="hamburger-icon" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <div class="menu-links">
+                <li><a href="#about" onclick="toggleMenu()">About</a></li>
+                <li><a href="#designworks" onclick="toggleMenu()">My Designs</a></li>
+                <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+            </div>
+        </div>
+    </nav>
+
+<!--=========================== Profile ======================================-->
+
+    <section id="profile">
+        <div class="section__pic-container">
+            <img src="Images/Vidur_Des.jpg"alt="VIDUR profile picture">
+        </div>
+        <div class="section__text">
+            <p class="section__text_p1">Hello, I'm</p>
+            <h1 class="title">VIDUR MANOHARAN</h1>
+            <ul class="dynamic-text">
+                <li><span>Mechanical Design Engineer</span></li>
+                    <li><span>Manufactuing & Industrial Engineer</span></li>
+                    <li><span>Automation & System Engineer</span></li>
+                    <li><span>Prototyping & 3D Printing Enthusiast</span></li>
+            </ul>
+            <p class="section__text_p2">Welcome To My Design Portfolio</p>
+
+            <div class="btn-containers">
+                <a href="/Personal Web/index.html" 
+                class="hero-btn hero-btn-primary"><i class="fa-solid fa-compass-drafting"></i>&nbsp;&nbsp;Portfolio</a>
+
+                <a href="/Vidur Varshan Manoharan CV.pdf" 
+                class="hero-btn hero-btn-primary"><i class="fa-solid fa-download"></i>&nbsp;&nbsp;Download CV</a>
+
+                <a href="https://www.linkedin.com/in/vidur-varshan-manoharan/" 
+                class="hero-btn hero-btn-primary"><i class="fa-brands fa-linkedin"></i>&nbsp;&nbsp;LinkedIn</a>
+            </div>
+
+        </div>
+    </section>
+
+<!--=================================================== About ===============================================================================-->
+
+    <section id="about">
+        <h1 class="title">About Me</h1>
+        <div class="abt">
+            <div class="about-details-container">
+                <div class="about-containers">
+                    <div class="details-container">
+                        <img src="Icons/boiling-flask.gif" alt="Experience icon" class="icon">
+                        <h3>Experience</h3>
+                        <p>3+ years</p>
+                    </div>
+                    
+                    <div class="details-container">
+                        <img src="Icons/graduation.gif" alt="Education icon" class="icon">
+                        <h3>Education</h3>
+                        <p>🎓 Masters in Engineering Management<br><br> 🎓 Bachelors in Mechanical Engineering</p>
+                    </div>
+
+                     <div class="details-container">
+                        <img src="Icons/graduation.gif" alt="Skills icon" class="icon">
+                        <h3>Skills</h3>
+                        <p class="skills-text">🧠 Autodesk Fusion 360<br>🧠 SolidWorks<br>🧠 AutoCAD<br>🧠 3D-Printing</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+<!--=================================================== My Designs ===============================================================================-->
+
+    <section id="designworks">
+        <h1 class="title">My Designs</h1>
+        <p class="design-desc">
+        A collection of engineering designs, CAD models, and 3D printed creations developed through hands-on practice, technical learning, and real-world problem solving. 
+        From precision part modeling to functional prototypes, each project reflects creativity, design thinking, and practical engineering application.
+        </p>
+            <div class="container">
+                <div class="tab-titles">
+                    <p class="tab-links active-link" onclick="opentab('solidworks')">Part Design</p>
+                    <p class="tab-links"onclick="opentab('fusion')">3D Print Designs</p>
+                </div>
+
+<!--====================== SolidWorks =========================-->
+
+                <div class="solidcontainer">
+                    <div class="tab-contents active-tab" id="solidworks">
+                        <div class="solid-picture">
+                        <div class="solid-container">
+                            <h4>Precision Engineering Through Part Design</h4>
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    Built through intensive practice in SOLIDWORKS, this collection represents my journey in mechanical part modeling, engineering design, and CAD mastery. 
+                                    Each model was created as part of my structured preparation for the Certified SOLIDWORKS Associate (CSWA) and Certified SOLIDWORKS Professional (CSWP) certification paths, focusing on precision, design intent, and manufacturable geometry.
+                                    <br>What began as certification preparation evolved into a deeper understanding of parametric modeling, engineering analysis, and real-world design problem solving.
+                                    <br><br>
+                                    <b>Throughout this journey, I developed hands-on experience in:</b><br><br>
+                                    • Parametric part modeling<br>
+                                    • Sketch-driven design methodology<br>
+                                    • Feature-based solid modeling<br>
+                                    • Design intent and model optimization<br>
+                                    • Engineering dimensioning and geometric accuracy<br>
+                                    • Mechanical component development
+                                    <br><br>
+                                    Having successfully completed both CSWA and CSWP certifications, this collection represents an important milestone in my engineering journey.
+                                    <br><br><b>Explore the collection below</b> to see the designs that shaped my SOLIDWORKS experience.
+                                </p>
+                        </div>
+                        <img src="Images/solidworks.jpeg" alt="printer" class="solid-pic">
+                    </div>
+
+                        <ul class="solid-list">
+
+                            <!--========= Part 1 ============-->
+
+                            <li class="solid">
+                                <img src="SDW/1/1.1.png">
+                                <div class="layer">
+                                    <h3>Part 1 & 2D Drawing</h3>
+                                    <button class="explore-btn" onclick="openSlider('sliderModal1')">Explore More</button>
+                                </div>
+                            </li>
+
+                            <!-- Popup Slider -->
+                            <div class="slider-modal" id="sliderModal1">
+                                <button class="close-btn" onclick="closeSlider('sliderModal1')">✕</button>
+                                <section class="img-container1">
+                                    <div class="slider-wrapper">
+                                        <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                                        <div class="slider">
+                                            <img src="SDW/1/1.1.png">
+                                            <img src="SDW/1/1.2.png">
+                                            <img src="SDW/1/1.3.JPG">
+                                            <img src="SDW/1/Part1 2D.JPG">
+                                        </div>
+                                        <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                                    </div>
+                                </section>
+                            </div>
+                            
+                            <!--========= Part 2 ============-->
+
+                            <li class="solid">
+                                <img src="SDW/2/2.1.png">
+                                <div class="layer">
+                                    <h3> Part 2 & 2D Drawing</h3>
+                                    <button class="explore-btn" onclick="openSlider('sliderModal2')">Explore More</button>
+                                </div>
+                            </li>
+
+                            <!-- Popup Slider -->
+                            <div class="slider-modal" id="sliderModal2">
+                                <button class="close-btn" onclick="closeSlider('sliderModal2')">✕</button>
+                                <section class="img-container1">
+                                    <div class="slider-wrapper">
+                                        <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                                        <div class="slider">
+                                            <img src="SDW/2/2.1.png">
+                                            <img src="SDW/2/2.2.png">
+                                            <img src="SDW/2/2.3.png">
+                                            <img src="SDW/2/Part 2 2D.JPG">
+                                        </div>
+                                        <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                                    </div>
+                                </section>
+                            </div>
+
+                            <!--========= Part 3 ============-->
+
+                            <li class="solid">
+                                <img src="SDW/3/3.1.png">
+                                <div class="layer">
+                                    <h3> Part 3 & 2D Drawing</h3>
+                                    <button class="explore-btn" onclick="openSlider('sliderModal3')">Explore More</button>
+                                </div>
+                            </li>
+
+                            <!-- Popup Slider -->
+                            <div class="slider-modal" id="sliderModal3">
+                                <button class="close-btn" onclick="closeSlider('sliderModal3')">✕</button>
+                                <section class="img-container1">
+                                    <div class="slider-wrapper">
+                                        <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                                        <div class="slider">
+                                            <img src="SDW/3/3.1.png">
+                                            <img src="SDW/3/3.2.png">
+                                            <img src="SDW/3/Part 3 2D.JPG">
+                                        </div>
+                                        <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                                    </div>
+                                </section>
+                            </div>
+
+                            <!--========= Part 4 ============-->
+
+                            <li class="solid">
+                                <img src="SDW/4/4.1.png">
+                                <div class="layer">
+                                    <h3> Part 4 & 2D Drawing</h3>
+                                    <button class="explore-btn" onclick="openSlider('sliderModal4')">Explore More</button>
+                                </div>
+                            </li>
+
+                            <!-- Popup Slider -->
+                            <div class="slider-modal" id="sliderModal4">
+                                <button class="close-btn" onclick="closeSlider('sliderModal4')">✕</button>
+                                <section class="img-container1">
+                                    <div class="slider-wrapper">
+                                        <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                                        <div class="slider">
+                                            <img src="SDW/4/4.1.png">
+                                            <img src="SDW/4/4.2.png">
+                                            <img src="SDW/4/4.3.png">
+                                            <img src="SDW/4/4.4.png">
+                                            <img src="SDW/4/4.5.png">
+                                            <img src="SDW/4/Part 4 2D.JPG">
+                                        </div>
+                                        <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                                    </div>
+                                </section>
+                            </div>
+
+                            <!--========= Part 5 ============-->
+
+                            <li class="solid">
+                                <img src="SDW/5/5.1.png">
+                                <div class="layer">
+                                    <h3> Part 5 & 2D Drawing</h3>
+                                    <button class="explore-btn" onclick="openSlider('sliderModal5')">Explore More</button>
+                                </div>
+                            </li>
+
+                            <!-- Popup Slider -->
+                            <div class="slider-modal" id="sliderModal5">
+                                <button class="close-btn" onclick="closeSlider('sliderModal5')">✕</button>
+                                <section class="img-container1">
+                                    <div class="slider-wrapper">
+                                        <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                                        <div class="slider">
+                                            <img src="SDW/5/5.1.png">
+                                            <img src="SDW/5/5.2.png">
+                                            <img src="SDW/5/5.3.png">
+                                            <img src="SDW/5/5.4.png">
+                                            <img src="SDW/5/Part 5.JPG">
+                                        </div>
+                                        <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                                    </div>
+                                </section>
+                            </div>
+
+                            <!--========= Part 6 ============-->
+
+                            <li class="solid">
+                                <img src="SDW/6/6.1.png">
+                                <div class="layer">
+                                    <h3> Part 6 & 2D Drawing</h3>
+                                    <button class="explore-btn" onclick="openSlider('sliderModal6')">Explore More</button>
+                                </div>
+                            </li>
+
+                            <!-- Popup Slider -->
+                            <div class="slider-modal" id="sliderModal6">
+                                <button class="close-btn" onclick="closeSlider('sliderModal6')">✕</button>
+                                <section class="img-container1">
+                                    <div class="slider-wrapper">
+                                        <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                                        <div class="slider">
+                                            <img src="SDW/6/6.1.png">
+                                            <img src="SDW/6/6.2.png">
+                                            <img src="SDW/6/6.3.png">
+                                            <img src="SDW/6/6.4.png">
+                                            <img src="SDW/6/Part 6 2D.JPG">
+                                        </div>
+                                        <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                                    </div>
+                                </section>
+                            </div>
+
+                            <!--========= Part 7 ============-->
+
+                            <li class="solid">
+                                <img src="SDW/7/7.1.png">
+                                <div class="layer">
+                                    <h3> Part 7 & 2D Drawing</h3>
+                                    <button class="explore-btn" onclick="openSlider('sliderModal7')">Explore More</button>
+                                </div>
+                            </li>
+
+                            <!-- Popup Slider -->
+                            <div class="slider-modal" id="sliderModal7">
+                                <button class="close-btn" onclick="closeSlider('sliderModal7')">✕</button>
+                                <section class="img-container1">
+                                    <div class="slider-wrapper">
+                                        <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                                        <div class="slider">
+                                            <img src="SDW/7/7.1.png">
+                                            <img src="SDW/7/7.2.png">
+                                            <img src="SDW/7/7.3.png">
+                                            <img src="SDW/7/Part 7 2D.JPG">
+                                        </div>
+                                        <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                                    </div>
+                                </section>
+                            </div>
+
+                            <!--========= Part 8 ============-->
+
+                            <li class="solid">
+                                <img src="SDW/8/8.1.png">
+                                <div class="layer">
+                                    <h3> Part 8 & 2D Drawing</h3>
+                                    <button class="explore-btn" onclick="openSlider('sliderModal8')">Explore More</button>
+                                </div>
+                            </li>
+
+                            <!-- Popup Slider -->
+                            <div class="slider-modal" id="sliderModal8">
+                                <button class="close-btn" onclick="closeSlider('sliderModal8')">✕</button>
+                                <section class="img-container1">
+                                    <div class="slider-wrapper">
+                                        <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                                        <div class="slider">
+                                            <img src="SDW/8/8.1.png">
+                                            <img src="SDW/8/8.2.png">
+                                            <img src="SDW/8/8.3.png">
+                                            <img src="SDW/8/Part 8 2D.JPG">
+                                        </div>
+                                        <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                                    </div>
+                                </section>
+                            </div>
+
+                            <!--========= Part 9 ============-->
+
+                            <li class="solid">
+                                <img src="SDW/9/9.1.png">
+                                <div class="layer">
+                                    <h3> Part 9 & 2D Drawing</h3>
+                                    <button class="explore-btn" onclick="openSlider('sliderModal9')">Explore More</button>
+                                </div>
+                            </li>
+
+                            <!-- Popup Slider -->
+                            <div class="slider-modal" id="sliderModal9">
+                                <button class="close-btn" onclick="closeSlider('sliderModal9')">✕</button>
+                                <section class="img-container1">
+                                    <div class="slider-wrapper">
+                                        <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                                        <div class="slider">
+                                            <img src="SDW/9/9.1.png">
+                                            <img src="SDW/9/9.2.png">
+                                            <img src="SDW/9/9.3.png">
+                                            <img src="SDW/9/Part 9 2D.JPG">
+                                        </div>
+                                        <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                                    </div>
+                                </section>
+                            </div>
+
+                            <!--========= Part 10 ============-->
+
+                            <li class="solid">
+                                <img src="SDW/10/10.1.png">
+                                <div class="layer">
+                                    <h3> Part 10 & 2D Drawing</h3>
+                                    <button class="explore-btn" onclick="openSlider('sliderModal10')">Explore More</button>
+                                </div>
+                            </li>
+
+                            <!-- Popup Slider -->
+                            <div class="slider-modal" id="sliderModal10">
+                                <button class="close-btn" onclick="closeSlider('sliderModal10')">✕</button>
+                                <section class="img-container1">
+                                    <div class="slider-wrapper">
+                                        <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                                        <div class="slider">
+                                            <img src="SDW/10/10.1.png">
+                                            <img src="SDW/10/10.2.png">
+                                            <img src="SDW/10/10.3.png">
+                                            <img src="SDW/10/10.4.png">
+                                            <img src="SDW/10/10.5.png">
+                                            <img src="SDW/10/Part 10 2D.JPG">
+                                        </div>
+                                        <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                                    </div>
+                                </section>
+                            </div>
+
+                            <!--========= Part 11 ============-->
+
+                            <li class="solid">
+                                <img src="SDW/11/11.1.png">
+                                <div class="layer">
+                                    <h3> Part 11 & 2D Drawing</h3>
+                                    <button class="explore-btn" onclick="openSlider('sliderModal11')">Explore More</button>
+                                </div>
+                            </li>
+
+                            <!-- Popup Slider -->
+                            <div class="slider-modal" id="sliderModal11">
+                                <button class="close-btn" onclick="closeSlider('sliderModal11')">✕</button>
+                                <section class="img-container1">
+                                    <div class="slider-wrapper">
+                                        <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                                        <div class="slider">
+                                            <img src="SDW/11/11.1.png">
+                                            <img src="SDW/11/11.2.png">
+                                            <img src="SDW/11/11.3.png">
+                                            <img src="SDW/11/11.4.png">
+                                            <img src="SDW/11/11.5.png">
+                                            <img src="SDW/11/Part 11 2D.JPG">
+                                        </div>
+                                        <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                                    </div>
+                                </section>
+                            </div>
+
+                            <!--========= Part 12 ============-->
+
+                            <li class="solid">
+                                <img src="SDW/12/12.1.png">
+                                <div class="layer">
+                                    <h3> Part 12 & 2D Drawing</h3>
+                                    <button class="explore-btn" onclick="openSlider('sliderModal12')">Explore More</button>
+                                </div>
+                            </li>
+
+                            <!-- Popup Slider -->
+                            <div class="slider-modal" id="sliderModal12">
+                                <button class="close-btn" onclick="closeSlider('sliderModal12')">✕</button>
+                                <section class="img-container1">
+                                    <div class="slider-wrapper">
+                                        <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                                        <div class="slider">
+                                            <img src="SDW/12/12.1.png">
+                                            <img src="SDW/12/12.2.png">
+                                            <img src="SDW/12/12.3.png">
+                                            <img src="SDW/12/Part 12 2D.JPG">
+                                        </div>
+                                        <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                                    </div>
+                                </section>
+                            </div>
+
+                            <!--========= Part 13 ============-->
+
+                            <li class="solid">
+                                <img src="SDW/13/13.1.png">
+                                <div class="layer">
+                                    <h3> Part 13 & 2D Drawing</h3>
+                                    <button class="explore-btn" onclick="openSlider('sliderModal13')">Explore More</button>
+                                </div>
+                            </li>
+
+                            <!-- Popup Slider -->
+                            <div class="slider-modal" id="sliderModal13">
+                                <button class="close-btn" onclick="closeSlider('sliderModal13')">✕</button>
+                                <section class="img-container1">
+                                    <div class="slider-wrapper">
+                                        <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                                        <div class="slider">
+                                            <img src="SDW/13/13.1.png">
+                                            <img src="SDW/13/13.2.png">
+                                            <img src="SDW/13/13.3.png">
+                                        </div>
+                                        <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                                    </div>
+                                </section>
+                            </div>
+
+                            <!--========= Part 14 ============-->
+
+                            <li class="solid">
+                                <img src="SDW/14/14.1.png">
+                                <div class="layer">
+                                    <h3> Part 14 & 2D Drawing</h3>
+                                    <button class="explore-btn" onclick="openSlider('sliderModal14')">Explore More</button>
+                                </div>
+                            </li>
+
+                            <!-- Popup Slider -->
+                            <div class="slider-modal" id="sliderModal14">
+                                <button class="close-btn" onclick="closeSlider('sliderModal14')">✕</button>
+                                <section class="img-container1">
+                                    <div class="slider-wrapper">
+                                        <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                                        <div class="slider">
+                                            <img src="SDW/14/14.1.png">
+                                            <img src="SDW/14/14.2.png">
+                                            <img src="SDW/14/14.3.png">
+                                            <img src="SDW/14/Part 14 2D.JPG">
+                                        </div>
+                                        <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                                    </div>
+                                </section>
+                            </div>
+
+                            <!--========= Part 15 ============-->
+
+                            <li class="solid">
+                                <img src="SDW/15/15.1.png">
+                                <div class="layer">
+                                    <h3> Part 15 & 2D Drawing</h3>
+                                    <button class="explore-btn" onclick="openSlider('sliderModal15')">Explore More</button>
+                                </div>
+                            </li>
+
+                            <!-- Popup Slider -->
+                            <div class="slider-modal" id="sliderModal15">
+                                <button class="close-btn" onclick="closeSlider('sliderModal15')">✕</button>
+                                <section class="img-container1">
+                                    <div class="slider-wrapper">
+                                        <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                                        <div class="slider">
+                                            <img src="SDW/15/15.1.png">
+                                            <img src="SDW/15/15.2.png">
+                                            <img src="SDW/15/15.3.png">
+                                            <img src="SDW/15/15.4.png">
+                                            <img src="SDW/15/Part 15 2D.JPG">
+                                        </div>
+                                        <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                                    </div>
+                                </section>
+                            </div>
+
+                            <!--========= Part 16 ============-->
+
+                            <li class="solid">
+                                <img src="SDW/16/16.1.png">
+                                <div class="layer">
+                                    <h3> Part 16 & 2D Drawing</h3>
+                                    <button class="explore-btn" onclick="openSlider('sliderModal16')">Explore More</button>
+                                </div>
+                            </li>
+
+                            <!-- Popup Slider -->
+                            <div class="slider-modal" id="sliderModal16">
+                                <button class="close-btn" onclick="closeSlider('sliderModal16')">✕</button>
+                                <section class="img-container1">
+                                    <div class="slider-wrapper">
+                                        <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                                        <div class="slider">
+                                            <img src="SDW/16/16.1.png">
+                                            <img src="SDW/16/16.2.png">
+                                            <img src="SDW/16/16.3.png">
+                                            <img src="SDW/16/16.4.png">
+                                            <img src="SDW/16/Part 16 2D.JPG">
+                                        </div>
+                                        <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                                    </div>
+                                </section>
+                            </div>
+
+                            <!--==================================-->
+
+                        </ul>
+                    </div>
+                </div>
+
+    <!--========================== 3D Print =======================================-->
+                
+<div class="tab-contents" id="fusion">
+    <div class="abt-picture">
+            <div class="printer-container">
+                <br><br>
+                <h4>Bringing Ideas Into Reality with 3D Printing</h4>
+                <br><br>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    Powered by the precision of my Bambu Lab A1 Combo, my design workflow combines creativity, engineering, and rapid prototyping to transform digital concepts into functional physical products. 
+                    Using Autodesk Fusion and SOLIDWORKS, I design and develop models that blend aesthetics, practicality, and manufacturability.
+                <br><br><b>What began as a passion for 3D printing evolved into a hands-on engineering journey focused on:</b>
+                <br><br>
+                • Rapid prototyping & iterative design<br>
+                • Design for Manufacturing (DFM)<br>
+                • Functional product development<br>
+                • Mechanical and architectural modeling<br>
+                • Creative problem-solving through additive manufacturing<br>
+                <br><br>
+                From architectural models and utility tools to personalised creations, these designs represent my ongoing journey in 3D printing, product development, and hands-on innovation. 
+                <br><br><b>Explore the collection below</b> to see how design, engineering, and creativity come together through additive manufacturing.
+                </p>
+            </div>
+                <img src="Images/Bambu Labs A1.jpg" alt="printer" class="printer-pic">
+            </div>
+    
+
+    <!--======================================= Fusion 360 ==============================-->
+
+                <ul class="design-list">
+
+     <!--========================== DP-30 ====================-->
+
+                    <li class="design">
+                        <img src="3D Print/BMW MPower/BMW1.png">
+                        <h1>
+                            <span>BMW MPower</span>
+                        </h1>
+                        <P>Inspired by iconic motorsport heritage, this sculptural display piece captures the bold energy of performance and precision. 
+                            Featuring a clean geometric form with signature racing colors, it transforms automotive passion into a modern desk accessory—perfect for enthusiasts who appreciate design, speed, and craftsmanship.</P>
+                    </li>
+                            <input type="checkbox" id="check-8">
+                    <label for="check-8">Explore More</label> 
+                    <div class="content">
+                        <section class="img-container">
+                            <div class="slider-wrapper8 slider-wrapper-general" id="temple-slider">
+                                <div class="slider8">
+                                    <img id="slider-1f" src="3D Print/BMW MPower/BMW1.png" alt="3D rendered top view of the knife">
+                                    <img id="slider-2f" src="3D Print/BMW MPower/BMW2.png" alt="3D rendered bottom view of the knife">
+                                    <img id="slider-3f" src="3D Print/BMW MPower/BMW3.png" alt="3D rendered bottom view of the knife">
+                                </div>
+                                <div class="slider-nav8">
+                                    <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                                    <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+                        </section>
+                    </div> 
+                    <br>
+                    
+                    <div class="strip"></div>                
+
+    <!--========================== Temple Tower ====================-->
+
+                    <li class="design">
+                        <img src="3D Print/Temple Tower/TT0.png">
+                        <h1>
+                            <span>South Indian Temple Tower Tabletop Model</span>
+                        </h1>
+                        <P>Inspired by the grandeur of South Indian temple architecture, this tabletop tower model blends intricate traditional detailing with a clean modern aesthetic. 
+                            Designed as a compact display piece, it brings cultural elegance and architectural craftsmanship into contemporary spaces.</P>
+                    </li>
+                            <input type="checkbox" id="check-6">
+                    <label for="check-6">Explore More</label> 
+                    <div class="content">
+                        <section class="img-container">
+                            <div class="slider-wrapper6 slider-wrapper-general" id="temple-slider">
+                                <div class="slider6">
+                                     <img id="slider-1f" src="3D Print/Temple Tower/TT1.png" alt="3D rendered top view of the knife">
+                                    <img id="slider-2f" src="3D Print/Temple Tower/TT2.png" alt="3D rendered bottom view of the knife">
+                                    <img id="slider-3f" src="3D Print/Temple Tower/TT3.png" alt="3D rendered bottom view of the knife">
+                                    <img id="slider-4f" src="3D Print/Temple Tower/TT4.png" alt="3D rendered bottom view of the knife">
+                                    
+                                </div>
+                                <div class="slider-nav6">
+                                    <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                                    <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+                        </section>
+                    </div> 
+                    <br>
+                    
+                    <div class="strip"></div>
+
+    <!--========================== Phone and Iwatch Stand ====================-->
+
+                    <li class="design">
+                        <img src="3D Print/IPhone Stand/IP1.png">
+                        <h1>
+                            <span>Phone and Iwatch Stand</span>
+                        </h1>
+                        <P>A sleek and functional charging stand designed to hold both your smartphone and Apple Watch with integrated MagSafe charger support. 
+                            Featuring concealed cable management and a clean modern form, it keeps your essentials organized while adding a refined touch to any desk or bedside setup.</P>
+                    </li>
+                            <input type="checkbox" id="check-7">
+                    <label for="check-7">Explore More</label> 
+                    <div class="content">
+                        <section class="img-container">
+                            <div class="slider-wrapper7 slider-wrapper-general" id="temple-slider">
+                                <div class="slider7">
+                                    <img id="slider-1f" src="3D Print/IPhone Stand/IP1.png" alt="3D rendered top view of the knife">
+                                    <img id="slider-2f" src="3D Print/IPhone Stand/IP2.png" alt="3D rendered bottom view of the knife">
+                                    <img id="slider-3f" src="3D Print/IPhone Stand/IP3.png" alt="3D rendered bottom view of the knife">
+                                    <img id="slider-4f" src="3D Print/IPhone Stand/IP4.png" alt="3D rendered bottom view of the knife">
+                                    <img id="slider-4f" src="3D Print/IPhone Stand/IP5.png" alt="3D rendered bottom view of the knife">
+                                </div>
+                                <div class="slider-nav7">
+                                    <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                                    <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+                        </section>
+                    </div> 
+                    <br>
+                    
+                    <div class="strip"></div>
+
+    <!--========================== Temple Mandapam ====================-->
+
+                    <li class="design">
+                        <img src="3D Print/Temple Mandapam/TM0.jpeg">
+                        <h1>
+                            <span>South Indian Temple Mandapam Tabletop Model</span>
+                        </h1>
+                        <P>Inspired by traditional South Indian temple halls, this mandapam model showcases intricate pillars and timeless architectural symmetry in a compact decorative form.</P>
+                    </li>
+                    <input type="checkbox" id="check-0">
+                    <label for="check-0">Explore More</label> 
+                    <div class="content">
+                        <section class="img-container">
+                            <div class="slider-wrapper0 slider-wrapper-general" id="mandapam-slider">
+                                <div class="slider0">
+                                    <img id="slider-1." src="3D Print/Temple Mandapam/TM1.jpeg" alt="3D rendered top view of the knife">
+                                    <img id="slider-2." src="3D Print/Temple Mandapam/TM2.jpeg" alt="3D rendered bottom view of the knife">
+                                    <img id="slider-3." src="3D Print/Temple Mandapam/TM3.jpeg" alt="3D rendered bottom view of the knife">
+                                    <img id="slider-4." src="3D Print/Temple Mandapam/TM4.jpeg" alt="3D rendered bottom view of the knife">
+                                </div>
+                                <div class="slider-nav1">
+                                    <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                                    <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+                        </section>
+                    </div> 
+                    <br>
+
+                    <div class="strip"></div>
+
+    <!--========================== Utility Knife ====================-->
+
+                    <li class="design">
+                        <img src="3D Print/Utility Knife/Blade1.png">
+                        <h1>
+                            <span>Utility Knife</span>
+                        </h1>
+                        <P>A sleek and functional utility knife designed for precision, durability, and everyday practicality with a modern minimalist aesthetic.</P>
+                    </li>
+                    <input type="checkbox" id="check-1">
+                    <label for="check-1">Explore More</label> 
+                    <div class="content">
+                        <section class="img-container">
+                            <div class="slider-wrapper1 slider-wrapper-general" id="blade-slider">
+                                <div class="slider1">
+                                    <img id="slider-1a" src="3D Print/Utility Knife/Blade1.png" alt="3D rendered top view of the knife">
+                                    <img id="slider-1a" src="3D Print/Utility Knife/Blade2.png" alt="3D rendered top view of the knife">
+                                    <img id="slider-2a" src="3D Print/Utility Knife/Blade3.png" alt="3D rendered bottom view of the knife">
+                                </div>
+                                <div class="slider-nav1">
+                                    <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                                    <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+                        </section>
+                    </div> 
+                    <br>
+
+                    <div class="strip"></div>
+
+    <!--========================== Viking Horn ====================-->
+
+                    <li class="design">
+                        <img src="3D Print/Viking Horn/Horn1.png">
+                        <h1>
+                            <span>Vikings Horn Holder</span>
+                        </h1>
+                        <P>A sturdy and elegantly crafted Viking horn holder inspired by traditional Norse aesthetics. 
+                            Designed to securely display drinking horns, it combines functional support with a clean, timeless form ideal for décor, collections, and themed setups.</P>
+                    </li>
+                    <input type="checkbox" id="check-2">
+                    <label for="check-2">Explore More</label> 
+                    <div class="content">
+                        <section class="img-container">
+                            <div class="slider-wrapper2 slider-wrapper-general" id="viking-slider">
+                                <div class="slider2">
+                                    <img id="slide-1b" src="3D Print/Viking Horn/Horn1.png" alt="3D rendered base of the Horn Holder">
+                                    <img id="slide-2b" src="3D Print/Viking Horn/Horn2.png" alt="3D rendered upper stand of the Horn Holder">
+                                    <img id="slide-3b" src="3D Print/Viking Horn/Horn3.png" alt="3D rendered lower stand of the Horn Holder">
+                                    <img id="slide-3b" src="3D Print/Viking Horn/Horn4.png" alt="3D rendered lower stand of the Horn Holder">
+                                </div>
+                                <div class="slider-nav2">
+                                    <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                                    <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+                        </section>
+                    </div> 
+                    <br>
+
+                              <div class="strip"></div>
+
+    <!--========================== Insulin Pen ====================-->                              
+
+                    <li class="design">
+                        <img src="3D Print/Insu Pen/Insu1.jpg">
+                        <h1>
+                            <span>Insulin Pen Portable Case</span>
+                        </h1>
+                        <P>A compact and thoughtfully designed insulin pen holder case built for secure storage, portability, and everyday convenience. 
+                            Featuring a clean modern form with ventilated detailing, it offers organized protection while maintaining a sleek and practical design.</P>
+                    </li>
+                    <input type="checkbox" id="check-3">
+                    <label for="check-3">Explore More</label> 
+                    <div class="content">
+                        <section class="img-container">
+                            <div class="slider-wrapper3 slider-wrapper-general" id="insu-slider">
+                                <div class="slider3">
+                                    <img id="slide-1c" src="3D Print/Insu Pen/Insu1.jpg" alt="3D rendered base of the Insulin Pen Protective and Portable Case">
+                                    <img id="slide-2c" src="3D Print/Insu Pen/Insu2.jpg" alt="3D rendered upper stand of the Insulin Pen Protective and Portable Case">
+                                    <img id="slide-3c" src="3D Print/Insu Pen/Insu3.jpg" alt="3D rendered lower stand of the Insulin Pen Protective and Portable Case">
+                                </div>
+                                <div class="slider-nav3">
+                                    <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                                    <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <br>
+
+                    <div class="strip"></div>
+
+    <!--========================== Flower Pot ====================-->
+
+                    <li class="design">
+                        <img src="3D Print/Flower Pot/Pot1.jpg">
+                        <h1>
+                            <span>Flower Pot</span>
+                        </h1>
+                        <P> A modern decorative flower pot designed to complement indoor and outdoor spaces with simplicity, elegance, and functionality.</P>
+                    </li>
+                    <input type="checkbox" id="check-4">
+                    <label for="check-4">Explore More</label> 
+                    <div class="content">
+                        <section class="img-container">
+                            <div class="slider-wrapper4 slider-wrapper-general" id="pot-slider">
+                                <div class="slider4">
+                                    <img id="slide-1d" src="3D Print/Flower Pot/Pot1.jpg" alt="3D rendered base of the Flower Pot">
+                                    <img id="slide-2d" src="3D Print/Flower Pot/Pot2.jpg" alt="3D rendered upper stand of the Flower Pot">
+                                    <img id="slide-3d" src="3D Print/Flower Pot/Pot3.jpg" alt="3D rendered lower stand of the Flower Pot">
+                                    <img id="slide-4d" src="3D Print/Flower Pot/Pot4.jpg" alt="3D rendered lower stand of the Flower Pot">
+                                </div>
+                                <div class="slider-nav4">
+                                    <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                                    <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <br>
+
+                    <div class="strip"></div>
+
+    <!--========================== Animograph ====================-->
+
+                      <li class="design">
+                        <img src="3D Print/Animograph/Ani1.png">
+                        <h1>
+                            <span>Animograph</span>
+                        </h1>
+                        <P>A creative dual-name display design that reveals different names from opposite viewing angles. 
+                            Blending typography with optical illusion, this animograph transforms personalized names into a unique and interactive decorative piece.</P>
+                    </li>
+                    <input type="checkbox" id="check-5">
+                    <label for="check-5">Explore More</label> 
+                    <div class="content">
+                        <section class="img-container">
+                            <div class="slider-wrapper5 slider-wrapper-general" id="animo-slider">
+                                <div class="slider5">
+                                    <img id="slide-1e" src="3D Print/Animograph/Ani1.png" alt="3D rendered base of the Flower Pot">
+                                    <img id="slide-2e" src="3D Print/Animograph/Ani2.png" alt="3D rendered upper stand of the Flower Pot">
+                                    <img id="slide-3e" src="3D Print/Animograph/Ani3.png" alt="3D rendered lower stand of the Flower Pot">
+                                    <img id="slide-4e" src="3D Print/Animograph/Ani4.png" alt="3D rendered lower stand of the Flower Pot">
+                                    <img id="slide-5e" src="3D Print/Animograph/Ani5.png" alt="3D rendered lower stand of the Flower Pot">
+                                    <img id="slide-6e" src="3D Print/Animograph/Ani6.png" alt="3D rendered lower stand of the Flower Pot">
+                                    <img id="slide-7e" src="3D Print/Animograph/Ani7.png" alt="3D rendered lower stand of the Flower Pot">
+                                </div>
+                                <div class="slider-nav5">
+                                    <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                                    <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <br>
+
+                    <div class="strip"></div>
+
+                </ul>
+</div>
+
+        </div>
+    </section>
+
+<!--=================================================== Contact ===============================================================================-->
+    <br><br><br><br><br><br>
+    <section id="contact">
+        <h1 class="title">Contact</h1>    <br><br>
+        <div class="containers">
+            <div class="row">
+                <div class="contact-buttons">
+
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=vidurvarshan1999@gmail.com" 
+                        target="_blank" class="btn1">
+                        <i class="fa-solid fa-envelope"></i>&nbsp; Email Me
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/vidur-varshan-manoharan/" class="btn1">
+                    <i class="fa-brands fa-linkedin"></i>&nbsp;LinkedIn
+                    </a>
+
+                    <a href="/Vidur Varshan Manoharan CV.pdf" class="btn1">
+                    <i class="fa-solid fa-download"></i>&nbsp;Download CV
+                    </a>
+                </div>
+                
+    
+                <div class="contact-right">
+                    <form name="submit-to-google-sheet">
+                    <input type="text" name="Name" placeholder="Your Name" required>
+                    <input type="email" name="Email" placeholder="Your Email" required>
+                    <textarea name="Message" rows="" placeholder="Your Message"></textarea>
+                    <button type="submit" class="btn2">Submit</button>
+                    </form>
+    
+                    <span id="msg"></span>
+    
+                </div>
+            </div>
+        </div>
+    </section>
+
+<div class="copyright">
+    <p>Copyright © Vidur Manoharan</p>
+</div>
+
+    <script src="design.js"></script> 
+<!--=================================================== Slider Arrow ===============================================================================-->
+
+<script>
+    // 1. Find every slider container on the page
+    const allSliders = document.querySelectorAll('.slider-wrapper-general');
+
+    allSliders.forEach((wrapper) => {
+        // 2. Find the buttons inside THIS specific wrapper
+        const nextBtn = wrapper.querySelector('.next-btn');
+        const prevBtn = wrapper.querySelector('.prev-btn');
+        
+        // 3. Find the inner slider div (handles slider0, slider1, slider2, etc.)
+        const scrollContainer = wrapper.querySelector('[class^="slider"]');
+
+        if (nextBtn && prevBtn && scrollContainer) {
+            // Click Logic for Next
+            nextBtn.addEventListener('click', () => {
+                scrollContainer.scrollBy({ 
+                    left: scrollContainer.offsetWidth, 
+                    behavior: 'smooth' 
+                });
+            });
+
+            // Click Logic for Previous
+            prevBtn.addEventListener('click', () => {
+                scrollContainer.scrollBy({ 
+                    left: -scrollContainer.offsetWidth, 
+                    behavior: 'smooth' 
+                });
+            });
+        }
+    });
+</script>
+
+<!--=================================================================== Solid Java ================================================-->
+
+<script>
+/* ===========================
+   SOLIDWORKS SLIDER FUNCTIONALITY
+=========================== */
+
+// OPEN MODAL
+function openSlider(modalId) {
+    const modal = document.getElementById(modalId);
+
+    if (modal) {
+        modal.classList.add("show");
+        document.body.style.overflow = "hidden";
+    }
+}
+
+// CLOSE MODAL
+function closeSlider(modalId) {
+    const modal = document.getElementById(modalId);
+
+    if (modal) {
+        modal.classList.remove("show");
+        document.body.style.overflow = "auto";
+    }
+}
+
+
+/* ===========================
+   SLIDER NAVIGATION
+=========================== */
+
+document.querySelectorAll(".slider-modal").forEach((modal) => {
+
+    const slider = modal.querySelector(".slider");
+    const nextBtn = modal.querySelector(".next-btn");
+    const prevBtn = modal.querySelector(".prev-btn");
+
+    // Prevent errors if elements don't exist
+    if (!slider || !nextBtn || !prevBtn) return;
+
+    // Width of one image
+    const getSlideWidth = () => {
+        return slider.querySelector("img").clientWidth;
+    };
+
+    // NEXT BUTTON
+    nextBtn.addEventListener("click", () => {
+
+        const slideWidth = getSlideWidth();
+
+        slider.scrollBy({
+            left: slideWidth,
+            behavior: "smooth"
+        });
+
+    });
+
+    // PREV BUTTON
+    prevBtn.addEventListener("click", () => {
+
+        const slideWidth = getSlideWidth();
+
+        slider.scrollBy({
+            left: -slideWidth,
+            behavior: "smooth"
+        });
+
+    });
+
+});
+
+
+/* ===========================
+   CLOSE MODAL WHEN CLICKING OUTSIDE
+=========================== */
+
+document.querySelectorAll(".slider-modal").forEach((modal) => {
+
+    modal.addEventListener("click", (e) => {
+
+        if (e.target === modal) {
+            modal.classList.remove("show");
+            document.body.style.overflow = "auto";
+        }
+
+    });
+
+});
+
+
+/* ===========================
+   ESC KEY CLOSE
+=========================== */
+
+document.addEventListener("keydown", (e) => {
+
+    if (e.key === "Escape") {
+
+        document.querySelectorAll(".slider-modal.show").forEach((modal) => {
+            modal.classList.remove("show");
+        });
+
+        document.body.style.overflow = "auto";
+    }
+
+});
+</script>
+
+<!--==================================================================================================================================-->
+</body>
+</html>
