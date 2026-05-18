@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<style>
+
+/* ========================= INTRO LOADER ================================================================================ */
+
+#intro-loader{
+  position:fixed;
+  inset:0;
+  background:#0f0f0f;
+  color:#fff;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+  overflow:hidden;
+  transform:translateY(0);
+  transition:transform 1.4s cubic-bezier(.76,0,.24,1);
+}
+
+/*======================== fixed box prevents jumping ================================================================== */
+#intro-text-wrapper{
+  position:relative;
+  height:120px;
+  width:400px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+}
+
+#intro-text{
+  position:absolute;
+  font-size:clamp(48px,8vw,110px);
+  font-weight:600;
+  letter-spacing:-2px;
+  opacity:0;
+  transform:translateY(30px);
+  transition:all .5s cubic-bezier(.76,0,.24,1);
+}
+
+#intro-text.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/*============================ slide away =================================================================================== */
+#intro-loader.hide{
+  transform:translateY(-100%);
+}
+
+/* ============================= website hidden initially ====================================================================*/
+#site-content{
+  opacity:0;
+  transition:opacity 1.2s ease;
+}
+
+#site-content.show{
+  opacity:1;
+}
+
+</style>
+
+<!--=============================== Title ==================================================================================-->
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vidur Manoharan • Portfolio</title>
+    <link rel="icon" type="image/x-icon" href="Icons/favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/58934e4ab9.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
+</head>
+
+<!--==================================== Intro Loader ==========r==========================================-->
+<body>
+<div id="intro-loader">
+  <h1 id="intro-text">Hello</h1>
+</div>
+            <nav>
+                <a href="#header" class="logo">VIDUR .</a>
+                <ul id="sidemenu">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#project">Projects</a></li>
+                    <li><a href="#Certification">Certifications</a></li>
+                    <li><a href="#contact">Contact</a></li>    
+                    <i class="fa-solid fa-xmark" onclick="closemenu()"></i>                     
+                </ul>
+                <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+            </nav>
+
+
+<div class="hero">
+    <div id="header">
+            <div class="container">
+            <div class="header">
+                <p>Hello, It's Me</p>
+                <h1><span>Vidur Varshan Manoharan</span></h1>
+            </div>
+            <div class="wrapper">
+                <div class="static-text">And I'm a</div>
+                <ul class="dynamic-text">
+                    <li><span>Mechanical Design Engineer</span></li>
+                    <li><span>Manufactuing & Industrial Engineer</span></li>
+                    <li><span>Automation & System Engineer</span></li>
+                    <li><span>Prototyping & 3D Printing Enthusiast</span></li>
+                </ul>  
+            </div>  
+            <div class="btn-containers">
+                <a href="/Design/design.html" 
+                class="hero-btn hero-btn-primary"><i class="fa-solid fa-compass-drafting"></i>&nbsp;&nbsp;Design Portfolio</a>
+
+                <a href="/Vidur Varshan Manoharan CV.pdf" 
+                class="hero-btn hero-btn-primary"><i class="fa-solid fa-download"></i>&nbsp;&nbsp;Download CV</a>
+
+                <a href="https://www.linkedin.com/in/vidur-varshan-manoharan/" 
+                class="hero-btn hero-btn-primary"><i class="fa-brands fa-linkedin"></i>&nbsp;&nbsp;LinkedIn</a>
+
+            </div>
+        </div>
+        <img src="Images/Vidur_IMG.png" class="hero-photo" alt="Vidur">
+    </div> 
+
+
+<!--================================= About ================================================================================ -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="about-col-1">
+                    <img src="Images/Vidur1.jpg">
+                </div>
+                    <div class="about-col-2">
+                        <h1 class="sub-title">About Me:</h1><br>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; I am a Mechanical Engineering graduate with an MSc in Engineering Management from the University of Leicester, combining technical engineering knowledge with operational and management expertise.
+                                     My background spans mechanical design, manufacturing operations, process improvement, and industrial systems, with hands-on experience across both engineering and high-volume operational environments.
+                            <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I previously worked at Royal Mail as an Automation & Process Coordinator, supporting automated sorting systems, conveyor operations, and material flow processes in a high-volume operational environment. 
+                                    The role strengthened my experience in process monitoring, operational efficiency, troubleshooting, and continuous improvement. 
+                            Alongside industry experience, I develop CAD models and prototypes using SolidWorks and Autodesk Fusion 360, applying Design for Manufacture (DFM) principles. 
+                                    I hold the SolidWorks CSWA certification and am currently preparing for CSWP.
+                            <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I also contributed to the UKSEDS In Orbit Servicing and Manufacturing Competition 2025, where our team achieved 3rd place nationally for developing sustainable in-space servicing and manufacturing concepts. 
+                            <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I am interested in opportunities in product design, manufacturing engineering, production, industrial engineering, process improvement, and supply chain operations, with a focus on building efficient and practical engineering solutions.
+                        </p>
+                        <div class="tab-titles">
+                                <p class="tab-links active-link" onclick="opentab('experience')">Experience</p>
+                                <p class="tab-links"onclick="opentab('education')">Education</p>
+                        </div>
+                        <div class="tab-contents active-tab" id="experience">
+                                <ul>
+                                    <li><b><span> JAN 2024 / JAN 2026   -   Royal Mail Midlands Super Hub, United Kingdom<br><br>Automation & Process Coordinator:</b></span><br><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Coordinated daily operations of automated conveyor and material-handling systems within a high-throughput logistics environment. Conducted system inspections, supported operational efficiency, and ensured compliance with SOPs, safety standards, and 5S principles to maintain smooth workflow and process reliability.<br>
+                                       <br> | <br><br>
+                                     <b>NOV 2022 / DEC 2023   -   Royal Mail Midlands Super Hub, United Kingdom<br><br>Operations Associate (Part Time)</b><br>
+                                     Supported high-volume logistics operations, working with robotic systems, pallet handling equipment, and workflow processes.
+                                </li>
+                                    
+                                    <li><b><span> FEB 2022 / JUL 2022   -   Euregaa Motors, India<br><br>Mechanical Engineer</span><br>
+                                    </b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Worked on high-speed machinery systems for the Key Client Project – KPM Fab, supporting preventive maintenance, condition monitoring, and component servicing. Assisted with equipment maintenance activities, technical documentation, and coordination with on-site teams to ensure efficient operations.</li>
+                                    
+                                    <li><b><span> NOV 2018 / NOV 2018   -   South India Motor Group, India<br><br>Engineering Internship</b></span><br><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gained hands-on experience in vehicle diagnostics, engine performance analysis, and preventive maintenance. 
+                                        Assisted in servicing multiple vehicles daily, applying fault detection techniques to ensure optimal performance. 
+                                        This internship provided foundational experience in mechanical servicing within a fast-paced workshop environment.</li>
+                                 </ul>
+                        </div>
+                        
+                        <div class="tab-contents" id="education">
+                                <ul>
+                                    <li><span><b>2022 / 2023     -    University of Leicester<br><br>Master of Engineering Management</b></span><br>
+                                    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Graduated with a Master of Engineering Management from University of Leicester in January 2024. 
+                                        Developed strong expertise in system design, change management, strategic thinking, leadership, and project management through academic coursework and real-world problem-solving applications.
+                                    <br><br><b>Modules:</b><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lean Manufacturing, Project Management, Cost Engineering, System Engineering, Engineering Business Management, 
+                                    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Accounts & Finance, and International Business. 
+                                    </li>
+
+                                    
+                                    <li><span><b>2017 / 2021     -    Anna University<br><br>Bachelors in Mechanical Engineering</b></span><br>
+                                    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Earned a Bachelor of Engineering in Mechanical Engineering from KPR Institute of Engineering and Technology, affiliated with Anna University. 
+                                        Developed strong knowledge in mechanical systems, CAD/CAM/CAE applications, engineering design, manufacturing processes, and product development. 
+                                        Completed a final-year project in Fiber Reinforced Plastics that achieved academic recognition and contributed to a patented innovation.
+                                    <br><br><b>Modules:</b><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Manufacturing Technology, CAD/CAM, Process Planning & Cost Estimation, Welding Technology & Strength of Materials,  
+                                    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Electrical and Electronics Engineering, Hydraulics & Pneumatics, Thermal Engineering, Fluid Mechanics. 
+                                    </li>
+
+
+                                    <li><span><b>2014 / 2017     -    Nikitha International School of Studies (CBSE)<br><br>Pre-Univesity Education</b></span><br>
+                                    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Completed foundational education at Nikitha International School of Studies under the CBSE curriculum, building a strong academic foundation in Mathematics, Physics, Chemistry, and Computer Science. 
+                                        The academic environment helped develop analytical thinking, discipline, and problem-solving skills that supported my progression into engineering and management studies.</li>
+                                </ul>
+                        </div>
+                    </div>
+
+            <div class="title-bar">
+                <h1>Milestones in Motion:</h1>
+                <div class="scroll-container">
+                    <div class="scroll-text">
+                       • Currently preparing for Certified SolidWorks Professional Exam - Scheduled May 2026  
+                       &nbsp;&nbsp;&nbsp;&nbsp; • Actively seeking opportunities in engineering design, manufacturing, and production roles.
+                    </div>
+                </div>
+            </div>
+
+
+            </div>
+        </div>
+    </div>
+
+<!-- ========================================= Skills =================================================================================== -->
+
+<div id="skills">
+    <div class="container">
+        <h1 class="sub-title">Skills:</h1>
+            <div class="containers">
+
+                <div class="skill-box">
+                    <div class="skill-title">
+                        <div class="img">
+                        <img src="Icons/3d-printer.png" class="skill-icon">  
+                        </div>
+                    <h2>CAD and Mechanical Design</h2>
+                    </div>
+                    <p>With practical experience in SolidWorks and Autodesk Fusion 360, I develop detailed mechanical components, assemblies, and engineering drawings. 
+                    My work includes parametric modelling, GD&T application, fitment validation, and design-for-manufacture (DFM/DFA) principles through academic and independent design projects.
+                    </p>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-title">
+                        <div class="img">
+                        <img src="Icons/3d.png" class="skill-icon">  
+                        </div>
+                        <h2>Manufacturing and Process Improvement</h2>
+                    </div>
+                    <p>Through industrial and project experience, I have developed strong knowledge of manufacturing operations, fabrication processes, installation support, and process optimization. 
+                    I apply engineering problem-solving and lean thinking to improve efficiency, reliability, and production workflow.</p>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-title">
+                        <div class="img">
+                        <img src="Icons/mould.png" class="skill-icon">  
+                        </div>
+                        <h2>Lean and Process Improvement</h2>
+                    </div>
+                    <p>I have developed strong knowledge of Lean Manufacturing principles and process improvement methodologies through industrial experience, academic projects, and professional certification. 
+                    My experience includes workflow optimization, root cause analysis, waste reduction, and implementing corrective actions to improve operational efficiency, equipment reliability, and manufacturing performance.
+                    </p>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-title">
+                        <div class="img">
+                            <img src="Icons/office.png" class="skill-icon">  
+                        </div>
+                        <h2>Technical Documentation and Tools</h2>
+                    </div>
+                    <p>I am proficient in engineering documentation, reporting, and data analysis using Microsoft Excel, Microsoft PowerPoint, and Office 365 tools. 
+                    My skills are supported by the Microsoft Office Specialist certification in Excel, enabling me to create structured reports, SOPs, and technical documentation for engineering and operational use.</p>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-title">
+                        <div class="img">
+                            <img src="Icons/change.png" class="skill-icon">  
+                        </div>
+                        <h2>Quality Engineering and Root Cause Analysis</h2>
+                    </div>
+                    <p>My professional experience includes dimensional inspection, fitment validation, deviation reporting, and corrective action implementation. 
+                    I have practical exposure to quality systems, mechanical troubleshooting, and structured root cause analysis in industrial environments.</p>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-title">
+                        <div class="img">
+                            <img src="Icons/proj.png" class="skill-icon">  
+                        </div>
+                        <h2>Project Management and Engineering Leadership</h2>
+                    </div>
+                    <p>I have developed project management skills through academic projects, engineering competitions, and cross-functional teamwork. 
+                    My experience includes planning, technical documentation, risk assessment, team coordination, and delivering engineering objectives within deadlines</p>
+                </div>
+        
+            </div>
+    </div>
+</div>
+
+<!-- ============================================ Project ===================================================================================================-->
+
+<div id="project">
+    <div class="container">
+        <h1 class="sub-title">My Projects:</h1>
+        <div class="project-list">
+
+            <div>
+                <i class="fa-solid fa-shuttle-space fa-rotate-270"></i>
+                <h2>UKSEDS In-Orbit Servicing and Manufacturing Competition 2025 </h2><br>
+                <p>
+                As part of the <b>UKSEDS IOSM Competition 2025</b>, I contributed to the design and development of a sustainable in-orbit servicing platform focused on satellite refuelling, space debris removal, and additive manufacturing in microgravity environments. My role involved system architecture development, CAD modelling, concept validation, and technical documentation using <b>Fusion 360</b>.<br><br>
+                The project secured <b>3rd place nationally</b> among participating UK universities, recognizing our engineering innovation and mission design.<br>
+                    <p2>Key insights from our work:</p2>
+                    <ul>
+                         <li><b>System Design:</b> Developed mission architecture and operational concepts for in-orbit servicing.</li>
+                        <li><b>CAD Development:</b> Designed mechanical concepts and manufacturing solutions using <b>Fusion 360</b>.</li>
+                        <li><b>Engineering Collaboration:</b> Worked within a multidisciplinary team to balance technical feasibility, sustainability, and mission objectives.</li>
+                    </ul> </p><br><br>
+                    <a href="Document/Business Proposal IOSM FInal.pdf"><i1 class="fa-solid fa-up-right-from-square"></i1> Learn more</a>
+            </div>
+
+            <div>
+                <i class="fa-solid fa-cubes"></i>
+                <h2>3D Printing – CAD Development Projects. (Self-Directed)</h2><br>
+                <p>
+                Developed a series of self-directed CAD and additive manufacturing projects to strengthen my practical skills in product design, prototyping, and fabrication. Using <b>Fusion 360</b>, 
+                I designed, optimized, and 3D printed functional and display-oriented models while gaining hands-on experience in print preparation, material selection, and design validation.<br>
+                    <p2>Key insights of my designs:</p2>
+                    <ul>
+                         <li><b>South India Temple Tower:</b>  Designed and developed a detailed tabletop architectural model in <b>Fusion 360</b>, focusing on structural detailing and print feasibility.</li>
+                         <li><b>Temple Mandapam:</b> Created a custom tabletop display model with emphasis on dimensional accuracy, aesthetics, and structural stability.</li>
+                         <li><b>Continuous Design Practice:</b> Actively developing and 3D printing various custom models and prototypes to improve CAD modelling, print optimization, and additive manufacturing skills.</li>
+                    </ul> </p><br><br>
+                <a href="https://vidur-varshan-manoharan.github.io/portfolio.github.io/design.html"><i1 class="fa-solid fa-up-right-from-square"></i1> Learn more</a>
+            </div>
+
+            <div>
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <h2>Manufacturing Strategy & Change Management in EV Production (Academic)</h2><br>
+                <p>Conducted MSc research analyzing manufacturing strategies adopted by electric vehicle manufacturers in China and India. The study examined change management models, green manufacturing initiatives, supply chain localization, and production scalability within rapidly evolving EV markets.<br>
+                    <p2>Key insights from the research:</p2>
+                    <ul>
+                        <li><b>EV Manufacturing Leadership:</b> Analyzed China’s large-scale battery production and manufacturing ecosystem.</li>
+                        <li><b>Green Manufacturing:</b> Studied material optimization, lightweight design, and carbon footprint reduction strategies.</li>
+                        <li><b>Industry Challenges:</b> Evaluated infrastructure, affordability, and market adoption barriers in India’s EV sector.</li>
+                    </ul> </p><br><br>
+                <a href="Document/An Investigation of Change Management Strategies used by Electric Vehicle manufacturers in China and India Report.pdf"><i1 class="fa-solid fa-up-right-from-square"></i1> Learn more</a>
+            </div>
+
+            <div>
+                <i class="fa-solid fa-sheet-plastic"></i>
+                <h2>Natural Fiber Based Corrugated Panel for Sound Damping (Academic)</h2><br>
+                <p>Designed and developed a sustainable composite acoustic panel using natural fibers and epoxy resin for high-frequency sound damping applications. The project focused on material selection, structural design, and composite fabrication techniques.<br>
+                <p2>Highlights:</p2>
+                <ul>
+                    <li><b>Material Engineering:</b> Utilized tea leaf and pineapple fibers reinforced with epoxy composites.</li>
+                    <li><b>Structural Design:</b> Developed a corrugated panel architecture for improved acoustic performance.</li>
+                    <li><b>Performance Validation:</b> Achieved a Noise Reduction Coefficient (NRC) of <b>0.64</b>.</li>
+                    <ul></p><br><br>
+                <a href="Document/Camellia SinensisAnanas Comosus Fiber Based Corrugated Panel for Sound Damping Patent Report.pdf"><i1 class="fa-solid fa-up-right-from-square"></i1> Learn more</a>
+            </div>
+
+            <div>
+                <i class="fa-solid fa-diagram-project"></i>
+                <h2>Water Distribution and Firefighting Network design (Academic)</h2><br>
+                <p>Designed a marine firefighting and water distribution system for a ship with multiple compartments, focusing on system architecture, safety compliance, and operational reliability.<br>
+                <p2>Highlights:</p2>
+                    <ul>
+                    <li><b>System Engineering:</b> Developed functional architecture and customer requirement specifications.</li>
+                    <li><b>Risk Analysis:</b> Performed Fault Tree Analysis (FTA) to evaluate failure probabilities.</li>
+                    <li><b>Design Validation:</b> Applied Quality Function Deployment (QFD) to align engineering design with customer needs.</li>
+                </ul>
+                </p><br><br>
+                <a href="Document/Requirement Specification for Water Distribution Network and design for Firefighting in a Large Ship Report.pdf"><i1 class="fa-solid fa-up-right-from-square"></i1> Learn more</a>
+            </div>
+
+            <div>
+                <i class="fa-solid fa-address-card"></i>
+                <h2>Personal Profile Website (Side Hustle)</h2><br>
+                <p>I have created this personal profile website out of my own personal interest, and it is hosted on GitHub Pages.<br>
+                    <br><ul>
+                    <li>I have learned and taken references from other professionals' portfolios to create this website using HTML, CSS, and JavaScript.<br></li>
+                    <li>Through continuous learning and exploration of new features, I have incorporated my skills into this website.</li>
+                </ul>
+                </p><br><br>
+                <a href="..." class="gif-link">
+                    <img src="Gifs/Design.gif">
+                    <span><i class="fa-solid fa-up-right-from-square"></i> Design Website</span>
+                </a>
+
+                <a href="#" class="gif-link">
+                    <img src="Gifs/spookylabs.gif">
+                    <span><i class="fa-solid fa-up-right-from-square"></i> Spookylabs (Under Development)</span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- ================================================ Certification ======================================================================================= -->
+   
+   <div id="Certification">
+    <div class="container">
+        <h1 class="sub-title">Certification and Cources:</h1>
+        <div class="certi-list">
+            
+            <div class="certi">
+                <img src="Banner/solidlogo.jpeg">
+                <div class="layer">
+                    <h3> Certified SolidWorks Associate</h3><br>
+                    <p> Earned the SolidWorks CSWA certification, validating my skills in 3D modelling, part design, assemblies, and engineering drawings for mechanical design applications.</p>
+                    <a href="Document/CSWA.pdf"><i class="fa-solid fa-up-right-from-square"></i></a>
+                </div>
+            </div>
+
+            <div class="certi">
+                <img src="Banner/MSO.jpg">
+                <div class="layer">
+                    <h3>Microsoft Office Specialist: Excel Associate (Microsoft 365 Apps)</h3><br>
+                    <p>Earned the Microsoft Excel Excel Associate certification, demonstrating proficiency in data analysis, spreadsheet management, formulas, and professional reporting using Microsoft 365 applications.</p>
+                    <a href="Document/Excel Associate.pdf"><i class="fa-solid fa-up-right-from-square"></i></a>
+                </div>
+            </div>
+            
+            <div class="certi">
+                <img src="Banner/Autodesk.jpg">
+                <div class="layer">
+                    <h3> CAM Additive Manufacturing</h3><br>
+                    <p> Completed focused training in Autodesk Fusion 360 CAM additive manufacturing, developing practical knowledge in 3D print setup, slicing optimization, and additive manufacturing workflows.</p>
+                    <a href="Document/CAM.pdf"><i class="fa-solid fa-up-right-from-square"></i></a>
+                </div>
+            </div>
+
+             <div class="certi">
+                <img src="Banner/councillogo.jpg">
+                <div class="layer">
+                    <h3> Lean Six Sigma Yellow Belt</h3><br>
+                    <p> Certified in Lean Six Sigma Yellow Belt, gaining practical knowledge in waste reduction, process optimization, root cause analysis, and continuous improvement methodologies.</p>
+                    <a href="Document/Lean Six Sigma Yellow.pdf"><i class="fa-solid fa-up-right-from-square"></i></a>
+                </div>
+            </div>
+
+            <div class="certi">
+                <img src="Banner/udemy.jpg">
+                <div class="layer">
+                    <h3> QMS Auditor  / Lead Auditor Course (Accredited)</h3><br>
+                    <p> Completed accredited ISO 9001 QMS Lead Auditor training, developing understanding of quality systems, compliance auditing, corrective actions, and process documentation.</p>
+                    <a href="https://www.udemy.com/certificate/UC-8af7f019-dcfd-4d8a-9428-67e18d82466b/"><i class="fa-solid fa-up-right-from-square"></i></a>
+                </div>
+            </div>
+
+            <div class="certi">
+                <img src="Banner/DVSA.jpg">
+                <div class="layer">
+                    <h3>Accquired Full UK Driving Licence</h3><br>
+                    <p>Acquired a full UK driving licence issued by the DVSA on 01/02/2025.</p>
+                    <a href="Document/driving pass.jpeg"><i class="fa-solid fa-up-right-from-square"></i></a>
+                </div>
+            </div>
+
+            <div class="certi">
+                <img src="Banner/UOL.jpg">
+                <div class="layer">
+                    <h3> Master of Engineering Management</h3><br>
+                    <p> Graduated in Master of Engineering Management program at the University of Leicester from September 2022 to September 2023 with Merit.</p>
+                    <a href="Document/UOL Masters Degree Certificate.pdf"><i class="fa-solid fa-up-right-from-square"></i></a>
+                </div>
+            </div>
+
+            <div class="certi">
+                <img src="Banner/anna.jpg">
+                <div class="layer">
+                    <h3> Bachelor of Engineering in Mechanical Engineering</h3><br>
+                    <p> Graduated in Bachelor of Engineering in Mechanical Engineering at KPRIET College from 2017 to 2021 with First Class</p>
+                    <a href="Document/B.E Graduation Certificate.pdf"><i class="fa-solid fa-up-right-from-square"></i></a>
+                </div>
+            </div>
+
+        </div>
+        </div>
+    </div>
+   </div>
+
+<!-- =================================================== Internship and Workshop ================================================================================================== -->
+
+<div id="Workshop">
+    <div class="container">
+        <h1 class="sub-title">Technical Workshops:</h1>
+        <div class="work-list">
+
+
+            <div class="work">
+                <img src="Banner/Seer.jpg">
+                <div class="layer">
+                    <h3>SEER for Hardware, Electronics, and System Core</h3><br>
+                    <p>Completed an industry workshop by Keith Garland as part of my MSc program, gaining practical exposure to cost estimation, project planning, and system lifecycle management for engineering projects.</p>
+                    <a href="Document/manoharan.pdf"><i class="fa-solid fa-up-right-from-square"></i></a>
+                </div>
+            </div>
+
+            <div class="work">
+                <img src="Banner/Roots .jpg">
+                <div class="layer">
+                    <h3>GD&T Training Workshop at Roots Industries (WORKSHOP)</h3><br>
+                    <p>Completed an industry training workshop at Roots Industries focused on Geometric Dimensioning and Tolerancing (GD&T), strengthening my understanding of engineering drawings, tolerancing principles, and manufacturing fitment requirements.</p>
+                    <a href="Document/Roots Industries GD&T.pdf"><i class="fa-solid fa-up-right-from-square"></i></a>
+                </div>
+            </div>
+
+            <div class="work">
+                <img src="Banner/IWS.jpg">
+                <div class="layer">
+                    <h3>Welding Automation for Modern Manufacturing Sectors (WORKSHOP)</h3><br>
+                    <p>Participated in a manufacturing workshop organized by the Indian Welding Society, gaining exposure to welding automation technologies and modern fabrication practices in industrial manufacturing.</p>
+                    <a href="Document/IWS Welding Workshop  at Bannari Amman.pdf"><i class="fa-solid fa-up-right-from-square"></i></a>
+                </div>
+            </div>
+
+            <div class="work">
+                <img src="Banner/NDT.jpg">
+                <div class="layer">
+                    <h3>Non-Destructive Testing</h3><br>
+                    <p>Completed a workshop on industrial non-destructive testing at Bannari Amman Institute of Technology, developing awareness of inspection methods, defect detection, and quality assurance practices in engineering applications.</p>
+                    <a href="Document/BIT(non destructive testing) 2019 .pdf"><i class="fa-solid fa-up-right-from-square"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>       
+<!--============================================================ Achievements ================================================-->
+<div id="achieve">
+    <div class="container">
+        <h1 class="sub-title">Achievements:</h1>
+
+        <div class="achieve-list">
+            <ul>
+
+                <li class="ach">
+                    <img src="Icons/Val.gif">
+
+                    <h1>
+                        <span>3rd place - Nationally Level UKSEDS IOSM Competition 2025</span>
+                    </h1>
+
+                    <a href="Document/UKSEDS.png">
+                        <i class="fa-solid fa-up-right-from-square"></i>
+                    </a>
+                </li>
+
+
+                <li class="ach">
+                    <img src="Icons/Val.gif">
+
+                    <h1>
+                        <span>3rd Place- Industrial Sketcher with SolidWorks (Inter-College Competition)</span>
+                    </h1>
+
+                    <a href="Document/KPR SolidWorks Compitition.pdf">
+                        <i class="fa-solid fa-up-right-from-square"></i>
+                    </a>
+                </li>
+
+
+
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- =========================================================== Hobbies ======================================================================================= -->
+
+<div id="Hobbies">
+    <div class="container">
+        <h1 class="sub-title">Hobbies:</h1>
+        <ul class="hob-list">
+
+            <div class="hobsection">
+            <li class="hob">
+                <img src="Gifs/3d printing.gif">
+                <div class="hob-content">
+                    <h1><span>3D Printing</span></h1>
+                    <p>I enjoy exploring additive manufacturing and bringing digital concepts to life using my Bambu Lab A1. 
+                        Through self-directed experimentation, I continuously develop my skills in CAD design, print optimization, and prototyping.
+                        <br><br><a href="/Design/design.html"><i class="fa-solid fa-up-right-from-square"></i> Visit My Design Portfolio</a></P>
+                </div>
+            </li>
+            </div>
+
+
+            <div class="hobsection">
+                <li class="hob">
+                    <img src="Gifs/jett.gif">
+                    <div class="hob-content">
+                        <h1><span>Gaming</span></h1>
+                        <p>As an avid gamer, I enjoy strategic and team-based challenges through games like Valorant, which strengthen decision-making, communication, and adaptability.</p>
+                    </div>
+                </li>
+            </div>
+
+                
+                <div class="hobsection">
+                    <li class="hob">
+                        <img src="Gifs/you.gif">
+                        <div class="hob-content">
+                            <h1><span>Tech Content & Learning</span></h1>
+                            <p>I enjoy exploring engineering, technology, and innovation-focused content on YouTube, staying updated with emerging technologies, product reviews, and creative ideas.</p>
+                        </div>
+                    </li>
+                </div>
+
+
+                <div class="hobsection">
+                    <li class="hob">
+                        <img src="Gifs/camera.gif">
+                        <div class="hob-content">
+                            <h1><span>Shutterbug</span></h1>
+                            <p>Photography allows me to observe details, capture perspectives, and express creativity through visual storytelling and everyday exploration.<br><br><!--<a href="photo.html"><i class="fa-solid fa-up-right-from-square"></i> Visit My Photography Portfolio</a><br>(Page is under development)</p>-->
+                        </div>
+                    </li>
+                </div>
+
+
+                <div class="hobsection">
+                    <li class="hob">
+                        <img src="Gifs/work.gif">
+                        <div class="hob-content">
+                            <h1><span>Fitness</span></h1>
+                            <p>Regular training at the gym helps me maintain discipline, focus, and consistency while supporting both physical and mental well-being.</p>
+                        </div>
+                    </li>
+                </div>
+
+        </ul>
+    </div>
+</div>
+
+<!-- ============================================ Contact ============================================================================================ -->
+
+<div id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="contact-left">
+                <h1 class="sub-title">Contact Me:</h1>
+                <div class="contact-buttons">
+
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=vidurvarshan1999@gmail.com" 
+                        target="_blank" class="btn1">
+                        <i class="fa-solid fa-envelope"></i>&nbsp; Email Me
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/vidur-varshan-manoharan/" class="btn1">
+                    <i class="fa-brands fa-linkedin"></i>&nbsp;LinkedIn
+                    </a>
+
+                    <a href="/Vidur Varshan Manoharan CV.pdf" class="btn1">
+                    <i class="fa-solid fa-download"></i>&nbsp;Download CV
+                    </a>
+                </div>
+            </div>
+
+            <div class="contact-right">
+                <form name="submit-to-google-sheet">
+                <input type="text" name="Name" placeholder="Your Name" required>
+                <input type="email" name="Email" placeholder="Your Email" required>
+                <textarea name="Message" rows="" placeholder="Your Message"></textarea>
+                <button type="submit" class="btn2">Submit</button>
+                </form>
+
+                <span id="msg"></span>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="copyright">
+    <p>Copyright © Vidur Manoharan</p>
+</div>
+
+<!--===================================================================================================================================-->
+   <script>
+
+            var tablinks = document.getElementsByClassName("tab-links");
+            var tabcontents = document.getElementsByClassName("tab-contents");
+
+            function opentab(tabname){
+                for(tablink of tablinks){
+                    tablink.classList.remove("active-link");
+                }
+                for(tabcontent of tabcontents){
+                    tabcontent.classList.remove("active-tab");
+                }
+                event.currentTarget.classList.add("active-link");
+                document.getElementById(tabname).classList.add("active-tab")
+                }
+    </script>
+
+    <script>
+
+        var sidemenu = document.getElementById("sidemenu");
+
+        function openmenu(){
+            sidemenu.classList.add("active");
+        }
+
+        function closemenu(){
+        sidemenu.classList.remove("active");
+    }
+
+    </script>
+<!--===================================== Google Form ==================================================================================-->
+    <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzBaAfqs6-bNl19lM9fnFTnC2mINyGgAID2zCUoxtdwAuU7ar9XCuortGvHNIssB0sGjg/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg= document.getElementById("msg")
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            msg.innerHTML = "Message sent successfully"
+            setTimeout(function(){
+                msg.innerHTML = ""
+            },3000)
+            form.reset()
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+
+<!-- ============================================ Greeting Loader =============================================================================-->
+<script>
+
+const greetings = [
+  "Hello",
+  "வணக்கம்",
+  "नमस्ते",
+  "Bonjour",
+  "Hola",
+  "Ciao",
+  "Hallo",
+  "こんにちは",
+  "안녕하세요",
+  "مرحبا"
+];
+
+const text = document.getElementById("intro-text");
+const loader = document.getElementById("intro-loader");
+const site = document.getElementById("site-content");
+
+/* ===== TIMING CONTROL ===== */
+const HELLO_HOLD  = 300; // pause only for "Hello"
+const SHOW_TIME = 150;   // how long text stays visible
+const FADE_TIME = 50;    // fade animation timing
+const END_DELAY = 1;   // pause before website opens
+/* =========================== */
+
+let index = 0;
+
+window.addEventListener("load", startIntro);
+
+function startIntro() {
+  showWord();
+}
+
+function showWord() {
+
+  text.textContent = greetings[index];
+  text.classList.add("show");
+
+  // 👇 Hello gets special hold time
+  const currentShowTime =
+    index === 0 ? HELLO_HOLD : SHOW_TIME;
+
+  setTimeout(() => {
+
+    text.classList.remove("show");
+
+    setTimeout(() => {
+
+      index++;
+
+      if (index < greetings.length) {
+        showWord();
+      } else {
+        setTimeout(startWebsite, END_DELAY);
+      }
+
+    }, FADE_TIME);
+
+  }, currentShowTime);
+}
+
+function startWebsite() {
+
+  loader.classList.add("hide");
+  site.classList.add("show");
+
+  setTimeout(()=>{
+    loader.remove();
+  },1400);
+}
+
+</script>
+
+<!--================================================================================================-->
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
