@@ -1307,12 +1307,7 @@ form input, form textarea{
     }
 
     .about-col-1 img{
-        width: 180px;
-        max-width: 80%;
-        height: auto;
-        border-radius: 12px;
-        display: block;
-        margin: auto;
+        display: none;
     }
 
     /* TITLE */
@@ -1320,6 +1315,7 @@ form input, form textarea{
         font-size: 28px;
         text-align: center;
         margin-bottom: 10px;
+        margin-top: -8rem;
     }
 
     /* TEXT */
