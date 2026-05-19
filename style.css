@@ -1146,7 +1146,7 @@ form input, form textarea{
         height: auto;
         min-height: 100vh;
         padding-bottom: 50px;
-        margin-top: 7rem;
+        margin-top: 3rem;
     }
 
     nav{
@@ -1293,7 +1293,6 @@ form input, form textarea{
         display: flex;
         flex-direction: column;
         align-items: left;
-        margin-top: -6rem;
     }
 
     .about-col-1,
