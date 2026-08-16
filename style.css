@@ -403,109 +403,100 @@ nav ul li a:hover::after{
 /* TITLE BAR CONTAINER           */
 /* ============================= */
 
-.title-bar{
-    display: flex;                 /* Heading + scrolling text side by side */
-    align-items: center;           /* Vertical alignment */
+.title-bar {
+    display: flex;
+    align-items: center;
     justify-content: space-between;
-    gap: 100px;
+    gap: 50px;
     margin-bottom: 50px;
-    flex-wrap: wrap;                /* Responsive on smaller screens */
-    font-size: 20px;         
-    padding-top: 5rem;     
+    padding-top: 5rem;
+    font-size: 20px;
 }
 
 
 /* ============================= */
-/* GLASS EFFECT SCROLL BOX       */
+/* SCROLL CONTAINER              */
 /* ============================= */
 
-.scroll-container{
+.scroll-container {
+
     flex: 1;
+    height: 55px;
     overflow: hidden;
     position: relative;
     white-space: nowrap;
-    height: 55px;
-
-    /* MATCHES YOUR GLASS EFFECT */
+    display: flex;
+    align-items: center;
     background: rgba(255,255,255,0.05);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255,255,255,0.08);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-
     border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.scroll-text{
+    color: white;
+}
+
+/* ============================= */
+/* MOVING TRACK                  */
+/* ============================= */
+
+.scroll-track {
+
+    display: flex;
+    width: max-content;
+    flex-shrink: 0;
+    animation: infinite-scroll 15s linear infinite;
+
+}
+
+
+/* ============================= */
+/* EACH COMPLETE TEXT GROUP      */
+/* ============================= */
+
+.scroll-group {
 
     display: flex;
     align-items: center;
-
-    transition: all .4s ease;
-}
-
-/* ============================= */
-/* LEFT & RIGHT FADE EFFECT      */
-/* ============================= */
-
-.scroll-container::before,
-.scroll-container::after{
-    content: "";
-    position: absolute;
-    top: 0;
-    width: 200px;
-    height: 100%;
-    z-index: 2;
-}
-
-
-/* LEFT FADE */
-
-.scroll-container::before{
-    left: 0;
-
-    /* CHANGE #080808 TO YOUR WEBSITE BG */
-    background: linear-gradient(to right, transparent);
-}
-
-
-/* RIGHT FADE */
-
-.scroll-container::after{
-    right: 0;
-
-    /* CHANGE #080808 TO YOUR WEBSITE BG */
-    background: linear-gradient(to left, transparent);
+    flex-shrink: 0;
+    width: max-content;
+    padding-right: 100px;
 }
 
 
 /* ============================= */
-/* MOVING TEXT                   */
+/* TEXT                          */
 /* ============================= */
 
-.scroll-text{
+.scroll-group span {
+
     display: inline-block;
-    padding-left: 100%;
-
+    flex-shrink: 0;
+    color: #fff;
     font-size: 17px;
     font-weight: 600;
     letter-spacing: 1px;
-
-    color: #fff;
-
-    animation: scroll-left 30s linear infinite;
+    white-space: nowrap;
+    margin-right: 60px;
 }
 
-
 /* ============================= */
-/* SCROLL ANIMATION              */
+/* INFINITE ANIMATION            */
 /* ============================= */
 
-@keyframes scroll-left{
+@keyframes infinite-scroll {
 
-    0%{
+    from {
         transform: translateX(0);
     }
 
-    100%{
-        transform: translateX(-100%);
+    to {
+        transform: translateX(-50%);
     }
+
 }
 
 /*======================================================== Projects ==========================================================================*/
@@ -669,45 +660,91 @@ nav ul li a:hover::after{
     line-height: 3.5vh;
 }
 
-.skill-title{
+.skill-title {
     display: flex;
-    flex-direction: row;
     align-items: center;
-    justify-content: center;
-    gap: 3px;
-    font-size: 15px;
 
-    padding: 0.5rem;
-    margin-bottom: 0.5rem;
+    width: 100%;
+
+    gap: 10px;
+
+    padding: 0.5rem 0;
+    margin-bottom: 0.8rem;
+
+    position: relative;
+}
+
+
+/* ICON */
+
+.img {
+    width: 48px;
+    height: 48px;
+
+    min-width: 48px;
+
     position: relative;
 
-}
+    border-radius: 12px;
 
-.img{
-    width: 70px;
-    height: 70px;
-    position: relative;
-    border-radius: 45px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.img:after{
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 50%;
-    height: 90px;
-    border-radius: 45px 0 0 45px;
+
+/* Remove old circle effect */
+
+.img::after {
+    display: none;
 }
-.skill-title h2{
+
+
+.skill-icon {
+    width: 38px;
+
+    z-index: 2;
+
+    object-fit: contain;
+}
+
+
+/* HEADING */
+
+.skill-title h2 {
     color: #fff;
-    margin-top: 0.5rem;
+
+    margin: 0;
+
+    font-size: 18px;
+    font-weight: 600;
+
+    text-align: left;
+
+    flex: 1;
 }
+
+
+/* NUMBER */
+
+.skill-number {
+    font-size: 24px;
+
+    font-weight: 600;
+
+    color: rgba(255, 255, 255, 0.10);
+
+    line-height: 1;
+
+    margin-left: auto;
+
+    padding-left: 8px;
+
+    letter-spacing: 1px;
+}
+
 .skill-icon{
-    width: 50px;
+    width: 60px;
     z-index: 2;
 }
 
