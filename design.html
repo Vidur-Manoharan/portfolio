@@ -1,1519 +1,1086 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vidur Manoharan • Design Portfolio</title>
-    <link rel="icon" type="image/x-icon" href="Design Icons/desfavicon.png">
-    <link rel="stylesheet" href="design.css" />
-    <link rel="stylesheet" href="mediaqueries.css" />
-    <script src="https://kit.fontawesome.com/58934e4ab9.js" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vidur Manoharan — Mechanical Design & CAD Engineering Portfolio</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Google Fonts: Archivo, IBM Plex Sans, Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,300..900;1,300..900&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bgBone: '#f4f4f0',
+            bgBoneDark: '#e9e8e2',
+            charcoal: '#1c1d20',
+            mutedGray: '#68696b',
+            accentOrange: '#df4d26',
+            hairline: 'rgba(28, 29, 32, 0.12)',
+          },
+          fontFamily: {
+            sans: ['IBM Plex Sans', 'sans-serif'],
+            display: ['Archivo', 'Space Grotesk', 'sans-serif'],
+            mono: ['Space Grotesk', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Luxury Dennis Snellenberg Editorial Aesthetics */
+    body {
+      background-color: #f4f4f0;
+      color: #1c1d20;
+      font-family: 'IBM Plex Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    @media (min-width: 1024px) {
+      body { cursor: none; }
+      a, button, input, textarea, [role="button"] { cursor: none; }
+    }
+
+    /* Custom Floating Interactive Cursor Pill */
+    #custom-cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 14px;
+      height: 14px;
+      background-color: #1c1d20;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+                  height 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+                  background-color 0.25s ease,
+                  transform 0.12s ease-out;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #f4f4f0;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+
+    #custom-cursor.active-hover {
+      width: 75px;
+      height: 75px;
+      background-color: #1c1d20;
+    }
+
+    #custom-cursor.active-view {
+      width: 85px;
+      height: 85px;
+      background-color: #df4d26;
+    }
+
+    /* Hairline Dividers */
+    .hairline-b { border-bottom: 1px solid rgba(28, 29, 32, 0.12); }
+    .hairline-t { border-top: 1px solid rgba(28, 29, 32, 0.12); }
+    .hairline-r { border-right: 1px solid rgba(28, 29, 32, 0.12); }
+
+    /* Infinite Marquee */
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-marquee {
+      display: flex;
+      width: 200%;
+      animation: marquee 28s linear infinite;
+    }
+    .animate-marquee:hover { animation-play-state: paused; }
+
+    /* Magnetic micro-interactions */
+    .magnetic-btn {
+      transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    /* Adjustable Lightbox Image Container Height */
+    .lightbox-image-box {
+      max-height: 78vh;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Smooth Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #f4f4f0; }
+    ::-webkit-scrollbar-thumb { background: #c2c1bc; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #1c1d20; }
+  </style>
 </head>
+<body class="antialiased selection:bg-charcoal selection:text-bgBone">
 
-<!--=================================================== Home Page ===============================================================================-->
+  <!-- Custom Floating Cursor -->
+  <div id="custom-cursor">
+    <span id="cursor-text" class="opacity-0 transition-opacity duration-200"></span>
+  </div>
 
-<body>
+  <!-- NAVIGATION HEADER -->
+  <header class="fixed top-0 left-0 w-full z-40 bg-bgBone/90 backdrop-blur-md hairline-b transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+      <!-- Brand Logo -->
+      <a href="#hero" class="group flex items-center space-x-2 text-charcoal tracking-tight font-medium text-lg">
+        <span class="font-extrabold text-xl tracking-tighter font-display">VM</span>
+        <span class="text-xs text-mutedGray uppercase tracking-widest hidden sm:inline-block">/ Vidur Manoharan</span>
+      </a>
 
-    <nav id="desktop-nav">
-        <div class="logo">VIDUR .</div>
-        <div>
-            <ul class="nav-links">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#designworks">My Design</a></li>
-                    <li><a href="#contact">Contact</a></li>                        
-                </ul>
-            </div>
-    </nav>
-
-    <nav id="hamburger-nav">
-        <div class="logo">VIDUR .</div>
-        <div class="hamburger-menu">
-            <div class="hamburger-icon" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-
-            <div class="menu-links">
-                <li><a href="#about" onclick="toggleMenu()">About</a></li>
-                <li><a href="#designworks" onclick="toggleMenu()">My Designs</a></li>
-                <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-            </div>
+      <!-- Center Status Bar -->
+      <div class="hidden md:flex items-center space-x-6 text-xs text-mutedGray font-mono">
+        <div class="flex items-center space-x-2">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>Mechanical Design Portfolio</span>
         </div>
-    </nav>
-
-<!--=========================== Profile ======================================-->
-
-    <section id="profile">
-        <div class="section__pic-container">
-            <img src="Design Images/Vidur_Des.jpg"alt="VIDUR profile picture">
+        <span class="text-charcoal/20">•</span>
+        <div class="flex items-center space-x-1">
+          <i data-lucide="map-pin" class="w-3.5 h-3.5 text-charcoal"></i>
+          <span>Chennai, IN</span>
+          <span class="ml-1 text-charcoal font-semibold" id="live-time">--:-- IST</span>
         </div>
-        <div class="section__text">
-            <p class="section__text_p1">Hello, I'm</p>
-            <h1 class="title">VIDUR MANOHARAN</h1>
-            <ul class="dynamic-text">
-                <li><span>Mechanical Design Engineer</span></li>
-                    <li><span>Automation Engineer</span></li>
-                    <li><span>SPM Assembly & Validation Engineer</span></li>
-                    <li><span>Prototyping & 3D Printing Enthusiast</span></li>
-            </ul>
-            <p class="section__text_p2">Welcome To My Design Portfolio</p>
+      </div>
 
-            <div class="btn-containers">
-                <a href="index.html" 
-                class="hero-btn hero-btn-primary"><i class="fa-solid fa-compass-drafting"></i>&nbsp;&nbsp;Portfolio</a>
+      <!-- Nav Links -->
+      <div class="flex items-center space-x-6">
+        <a href="#showcase" class="text-sm font-semibold text-charcoal hover:opacity-60 transition-opacity">Work</a>
+        <a href="#about" class="text-sm font-semibold text-charcoal hover:opacity-60 transition-opacity hidden sm:block">About & Credentials</a>
+        <a href="#contact" class="magnetic-btn px-5 py-2.5 rounded-full bg-charcoal text-bgBone text-xs font-semibold tracking-wider hover:bg-accentOrange transition-colors uppercase">
+          Connect
+        </a>
+      </div>
+    </div>
+  </header>
 
-                <a href="Vidur Varshan Manoharan CV.pdf" 
-                class="hero-btn hero-btn-primary"><i class="fa-solid fa-download"></i>&nbsp;&nbsp;Download CV</a>
+  <!-- HERO SECTION -->
+  <section id="hero" class="relative pt-36 pb-20 md:pt-44 md:pb-28 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <!-- Subtitle Tagline -->
+      <div class="flex flex-wrap items-center gap-3 mb-6">
+        <span class="px-3.5 py-1 rounded-full text-xs font-bold tracking-wider uppercase bg-bgBoneDark text-charcoal border border-charcoal/10 font-mono">
+          Mechanical Design Engineer
+        </span>
+        <span class="text-xs text-mutedGray font-semibold hidden md:inline">CAD Design • SPM Assembly • 3D Printing • Automation </span>
+      </div>
 
-                <a href="https://www.linkedin.com/in/vidur-varshan-manoharan/" 
-                class="hero-btn hero-btn-primary"><i class="fa-brands fa-linkedin"></i>&nbsp;&nbsp;LinkedIn</a>
-
-                <a href="https://spookylabs3d.github.io/spookylabs/" 
-                class="hero-btn hero-btn-primary"><i class="fa-brands fa-unity"></i>&nbsp;&nbsp;3D-Print Website</a>
-
-            </div>
-
-        </div>
-    </section>
-
-<!--=================================================== About ===============================================================================-->
-
-    <section id="about">
-        <h1 class="title">About Me</h1>
-        <div class="abt">
-            <div class="about-details-container">
-                <div class="about-containers">
-                    <div class="details-container">
-                        <img src="Design Icons/boiling-flask.gif" alt="Experience icon" class="icon">
-                        <h3>Experience in CAD</h3>
-                        <p>5+ Years of <b>Academic</b> &<br> <b>Personal CAD Work</b></p>
-                    </div>
-                    
-                    <div class="details-container">
-                        <img src="Design Icons/graduation.gif" alt="Education icon" class="icon">
-                        <h3>Education</h3>
-                        <p>🎓 Masters in Engineering Management<br><br> 🎓 Bachelors in Mechanical Engineering</p>
-                    </div>
-
-                     <div class="details-container">
-                        <img src="Design Icons/Skills.gif" alt="Skills icon" class="icon">
-                        <h3>Skills</h3>
-                        <p class="skills-text">🧠 SolidWorks<br>🧠 Autodesk Fusion 360<br>🧠 PTC Creo<br>🧠 3D-Printing</p>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-<!--=================================================== My Designs ===============================================================================-->
-
-    <section id="designworks">
-        <h1 class="title">My Designs</h1>
-        <p class="design-desc">
-        A collection of engineering designs, CAD models, and 3D printed creations developed through hands-on practice, technical learning, and real-world problem solving. 
-        From precision part modeling to functional prototypes, each project reflects creativity, design thinking, and practical engineering application.
+      <!-- Main Editorial Headline -->
+      <div class="relative">
+        <h1 class="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black font-display tracking-tighter text-charcoal uppercase leading-[0.95] mb-6">
+          VIDUR<br>
+          <span class="text-mutedGray opacity-30 hover:opacity-100 transition-opacity duration-500">MANOHARAN</span>
+        </h1>
+        
+        <!-- Summary Description -->
+        <p class="max-w-2xl text-base sm:text-xl text-mutedGray font-normal leading-relaxed">
+          An engineering showcase featuring parametric CAD assemblies, 2D engineering drawings, sheet metal fabrications, and rapid prototyping projects developed in SolidWorks, Fusion 360, and PTC Creo.
         </p>
-            <div class="container">
-                <div class="tab-titles">
-                    <p class="tab-links active-link" onclick="opentab('solidworks')">SolidWorks</p>
-                    <p class="tab-links"onclick="opentab('fusion')">Fusion 360</p>
-                    <p class="tab-links"onclick="opentab('creo')">PTC Creo</p>
-                </div>
-
-<!--====================== SolidWorks =========================-->
-
-            <div class="solidcontainer">
-                <div class="tab-contents active-tab" id="solidworks">
-                    <div class="solid-picture">
-                        <div class="solid-container">
-                            <h4>SolidWorks CAD Design & Drafting</h4>
-                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    This collection showcases my expertise in mechanical part modeling, engineering design, and CAD 
-                                    and CAD development using SOLIDWORKS. Each model reflects a strong focus on
-                                    precision, design intent, manufacturable geometry, and real-world engineering practices.
-                                    <br>Developed through intensive hands-on practice and advanced certification preparation,
-                                    these projects demonstrate my ability to create efficient, accurate, and optimized
-                                    mechanical components using industry-standard design methodologies.
-                                    <br><br>
-                                    <b>Skills Demonstrated:</b><br><br>
-                                    • Parametric part modeling<br>
-                                    • Sketch-driven design methodology<br>
-                                    • Technical 2D drawing creation and detailing<br>
-                                    • Sheet Metal modelling and design modifications
-                                    <br><br>
-                                    Having successfully completed SolidWorks Certifications in:<br><br>
-                                     <b>• Certified SolidWorks Associate (CSWA)</b><br>
-                                     <b>• Certified SolidWorks Professional (CSWP)</b><br>
-                                     <b>• Certified SolidWorks Professional Advanced Sheet Metal(CSWPA-SM)</b><br>
-                                     <b>• Certified SolidWorks Professional Advanced Weldments(CSWPA-WD)</b><br><br>
-                                      This collection represents an important milestone in my engineering journey.
-                                    <br><br><b>Explore the collection below</b> to see the designs that shaped my SOLIDWORKS experience.
-                                </p>
-                        </div>
-                        <img src="Design Images/solidworks.jpeg" alt="printer" class="solid-pic">
-                    </div>
-
-                        <ul class="solid-list">
-
-                            <!--========= Part 1 ============-->
-
-                            <li class="solid">
-                                <img src="Design SDW/1/1.0.png">
-                                <div class="solidlayer">
-                                    <h3>Part 1 & 2D Drawing</h3>
-                                    <button class="solidexplore-btn" onclick="openSlider('sliderModal1')">Explore More</button>
-                                </div>
-                            </li>
-
-                            <!-- Popup Slider -->
-                            <div class="slider-modal" id="sliderModal1">
-                                <button class="close-btn" onclick="closeSlider('sliderModal1')">✕</button>
-                                <section class="img-container1">
-                                    <div class="slider-wrapper">
-                                        <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
-                                        <div class="slider">
-                                            <img src="Design SDW/1/1.1.png">
-                                            <img src="Design SDW/1/1.2.png">
-                                            <img src="Design SDW/1/1.3.JPG">
-                                            <img src="Design SDW/1/Part1 2D.JPG">
-                                        </div>
-                                        <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
-                                    </div>
-                                </section>
-                            </div>
-                            
-                            <!--========= Part 2 ============-->
-
-                            <li class="solid">
-                                <img src="Design SDW/2/2.0.png">
-                                <div class="solidlayer">
-                                    <h3> Part 2 & 2D Drawing</h3>
-                                    <button class="solidexplore-btn" onclick="openSlider('sliderModal2')">Explore More</button>
-                                </div>
-                            </li>
-
-                            <!-- Popup Slider -->
-                            <div class="slider-modal" id="sliderModal2">
-                                <button class="close-btn" onclick="closeSlider('sliderModal2')">✕</button>
-                                <section class="img-container1">
-                                    <div class="slider-wrapper">
-                                        <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
-                                        <div class="slider">
-                                            <img src="Design SDW/2/2.1.png">
-                                            <img src="Design SDW/2/2.2.png">
-                                            <img src="Design SDW/2/2.3.png">
-                                            <img src="Design SDW/2/Part 2 2D.JPG">
-                                        </div>
-                                        <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
-                                    </div>
-                                </section>
-                            </div>
-
-                            <!--========= Part 3 ============-->
-
-                            <li class="solid">
-                                <img src="Design SDW/3/3.0.png">
-                                <div class="solidlayer">
-                                    <h3> Part 3 & 2D Drawing</h3>
-                                    <button class="solidexplore-btn" onclick="openSlider('sliderModal3')">Explore More</button>
-                                </div>
-                            </li>
-
-                            <!-- Popup Slider -->
-                            <div class="slider-modal" id="sliderModal3">
-                                <button class="close-btn" onclick="closeSlider('sliderModal3')">✕</button>
-                                <section class="img-container1">
-                                    <div class="slider-wrapper">
-                                        <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
-                                        <div class="slider">
-                                            <img src="Design SDW/3/3.1.png">
-                                            <img src="Design SDW/3/3.2.png">
-                                            <img src="Design SDW/3/Part 3 2D.JPG">
-                                        </div>
-                                        <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
-                                    </div>
-                                </section>
-                            </div>
-
-                            <!--========= Part 4 ============-->
-
-                            <li class="solid">
-                                <img src="Design SDW/4/4.0.png">
-                                <div class="solidlayer">
-                                    <h3> Part 4 & 2D Drawing</h3>
-                                    <button class="solidexplore-btn" onclick="openSlider('sliderModal4')">Explore More</button>
-                                </div>
-                            </li>
-
-                            <!-- Popup Slider -->
-                            <div class="slider-modal" id="sliderModal4">
-                                <button class="close-btn" onclick="closeSlider('sliderModal4')">✕</button>
-                                <section class="img-container1">
-                                    <div class="slider-wrapper">
-                                        <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
-                                        <div class="slider">
-                                            <img src="Design SDW/4/4.1.png">
-                                            <img src="Design SDW/4/4.2.png">
-                                            <img src="Design SDW/4/4.3.png">
-                                            <img src="Design SDW/4/4.4.png">
-                                            <img src="Design SDW/4/4.5.png">
-                                            <img src="Design SDW/4/Part 4 2D.JPG">
-                                        </div>
-                                        <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
-                                    </div>
-                                </section>
-                            </div>
-
-                            <!--========= Part 5 ============-->
-
-                            <li class="solid">
-                                <img src="Design SDW/5/5.0.png">
-                                <div class="solidlayer">
-                                    <h3> Part 5 & 2D Drawing</h3>
-                                    <button class="solidexplore-btn" onclick="openSlider('sliderModal5')">Explore More</button>
-                                </div>
-                            </li>
-
-                            <!-- Popup Slider -->
-                            <div class="slider-modal" id="sliderModal5">
-                                <button class="close-btn" onclick="closeSlider('sliderModal5')">✕</button>
-                                <section class="img-container1">
-                                    <div class="slider-wrapper">
-                                        <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
-                                        <div class="slider">
-                                            <img src="Design SDW/5/5.1.png">
-                                            <img src="Design SDW/5/5.2.png">
-                                            <img src="Design SDW/5/5.3.png">
-                                            <img src="Design SDW/5/5.4.png">
-                                            <img src="Design SDW/5/Part 5.JPG">
-                                        </div>
-                                        <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
-                                    </div>
-                                </section>
-                            </div>
-
-                            <!--========= Part 6 ============-->
-
-                            <li class="solid">
-                                <img src="Design SDW/6/6.0.png">
-                                <div class="solidlayer">
-                                    <h3> Part 6 & 2D Drawing</h3>
-                                    <button class="solidexplore-btn" onclick="openSlider('sliderModal6')">Explore More</button>
-                                </div>
-                            </li>
-
-                            <!-- Popup Slider -->
-                            <div class="slider-modal" id="sliderModal6">
-                                <button class="close-btn" onclick="closeSlider('sliderModal6')">✕</button>
-                                <section class="img-container1">
-                                    <div class="slider-wrapper">
-                                        <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
-                                        <div class="slider">
-                                            <img src="Design SDW/6/6.1.png">
-                                            <img src="Design SDW/6/6.2.png">
-                                            <img src="Design SDW/6/6.3.png">
-                                            <img src="Design SDW/6/6.4.png">
-                                            <img src="Design SDW/6/Part 6 2D.JPG">
-                                        </div>
-                                        <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
-                                    </div>
-                                </section>
-                            </div>
-
-                            <!--========= Part 7 ============-->
-
-                            <li class="solid">
-                                <img src="Design SDW/7/7.0.png">
-                                <div class="solidlayer">
-                                    <h3> Part 7 & 2D Drawing</h3>
-                                    <button class="solidexplore-btn" onclick="openSlider('sliderModal7')">Explore More</button>
-                                </div>
-                            </li>
-
-                            <!-- Popup Slider -->
-                            <div class="slider-modal" id="sliderModal7">
-                                <button class="close-btn" onclick="closeSlider('sliderModal7')">✕</button>
-                                <section class="img-container1">
-                                    <div class="slider-wrapper">
-                                        <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
-                                        <div class="slider">
-                                            <img src="Design SDW/7/7.1.png">
-                                            <img src="Design SDW/7/7.2.png">
-                                            <img src="Design SDW/7/7.3.png">
-                                            <img src="Design SDW/7/Part 7 2D.JPG">
-                                        </div>
-                                        <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
-                                    </div>
-                                </section>
-                            </div>
-
-                            <!--========= Part 8 ============-->
-
-                            <li class="solid">
-                                <img src="Design SDW/8/8.0.png">
-                                <div class="solidlayer">
-                                    <h3> Part 8 & 2D Drawing</h3>
-                                    <button class="solidexplore-btn" onclick="openSlider('sliderModal8')">Explore More</button>
-                                </div>
-                            </li>
-
-                            <!-- Popup Slider -->
-                            <div class="slider-modal" id="sliderModal8">
-                                <button class="close-btn" onclick="closeSlider('sliderModal8')">✕</button>
-                                <section class="img-container1">
-                                    <div class="slider-wrapper">
-                                        <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
-                                        <div class="slider">
-                                            <img src="Design SDW/8/8.1.png">
-                                            <img src="Design SDW/8/8.2.png">
-                                            <img src="Design SDW/8/8.3.png">
-                                            <img src="Design SDW/8/Part 8 2D.JPG">
-                                        </div>
-                                        <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
-                                    </div>
-                                </section>
-                            </div>
-
-                            <!--========= Part 9 ============-->
-
-                            <li class="solid">
-                                <img src="Design SDW/9/9.0.png">
-                                <div class="solidlayer">
-                                    <h3> Part 9 & 2D Drawing</h3>
-                                    <button class="solidexplore-btn" onclick="openSlider('sliderModal9')">Explore More</button>
-                                </div>
-                            </li>
-
-                            <!-- Popup Slider -->
-                            <div class="slider-modal" id="sliderModal9">
-                                <button class="close-btn" onclick="closeSlider('sliderModal9')">✕</button>
-                                <section class="img-container1">
-                                    <div class="slider-wrapper">
-                                        <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
-                                        <div class="slider">
-                                            <img src="Design SDW/9/9.1.png">
-                                            <img src="Design SDW/9/9.2.png">
-                                            <img src="Design SDW/9/9.3.png">
-                                            <img src="Design SDW/9/Part 9 2D.JPG">
-                                        </div>
-                                        <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
-                                    </div>
-                                </section>
-                            </div>
-
-                            <!--========= Part 10 ============-->
-
-                            <li class="solid">
-                                <img src="Design SDW/10/10.0.png">
-                                <div class="solidlayer">
-                                    <h3> Part 10 & 2D Drawing</h3>
-                                    <button class="solidexplore-btn" onclick="openSlider('sliderModal10')">Explore More</button>
-                                </div>
-                            </li>
-
-                            <!-- Popup Slider -->
-                            <div class="slider-modal" id="sliderModal10">
-                                <button class="close-btn" onclick="closeSlider('sliderModal10')">✕</button>
-                                <section class="img-container1">
-                                    <div class="slider-wrapper">
-                                        <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
-                                        <div class="slider">
-                                            <img src="Design SDW/10/10.1.png">
-                                            <img src="Design SDW/10/10.2.png">
-                                            <img src="Design SDW/10/10.3.png">
-                                            <img src="Design SDW/10/10.4.png">
-                                            <img src="Design SDW/10/10.5.png">
-                                            <img src="Design SDW/10/Part 10 2D.JPG">
-                                        </div>
-                                        <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
-                                    </div>
-                                </section>
-                            </div>
-
-                            <!--========= Part 11 ============-->
-
-                            <li class="solid">
-                                <img src="Design SDW/11/11.0.png">
-                                <div class="solidlayer">
-                                    <h3> Part 11 & 2D Drawing</h3>
-                                    <button class="solidexplore-btn" onclick="openSlider('sliderModal11')">Explore More</button>
-                                </div>
-                            </li>
-
-                            <!-- Popup Slider -->
-                            <div class="slider-modal" id="sliderModal11">
-                                <button class="close-btn" onclick="closeSlider('sliderModal11')">✕</button>
-                                <section class="img-container1">
-                                    <div class="slider-wrapper">
-                                        <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
-                                        <div class="slider">
-                                            <img src="Design SDW/11/11.1.png">
-                                            <img src="Design SDW/11/11.2.png">
-                                            <img src="Design SDW/11/11.3.png">
-                                            <img src="Design SDW/11/11.4.png">
-                                            <img src="Design SDW/11/11.5.png">
-                                            <img src="Design SDW/11/Part 11 2D.JPG">
-                                        </div>
-                                        <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
-                                    </div>
-                                </section>
-                            </div>
-
-                            <!--========= Part 12 ============-->
-
-                            <li class="solid">
-                                <img src="Design SDW/12/12.0.png">
-                                <div class="solidlayer">
-                                    <h3> Part 12 & 2D Drawing</h3>
-                                    <button class="solidexplore-btn" onclick="openSlider('sliderModal12')">Explore More</button>
-                                </div>
-                            </li>
-
-                            <!-- Popup Slider -->
-                            <div class="slider-modal" id="sliderModal12">
-                                <button class="close-btn" onclick="closeSlider('sliderModal12')">✕</button>
-                                <section class="img-container1">
-                                    <div class="slider-wrapper">
-                                        <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
-                                        <div class="slider">
-                                            <img src="Design SDW/12/12.1.png">
-                                            <img src="Design SDW/12/12.2.png">
-                                            <img src="Design SDW/12/12.3.png">
-                                            <img src="Design SDW/12/Part 12 2D.JPG">
-                                        </div>
-                                        <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
-                                    </div>
-                                </section>
-                            </div>
-
-                            <!--========= Part 13 ============-->
-
-                            <li class="solid">
-                                <img src="Design SDW/13/13.0.png">
-                                <div class="solidlayer">
-                                    <h3> Part 13 & 2D Drawing</h3>
-                                    <button class="solidexplore-btn" onclick="openSlider('sliderModal13')">Explore More</button>
-                                </div>
-                            </li>
-
-                            <!-- Popup Slider -->
-                            <div class="slider-modal" id="sliderModal13">
-                                <button class="close-btn" onclick="closeSlider('sliderModal13')">✕</button>
-                                <section class="img-container1">
-                                    <div class="slider-wrapper">
-                                        <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
-                                        <div class="slider">
-                                            <img src="Design SDW/13/13.1.png">
-                                            <img src="Design SDW/13/13.2.png">
-                                            <img src="Design SDW/13/13.3.png">
-                                            <img src="Design SDW/13/Part 13 2D.JPG">
-                                        </div>
-                                        <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
-                                    </div>
-                                </section>
-                            </div>
-
-                            <!--========= Part 14 ============-->
-
-                            <li class="solid">
-                                <img src="Design SDW/14/14.0.png">
-                                <div class="solidlayer">
-                                    <h3> Part 14 & 2D Drawing</h3>
-                                    <button class="solidexplore-btn" onclick="openSlider('sliderModal14')">Explore More</button>
-                                </div>
-                            </li>
-
-                            <!-- Popup Slider -->
-                            <div class="slider-modal" id="sliderModal14">
-                                <button class="close-btn" onclick="closeSlider('sliderModal14')">✕</button>
-                                <section class="img-container1">
-                                    <div class="slider-wrapper">
-                                        <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
-                                        <div class="slider">
-                                            <img src="Design SDW/14/14.1.png">
-                                            <img src="Design SDW/14/14.2.png">
-                                            <img src="Design SDW/14/14.3.png">
-                                            <img src="Design SDW/14/Part 14 2D.JPG">
-                                        </div>
-                                        <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
-                                    </div>
-                                </section>
-                            </div>
-
-                            <!--========= Part 15 ============-->
-
-                            <li class="solid">
-                                <img src="Design SDW/15/15.0.png">
-                                <div class="solidlayer">
-                                    <h3> Part 15 & 2D Drawing</h3>
-                                    <button class="solidexplore-btn" onclick="openSlider('sliderModal15')">Explore More</button>
-                                </div>
-                            </li>
-
-                            <!-- Popup Slider -->
-                            <div class="slider-modal" id="sliderModal15">
-                                <button class="close-btn" onclick="closeSlider('sliderModal15')">✕</button>
-                                <section class="img-container1">
-                                    <div class="slider-wrapper">
-                                        <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
-                                        <div class="slider">
-                                            <img src="Design SDW/15/15.1.png">
-                                            <img src="Design SDW/15/15.2.png">
-                                            <img src="Design SDW/15/15.3.png">
-                                            <img src="Design SDW/15/15.4.png">
-                                            <img src="Design SDW/15/Part 15 2D.JPG">
-                                        </div>
-                                        <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
-                                    </div>
-                                </section>
-                            </div>
-
-                            <!--========= Part 16 ============-->
-
-                            <li class="solid">
-                                <img src="Design SDW/16/16.0.png">
-                                <div class="solidlayer">
-                                    <h3> Part 16 & 2D Drawing</h3>
-                                    <button class="solidexplore-btn" onclick="openSlider('sliderModal16')">Explore More</button>
-                                </div>
-                            </li>
-
-                            <!-- Popup Slider -->
-                            <div class="slider-modal" id="sliderModal16">
-                                <button class="close-btn" onclick="closeSlider('sliderModal16')">✕</button>
-                                <section class="img-container1">
-                                    <div class="slider-wrapper">
-                                        <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
-                                        <div class="slider">
-                                            <img src="Design SDW/16/16.1.png">
-                                            <img src="Design SDW/16/16.2.png">
-                                            <img src="Design SDW/16/16.3.png">
-                                            <img src="Design SDW/16/16.4.png">
-                                            <img src="Design SDW/16/Part 16 2D.JPG">
-                                        </div>
-                                        <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
-                                    </div>
-                                </section>
-                            </div>
-
-
-                            <!--========= Part 17 ============-->
-
-                            <li class="solid">
-                                <img src="Design SDW/17/17.0.jpeg">
-                                <div class="solidlayer">
-                                    <h3> Part 17 & 2D Drawing</h3>
-                                    <button class="solidexplore-btn" onclick="openSlider('sliderModal17')">Explore More</button>
-                                </div>
-                            </li>
-
-                            <!-- Popup Slider -->
-                            <div class="slider-modal" id="sliderModal17">
-                                <button class="close-btn" onclick="closeSlider('sliderModal17')">✕</button>
-                                <section class="img-container1">
-                                    <div class="slider-wrapper">
-                                        <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
-                                        <div class="slider">
-                                            <img src="Design SDW/17/17.1.jpg">
-                                            <img src="Design SDW/17/17.2.jpg">
-                                            <img src="Design SDW/17/17.3.jpg">
-                                            <img src="Design SDW/17/17.4.jpg">
-                                        </div>
-                                        <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
-                                    </div>
-                                </section>
-                            </div>
-
-                            <!--========= Part 18 ============-->
-
-                            <li class="solid">
-                                <img src="Design SDW/18/18.0.jpeg">
-                                <div class="solidlayer">
-                                    <h3> Part 18 & 2D Drawing</h3>
-                                    <button class="solidexplore-btn" onclick="openSlider('sliderModal18')">Explore More</button>
-                                </div>
-                            </li>
-
-                            <!-- Popup Slider -->
-                            <div class="slider-modal" id="sliderModal18">
-                                <button class="close-btn" onclick="closeSlider('sliderModal18')">✕</button>
-                                <section class="img-container1">
-                                    <div class="slider-wrapper">
-                                        <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
-                                        <div class="slider">
-                                            <img src="Design SDW/18/18.1.jpg">
-                                            <img src="Design SDW/18/18.2.jpg">
-                                            <img src="Design SDW/18/18.3.jpg">
-                                            <img src="Design SDW/18/18.4.jpg">
-                                        </div>
-                                        <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
-                                    </div>
-                                </section>
-                            </div>
-
-                            <!--========= Part 19 ============-->
-
-                            <li class="solid">
-                                <img src="Design SDW/19/19.0.jpeg">
-                                <div class="solidlayer">
-                                    <h3> Part 19 & 2D Drawing</h3>
-                                    <button class="solidexplore-btn" onclick="openSlider('sliderModal19')">Explore More</button>
-                                </div>
-                            </li>
-
-                            <!-- Popup Slider -->
-                            <div class="slider-modal" id="sliderModal19">
-                                <button class="close-btn" onclick="closeSlider('sliderModal19')">✕</button>
-                                <section class="img-container1">
-                                    <div class="slider-wrapper">
-                                        <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
-                                        <div class="slider">
-                                            <img src="Design SDW/19/19.1.jpg">
-                                            <img src="Design SDW/19/19.2.jpg">
-                                            <img src="Design SDW/19/19.3.jpg">
-                                            <img src="Design SDW/19/19.4.jpg">
-                                        </div>
-                                        <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
-                                    </div>
-                                </section>
-                            </div>
-
-                            <!--==================================-->
-
-                        </ul>
-                    </div>
-                </div>
-                
-<!--====================== Fusion 360 =========================-->
-
-<div class="tab-contents" id="fusion">
-    <div class="solid-picture">
-        <div class="solid-container">
-            <h4>Fusion 360 & 3D Printing Design</h4>
-            <p>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                Using Autodesk Fusion 360, I design and develop functional 3D printable models that
-                combine creativity, practicality, and manufacturability. This collection showcases my work
-                in product design, rapid prototyping, and additive manufacturing, where digital concepts
-                are transformed into physical products through an iterative engineering workflow.
-                <br>
-                Supported by hands-on experience with the Bambu Lab A1 Combo, these projects
-                demonstrate my approach to creating efficient, reliable, and purpose-driven designs for
-                3D printing applications.
-                <br><br>
-                <b>Skills Demonstrated:</b>
-                <br><br>
-
-                • Rapid prototyping & iterative design<br>
-                • Design for Manufacturing (DFM)<br>
-                • Functional product development<br>
-                • Mechanical and architectural modeling<br>
-                • Creative problem-solving through additive manufacturing
-                <br><br>
-                From architectural models and utility tools to personalised creations, these designs represent my ongoing journey in 3D printing, product development, and hands-on innovation.
-                <br><br>
-                <b>Explore the collection below</b> to view the designs that bring engineering and creativity together through 3D printing.
+      </div>
+
+      <!-- Quick Metrics Bar -->
+      <div class="mt-14 pt-8 hairline-t grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="space-y-1">
+          <div class="text-3xl md:text-5xl font-black text-charcoal font-display">32+</div>
+          <div class="text-xs uppercase tracking-wider text-mutedGray font-semibold">CAD & Assembly Projects</div>
         </div>
-
-        <img src="Design Images/fusion360.JPG"
-             alt="Fusion 360"
-             class="solid-pic">
+        <div class="space-y-1">
+          <div class="text-3xl md:text-5xl font-black text-charcoal font-display">4×</div>
+          <div class="text-xs uppercase tracking-wider text-mutedGray font-semibold">CSWP/CSWPA Certified</div>
+        </div>
+        <div class="space-y-1">
+          <div class="text-3xl md:text-5xl font-black text-charcoal font-display">5+</div>
+          <div class="text-xs uppercase tracking-wider text-mutedGray font-semibold">Years Design Experience</div>
+        </div>
+        <div class="space-y-1">
+          <div class="text-3xl md:text-5xl font-black text-charcoal font-display">100%</div>
+          <div class="text-xs uppercase tracking-wider text-mutedGray font-semibold">2D Drawing & Spec Integrity</div>
+        </div>
+      </div>
 
     </div>
 
+    <!-- Dynamic Marquee Header Ticker -->
+    <div class="mt-20 py-4 bg-charcoal text-bgBone overflow-hidden hairline-t hairline-b">
+      <div class="animate-marquee whitespace-nowrap flex space-x-12 items-center text-xs uppercase tracking-widest font-mono">
+        <span>• SOLIDWORKS CSWP & CSWPA CERTIFIED</span>
+        <span>• 2D TECHNICAL DRAWINGS & GD&T</span>
+        <span>• FUSION 360 & 3D PRINTING PROTOTYPES</span>
+        <span>• PTC CREO PARAMETRIC ASSEMBLIES</span>
+        <span>• AUTOMATION & SPECIAL PURPOSE MACHINES</span>
+        <span>• SHEET METAL & WELDMENT FABRICATION</span>
+        <span>• SOLIDWORKS CSWP & CSWPA CERTIFIED</span>
+        <span>• 2D TECHNICAL DRAWINGS & GD&T</span>
+      </div>
+    </div>
+  </section>
 
-    <!--====================== PROJECT LIST =========================-->
-
-    <ul class="solid-list">
-
-        <!--================ BMW MPower =================-->
-
-        <li class="solid">
-            <img src="Design 3D Print/BMW MPower/BMW.png">
-            <div class="fusionlayer">
-                <h3>BMW MPower</h3>
-                <button class="fusionexplore-btn"
-                        onclick="openSlider('fusionSlider1')">
-                    Explore More
-                </button>
-            </div>
-        </li>
-
-        <!-- Modal -->
-
-        <div class="slider-modal" id="fusionSlider1">
-            <button class="close-btn"
-                    onclick="closeSlider('fusionSlider1')">
-                ✕
-            </button>
-            <section class="img-container1">
-                <div class="slider-wrapper">
-                    <button class="prev-btn">
-                        <i class="fa-solid fa-chevron-left"></i>
-                    </button>
-                    <div class="slider">
-                        <img src="Design 3D Print/BMW MPower/BMW1.png">
-                        <img src="Design 3D Print/BMW MPower/BMW2.png">
-                        <img src="Design 3D Print/BMW MPower/BMW3.png">
-                    </div>
-
-                    <button class="next-btn">
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </button>
-
-                </div>
-            </section>
+  <!-- CAD & DRAWINGS SHOWCASE SECTION -->
+  <section id="showcase" class="py-24 bg-bgBone hairline-t">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <!-- Section Header & Filter Tabs -->
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 space-y-6 lg:space-y-0">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-widest text-mutedGray block mb-2 font-mono">Archive Showcase</span>
+          <h2 class="text-4xl sm:text-6xl font-black font-display text-charcoal tracking-tight">FEATURED WORK & DRAWINGS</h2>
         </div>
 
+        <!-- Filter Tab Buttons -->
+        <div class="flex flex-wrap gap-2 text-xs font-semibold">
+          <button onclick="filterCategory('all', event)" class="filter-btn active px-4 py-2.5 rounded-full border border-charcoal bg-charcoal text-bgBone transition-all">
+            All Projects (<span id="count-all">0</span>)
+          </button>
+          <button onclick="filterCategory('solidworks', event)" class="filter-btn px-4 py-2.5 rounded-full border border-charcoal/20 text-charcoal hover:border-charcoal transition-all">
+            SolidWorks (<span id="count-solidworks">0</span>)
+          </button>
+          <button onclick="filterCategory('fusion', event)" class="filter-btn px-4 py-2.5 rounded-full border border-charcoal/20 text-charcoal hover:border-charcoal transition-all">
+            Fusion 360 & 3D Print (<span id="count-fusion">0</span>)
+          </button>
+          <button onclick="filterCategory('creo', event)" class="filter-btn px-4 py-2.5 rounded-full border border-charcoal/20 text-charcoal hover:border-charcoal transition-all">
+            PTC Creo (<span id="count-creo">0</span>)
+          </button>
+        </div>
+      </div>
 
-        <!--================ Temple Tower =================-->
+      <!-- Masonry Grid / Cards Container -->
+      <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Dynamic Projects Injected Here -->
+      </div>
 
-        <li class="solid">
-            <img src="Design 3D Print/Temple Tower/TT.png">
-            <div class="fusionlayer">
-                <h3>Temple Tower</h3>
-                <button class="fusionexplore-btn"
-                        onclick="openSlider('fusionSlider2')">
-                    Explore More
-                </button>
+    </div>
+  </section>
+
+  <!-- ABOUT & SKILLS SECTION -->
+  <section id="about" class="py-24 bg-bgBoneDark hairline-t">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        
+        <!-- Left Editorial Bio & Education -->
+        <div class="lg:col-span-7 space-y-8">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest text-mutedGray block mb-2 font-mono">Background & Profile</span>
+            <h2 class="text-3xl sm:text-5xl font-black font-display text-charcoal tracking-tight leading-tight uppercase">
+              PRECISION MECHANICAL ENGINEERING & DESIGN.
+            </h2>
+          </div>
+
+          <p class="text-base sm:text-lg text-mutedGray leading-relaxed font-normal">
+            Mechanical Design Engineer with 5+ years of personal and academic experience across full mechanical design lifecycles—ranging from concept modeling, 3D parametric CAD assemblies, and sheet metal design to production-ready 2D drawings and rapid prototyping.
+          </p>
+
+          <!-- Education Cards -->
+          <div class="space-y-4 pt-4">
+            <h3 class="text-xs uppercase font-bold tracking-wider text-mutedGray font-mono">Education</h3>
+            
+            <div class="p-6 rounded-2xl bg-bgBone border border-charcoal/10 flex items-start space-x-4">
+              <div class="w-10 h-10 rounded-full bg-charcoal text-bgBone flex items-center justify-center shrink-0 mt-1">
+                <i data-lucide="graduation-cap" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <div class="font-bold text-charcoal text-lg">Master's in Engineering Management</div>
+                <div class="text-xs font-medium text-mutedGray">Lean Manufacturing, Project Management, Systems Engineering & Management</div>
+              </div>
             </div>
-        </li>
 
-        <!-- Modal -->
+            <div class="p-6 rounded-2xl bg-bgBone border border-charcoal/10 flex items-start space-x-4">
+              <div class="w-10 h-10 rounded-full bg-charcoal text-bgBone flex items-center justify-center shrink-0 mt-1">
+                <i data-lucide="award" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <div class="font-bold text-charcoal text-lg">Bachelor's in Mechanical Engineering</div>
+                <div class="text-xs font-medium text-mutedGray">CAD/CAM Systems, Welding Technology, Manufacturing Technology</div>
+              </div>
+            </div>
+          </div>
 
-        <div class="slider-modal" id="fusionSlider2">
-            <button class="close-btn"
-                    onclick="closeSlider('fusionSlider2')">
-                ✕
-            </button>
-            <section class="img-container1">
-                <div class="slider-wrapper">
-                    <button class="prev-btn">
-                        <i class="fa-solid fa-chevron-left"></i>
-                    </button>
-                    <div class="slider">
-                        <img src="Design 3D Print/Temple Tower/TT1.png">
-                        <img src="Design 3D Print/Temple Tower/TT2.png">
-                        <img src="Design 3D Print/Temple Tower/TT3.png">
-                        <img src="Design 3D Print/Temple Tower/TT4.png">
-                    </div>
-
-                    <button class="next-btn">
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </button>
-
-                </div>
-            </section>
+          <!-- Technical Skills Tags -->
+          <div class="space-y-4 pt-4">
+            <h3 class="text-xs uppercase font-bold tracking-wider text-mutedGray font-mono">Core Competencies</h3>
+            <div class="flex flex-wrap gap-2 text-xs font-semibold">
+              <span class="px-3.5 py-2 rounded-xl bg-bgBone border border-charcoal/10 text-charcoal">Parametric 3D CAD</span>
+              <span class="px-3.5 py-2 rounded-xl bg-bgBone border border-charcoal/10 text-charcoal">2D Technical Drawings (GD&T)</span>
+              <span class="px-3.5 py-2 rounded-xl bg-bgBone border border-charcoal/10 text-charcoal">Sheet Metal & Weldments</span>
+              <span class="px-3.5 py-2 rounded-xl bg-bgBone border border-charcoal/10 text-charcoal">Special Purpose Machines (SPM)</span>
+            </div>
+          </div>
         </div>
 
-
-        <!--================ Phone Stand =================-->
-
-        <li class="solid">
-            <img src="Design 3D Print/IPhone Stand/Phn holder.png">
-            <div class="fusionlayer">
-                <h3>Phone & iWatch Stand</h3>
-                <button class="fusionexplore-btn"
-                        onclick="openSlider('fusionSlider3')">
-                    Explore More
-                </button>
+        <!-- Right SolidWorks Certifications Card -->
+        <div class="lg:col-span-5 space-y-8">
+          
+          <div class="p-8 rounded-3xl bg-charcoal text-bgBone space-y-6 shadow-2xl relative overflow-hidden">
+            <div class="flex items-center justify-between">
+              <span class="text-xs uppercase font-mono tracking-widest text-bgBone/60">Dassault Systèmes</span>
+              <span class="px-2.5 py-1 rounded bg-accentOrange text-[10px] uppercase font-bold text-white tracking-wider">Official Certifications</span>
             </div>
-        </li>
 
-        <!-- Modal -->
+            <h3 class="text-2xl font-black font-display tracking-tight">SOLIDWORKS CREDENTIALS</h3>
 
-        <div class="slider-modal" id="fusionSlider3">
-            <button class="close-btn"
-                    onclick="closeSlider('fusionSlider3')">
-                ✕
-            </button>
-            <section class="img-container1">
-                <div class="slider-wrapper">
-                    <button class="prev-btn">
-                        <i class="fa-solid fa-chevron-left"></i>
-                    </button>
-                    <div class="slider">
-                        <img src="Design 3D Print/IPhone Stand/IP1.png">
-                        <img src="Design 3D Print/IPhone Stand/IP2.png">
-                        <img src="Design 3D Print/IPhone Stand/IP3.png">
-                        <img src="Design 3D Print/IPhone Stand/IP4.png">
-                        <img src="Design 3D Print/IPhone Stand/IP5.png">
-                    </div>
-
-                    <button class="next-btn">
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </button>
-
+            <div class="space-y-4 pt-2">
+              <div class="flex items-center justify-between hairline-b pb-3 border-white/10">
+                <div>
+                  <div class="font-bold text-base text-bgBone">CSWP</div>
+                  <div class="text-xs text-bgBone/60">Certified SOLIDWORKS Professional</div>
                 </div>
-            </section>
+                <i data-lucide="shield-check" class="w-5 h-5 text-accentOrange"></i>
+              </div>
+
+              <div class="flex items-center justify-between hairline-b pb-3 border-white/10">
+                <div>
+                  <div class="font-bold text-base text-bgBone">CSWPA - Sheet Metal</div>
+                  <div class="text-xs text-bgBone/60">Advanced Professional Sheet Metal (CSWPA-SM)</div>
+                </div>
+                <i data-lucide="shield-check" class="w-5 h-5 text-accentOrange"></i>
+              </div>
+
+              <div class="flex items-center justify-between hairline-b pb-3 border-white/10">
+                <div>
+                  <div class="font-bold text-base text-bgBone">CSWPA - Weldments</div>
+                  <div class="text-xs text-bgBone/60">Advanced Professional Weldment Design (CSWPA-WD)</div>
+                </div>
+                <i data-lucide="shield-check" class="w-5 h-5 text-accentOrange"></i>
+              </div>
+
+              <div class="flex items-center justify-between pb-1">
+                <div>
+                  <div class="font-bold text-base text-bgBone">CSWA</div>
+                  <div class="text-xs text-bgBone/60">Certified SOLIDWORKS Associate</div>
+                </div>
+                <i data-lucide="shield-check" class="w-5 h-5 text-accentOrange"></i>
+              </div>
+            </div>
+
+            <!-- Download Resume Action Button -->
+            <a href="Vidur Varshan Manoharan CV.pdf" target="_blank" class="magnetic-btn w-full py-4 px-4 rounded-2xl bg-bgBone text-charcoal text-center text-xs uppercase font-bold tracking-wider hover:bg-accentOrange hover:text-white transition-all flex items-center justify-center space-x-2">
+              <i data-lucide="file-text" class="w-4 h-4"></i>
+              <span>Download Engineering CV (PDF)</span>
+            </a>
+          </div>
+
+          <!-- Software Suite List -->
+          <div class="p-6 rounded-2xl bg-bgBone border border-charcoal/10 space-y-3">
+            <h4 class="text-xs uppercase font-bold tracking-wider text-mutedGray font-mono">Software Environment</h4>
+            <div class="flex flex-wrap gap-2 text-xs font-semibold">
+              <span class="px-3 py-1.5 rounded-lg bg-bgBoneDark text-charcoal">SolidWorks 2024</span>
+              <span class="px-3 py-1.5 rounded-lg bg-bgBoneDark text-charcoal">Autodesk Fusion 360</span>
+              <span class="px-3 py-1.5 rounded-lg bg-bgBoneDark text-charcoal">PTC Creo Parametric</span>
+              <span class="px-3 py-1.5 rounded-lg bg-bgBoneDark text-charcoal">AutoCAD</span>
+            </div>
+          </div>
+
         </div>
 
+      </div>
+    </div>
+  </section>
 
-        <!--================ Temple Mandapam =================-->
+  <!-- CONNECT SECTION -->
+  <section id="contact" class="py-24 bg-bgBone hairline-t relative">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <div class="lg:col-span-6 space-y-6">
+          <span class="text-xs font-bold uppercase tracking-widest text-mutedGray font-mono block">Connect With Me</span>
+          <h2 class="text-4xl sm:text-6xl font-black font-display text-charcoal tracking-tight uppercase leading-none">
+            GET IN TOUCH—
+          </h2>
+          <p class="text-base sm:text-lg text-mutedGray leading-relaxed max-w-lg">
+            Interested in discussing mechanical design, parametric modeling techniques, or reviewing specific 2D technical drawings? Feel free to reach out directly.
+          </p>
 
-        <li class="solid">
-            <img src="Design 3D Print/Temple Mandapam/Temple.png">
-            <div class="fusionlayer">
-                <h3>Temple Mandapam</h3>
-                <button class="fusionexplore-btn"
-                        onclick="openSlider('fusionSlider4')">
-                    Explore More
-                </button>
-            </div>
-        </li>
+          <div class="space-y-4 pt-2">
+            <a href="mailto:vidurmanoharan@gmail.com" class="flex items-center space-x-4 p-4 rounded-2xl border border-charcoal/10 hover:border-charcoal hover:bg-bgBoneDark transition-all group">
+              <div class="w-11 h-11 rounded-full bg-charcoal text-bgBone flex items-center justify-center group-hover:bg-accentOrange transition-colors">
+                <i data-lucide="mail" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <div class="text-xs text-mutedGray uppercase tracking-wider font-semibold">Direct Email</div>
+                <div class="text-base font-bold text-charcoal">vidurmanoharan@gmail.com</div>
+              </div>
+            </a>
 
-        <!-- Modal -->
-
-        <div class="slider-modal" id="fusionSlider4">
-            <button class="close-btn"
-                    onclick="closeSlider('fusionSlider4')">
-                ✕
-            </button>
-            <section class="img-container1">
-                <div class="slider-wrapper">
-                    <button class="prev-btn">
-                        <i class="fa-solid fa-chevron-left"></i>
-                    </button>
-                    <div class="slider">
-                        <img src="Design 3D Print/Temple Mandapam/TM1.jpeg">
-                        <img src="Design 3D Print/Temple Mandapam/TM2.jpeg">
-                        <img src="Design 3D Print/Temple Mandapam/TM3.jpeg">
-                        <img src="Design 3D Print/Temple Mandapam/TM4.jpeg">
-                    </div>
-
-                    <button class="next-btn">
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </button>
-
-                </div>
-            </section>
+            <!-- LINKEDIN LINK WITH FIXED VECTOR ICON -->
+            <a href="https://www.linkedin.com/in/vidur-varshan-manoharan/" target="_blank" class="flex items-center space-x-4 p-4 rounded-2xl border border-charcoal/10 hover:border-charcoal hover:bg-bgBoneDark transition-all group">
+              <div class="w-11 h-11 rounded-full bg-charcoal text-bgBone flex items-center justify-center group-hover:bg-accentOrange transition-colors">
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                  <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                </svg>
+              </div>
+              <div>
+                <div class="text-xs text-mutedGray uppercase tracking-wider font-semibold">LinkedIn Network</div>
+                <div class="text-base font-bold text-charcoal">linkedin.com/in/vidur-varshan-manoharan</div>
+              </div>
+            </a>
+          </div>
         </div>
 
+        <!-- Contact Form Box -->
+        <div class="lg:col-span-6 p-8 rounded-3xl bg-bgBoneDark border border-charcoal/10 space-y-6">
+          <h3 class="text-2xl font-bold font-display text-charcoal">SEND A DIRECT MESSAGE</h3>
 
-        <!--================ Utility Knife =================-->
-
-        <li class="solid">
-            <img src="Design 3D Print/Utility Knife/Blade.png">
-            <div class="fusionlayer">
-                <h3>Utility Knife</h3>
-                <button class="fusionexplore-btn"
-                        onclick="openSlider('fusionSlider5')">
-                    Explore More
-                </button>
+          <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
+            <div>
+              <label class="block text-xs uppercase tracking-wider font-semibold text-mutedGray mb-2 font-mono">Your Name</label>
+              <input type="text" name="Name" required placeholder="Name" class="w-full px-4 py-3.5 rounded-xl bg-bgBone border border-charcoal/15 text-charcoal text-sm focus:outline-none focus:border-charcoal transition-colors">
             </div>
-        </li>
 
-        <!-- Modal -->
+            <div>
+              <label class="block text-xs uppercase tracking-wider font-semibold text-mutedGray mb-2 font-mono">Your Email</label>
+              <input type="email" name="Email" required placeholder="email@domain.com" class="w-full px-4 py-3.5 rounded-xl bg-bgBone border border-charcoal/15 text-charcoal text-sm focus:outline-none focus:border-charcoal transition-colors">
+            </div>
 
-        <div class="slider-modal" id="fusionSlider5">
-            <button class="close-btn"
-                    onclick="closeSlider('fusionSlider5')">
-                ✕
+            <div>
+              <label class="block text-xs uppercase tracking-wider font-semibold text-mutedGray mb-2 font-mono">Message</label>
+              <textarea name="Message" rows="4" required placeholder="Your message or inquiry..." class="w-full px-4 py-3.5 rounded-xl bg-bgBone border border-charcoal/15 text-charcoal text-sm focus:outline-none focus:border-charcoal transition-colors resize-none"></textarea>
+            </div>
+
+            <button type="submit" id="submit-btn" class="magnetic-btn w-full py-4 rounded-xl bg-charcoal text-bgBone font-bold text-xs uppercase tracking-widest hover:bg-accentOrange transition-colors flex items-center justify-center space-x-2">
+              <span>Send Message</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
             </button>
-            <section class="img-container1">
-                <div class="slider-wrapper">
-                    <button class="prev-btn">
-                        <i class="fa-solid fa-chevron-left"></i>
-                    </button>
-                    <div class="slider">
-                        <img src="Design 3D Print/Utility Knife/Blade1.png">
-                        <img src="Design 3D Print/Utility Knife/Blade2.png">
-                        <img src="Design 3D Print/Utility Knife/Blade3.png">
-                    </div>
+          </form>
 
-                    <button class="next-btn">
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </button>
-
-                </div>
-            </section>
+          <div id="form-status" class="hidden p-4 rounded-xl text-xs font-semibold text-center"></div>
         </div>
 
-        <!--========================== Viking Horn ====================-->
+      </div>
 
-        <li class="solid">
-            <img src="Design 3D Print/Viking Horn/Horn Stand.png">
-            <div class="fusionlayer">
-                <h3>Viking Horn Stand</h3>
-                <button class="fusionexplore-btn"
-                        onclick="openSlider('fusionSlider6')">
-                    Explore More
-                </button>
-            </div>
-        </li>
+    </div>
+  </section>
 
-        <!-- Modal -->
+  <!-- FOOTER -->
+  <footer class="py-12 bg-charcoal text-bgBone hairline-t border-white/10">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
+      
+      <div class="text-xs text-bgBone/60 space-y-1 text-center md:text-left">
+        <div class="font-extrabold text-bgBone text-base font-display">VIDUR MANOHARAN</div>
+        <div>Mechanical Design Engineer • Chennai, India</div>
+      </div>
 
-        <div class="slider-modal" id="fusionSlider6">
-            <button class="close-btn"
-                    onclick="closeSlider('fusionSlider6')">
-                ✕
-            </button>
-            <section class="img-container1">
-                <div class="slider-wrapper">
-                    <button class="prev-btn">
-                        <i class="fa-solid fa-chevron-left"></i>
-                    </button>
-                    <div class="slider">
-                        <img src="Design 3D Print/Viking Horn/Horn1.png">
-                        <img src="Design 3D Print/Viking Horn/Horn2.png">
-                        <img src="Design 3D Print/Viking Horn/Horn3.png">
-                        <img src="Design 3D Print/Viking Horn/Horn4.png">
-                    </div>
+      <!-- FOOTER LINKEDIN LINK -->
+      <div class="flex items-center space-x-6 text-xs text-bgBone/80">
+        <a href="https://www.linkedin.com/in/vidur-varshan-manoharan/" target="_blank" class="hover:text-accentOrange transition-colors flex items-center space-x-1.5">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+          </svg>
+          <span>LinkedIn</span>
+        </a>
+        <span>© 2026 Vidur Manoharan</span>
+      </div>
 
-                    <button class="next-btn">
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </button>
+    </div>
+  </footer>
 
-                </div>
-            </section>
-        </div>
-
-        <!--========================== Insulin Pen ====================-->
-
-        <li class="solid">
-            <img src="Design 3D Print/Insu Pen/Insu.jpeg">
-            <div class="fusionlayer">
-                <h3>Insulin Pen & Lantus Case</h3>
-                <button class="fusionexplore-btn"
-                        onclick="openSlider('fusionSlider7')">
-                    Explore More
-                </button>
-            </div>
-        </li>
-
-        <!-- Modal -->
-
-        <div class="slider-modal" id="fusionSlider7">
-            <button class="close-btn"
-                    onclick="closeSlider('fusionSlider7')">
-                ✕
-            </button>
-            <section class="img-container1">
-                <div class="slider-wrapper">
-                    <button class="prev-btn">
-                        <i class="fa-solid fa-chevron-left"></i>
-                    </button>
-                    <div class="slider">
-                        <img src="Design 3D Print/Insu Pen/Insu1.jpg">
-                        <img src="Design 3D Print/Insu Pen/Insu2.jpg">
-                        <img src="Design 3D Print/Insu Pen/Insu3.jpg">
-                    </div>
-
-                    <button class="next-btn">
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </button>
-
-                </div>
-            </section>
-        </div>
-
-        <!--========================== Flower Pot ====================-->
-
-        <li class="solid">
-            <img src="Design 3D Print/Flower Pot/Pot.png">
-            <div class="fusionlayer">
-                <h3>Flower Pot</h3>
-                <button class="fusionexplore-btn"
-                        onclick="openSlider('fusionSlider8')">
-                    Explore More
-                </button>
-            </div>
-        </li>
-
-        <!-- Modal -->
-
-        <div class="slider-modal" id="fusionSlider8">
-            <button class="close-btn"
-                    onclick="closeSlider('fusionSlider8')">
-                ✕
-            </button>
-            <section class="img-container1">
-                <div class="slider-wrapper">
-                    <button class="prev-btn">
-                        <i class="fa-solid fa-chevron-left"></i>
-                    </button>
-                    <div class="slider">
-                        <img src="Design 3D Print/Flower Pot/Pot1.jpg">
-                        <img src="Design 3D Print/Flower Pot/Pot2.jpg">
-                        <img src="Design 3D Print/Flower Pot/Pot3.jpg">
-                        <img src="Design 3D Print/Flower Pot/Pot4.jpg">
-                    </div>
-
-                    <button class="next-btn">
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </button>
-
-                </div>
-            </section>
-        </div>
-
-        <!--========================== Animograph ====================-->
-
-        <li class="solid">
-            <img src="Design 3D Print/Animograph/Animograph.png">
-            <div class="fusionlayer">
-                <h3>Animograph</h3>
-                <button class="fusionexplore-btn"
-                        onclick="openSlider('fusionSlider9')">
-                    Explore More
-                </button>
-            </div>
-        </li>
-
-        <!-- Modal -->
-
-        <div class="slider-modal" id="fusionSlider9">
-            <button class="close-btn"
-                    onclick="closeSlider('fusionSlider9')">
-                ✕
-            </button>
-            <section class="img-container1">
-                <div class="slider-wrapper">
-                    <button class="prev-btn">
-                        <i class="fa-solid fa-chevron-left"></i>
-                    </button>
-                    <div class="slider">
-                        <img src="Design 3D Print/Animograph/Ani1.png">
-                        <img src="Design 3D Print/Animograph/Ani2.png">
-                        <img src="Design 3D Print/Animograph/Ani3.png">
-                        <img src="Design 3D Print/Animograph/Ani4.png">
-                        <img src="Design 3D Print/Animograph/Ani5.png">
-                        <img src="Design 3D Print/Animograph/Ani6.png">
-                        <img src="Design 3D Print/Animograph/Ani7.png">
-                    </div>
-
-                    <button class="next-btn">
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </button>
-
-                </div>
-            </section>
-        </div>
-
-        <!--========================= NXT MODEL =====================-->
-
-    </ul>
-</div>
-
+  <!-- FULL-SCREEN LIGHTBOX GALLERY MODAL WITH ADJUSTED PHOTO SIZE -->
+  <div id="gallery-lightbox" class="fixed inset-0 z-50 bg-charcoal/95 backdrop-blur-lg opacity-0 pointer-events-none transition-opacity duration-300 flex flex-col">
     
-<!--====================== Creo =========================-->
+    <!-- Modal Top Header Bar -->
+    <div class="px-6 py-4 flex items-center justify-between border-b border-white/10 text-bgBone">
+      <div>
+        <span id="modal-category" class="text-[10px] uppercase tracking-widest font-mono text-accentOrange font-bold block">SolidWorks Assembly</span>
+        <h3 id="modal-title" class="text-lg md:text-xl font-bold font-display text-white">Part 1 - Technical Drawing Showcase</h3>
+      </div>
 
-                <div class="tab-contents" id="creo">
-                    <div class="solid-picture">
-                        <div class="solid-container">
-                            <h4>Creo Part Design & CAD Exploration</h4>
-                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    This collection highlights my ongoing learning and practical experience with PTC Creo,
-                                    where I have developed part models while exploring advanced parametric design
-                                    workflows and engineering tools within the software.
-                                    <br>Although I recently started learning Creo, my prior experience with CAD platforms such as
-                                    SOLIDWORKS and Autodesk Fusion 360 enabled me to quickly adapt to its modeling
-                                    environment, design methodologies, and feature-based workflows.
-                                    <br><br>
-                                    <b>Skills Demonstrated:</b><br><br>
-                                    • Parametric part modeling<br>
-                                    • Sketch-driven feature creation<br>
-                                    • Mechanical component development<br>
-                                    • CAD workflow adaptability<br>
-                                    • Engineering design fundamentals<br>
-                                    • Cross-platform CAD proficiency
-                                    <br><br>
-                                   These models represent my continued exploration of Creo’s capabilities, along with my
-                                   effort to understand its advantages, design flexibility, and applications in professional engineering environments.
-                                    <br><br><b>Explore the collection below</b> to view my early Creo design projects and ongoing CAD development journey.
-                        </div>
-                        <img src="Design Images/creo.PNG" alt="printer" class="solid-pic">
-                    </div>
+      <div class="flex items-center space-x-4">
+        <span id="modal-counter" class="text-xs font-mono text-bgBone/60">1 / 4</span>
+        <button onclick="closeLightbox()" class="w-10 h-10 rounded-full bg-white/10 hover:bg-accentOrange flex items-center justify-center text-white transition-colors">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
 
-                    <ul class="solid-list">
+    <!-- Main Active Image Viewing Area -->
+    <div class="flex-1 relative flex items-center justify-center p-4 md:p-8 overflow-hidden">
+      <!-- Previous Button -->
+      <button onclick="prevImage()" class="absolute left-4 md:left-8 z-10 w-12 h-12 rounded-full bg-white/10 hover:bg-accentOrange text-white flex items-center justify-center backdrop-blur-md transition-colors">
+        <i data-lucide="chevron-left" class="w-6 h-6"></i>
+      </button>
 
-                            <!--========= Part 1 ============-->
+      <!-- Main Display Image Box (Resized to fit screen properly) -->
+      <div class="lightbox-image-box">
+        <img id="modal-active-img" src="" alt="CAD Spec" class="max-w-full max-h-full object-contain rounded-xl shadow-2xl transition-all duration-300">
+      </div>
 
-                            <li class="solid">
-                                <img src="Design Creo/Part 1/Drone0.jpg">
-                                <div class="creolayer">
-                                    <h3>Part 1</h3>
-                                    <button class="creoexplore-btn" onclick="openSlider('creoslider1')">Explore More</button>
-                                </div>
-                            </li>
+      <!-- Next Button -->
+      <button onclick="nextImage()" class="absolute right-4 md:right-8 z-10 w-12 h-12 rounded-full bg-white/10 hover:bg-accentOrange text-white flex items-center justify-center backdrop-blur-md transition-colors">
+        <i data-lucide="chevron-right" class="w-6 h-6"></i>
+      </button>
+    </div>
 
-                            <!-- Popup Slider -->
-                            <div class="slider-modal" id="creoslider1">
-                                <button class="close-btn" onclick="closeSlider('creoslider1')">✕</button>
-                                <section class="img-container1">
-                                    <div class="slider-wrapper">
-                                        <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
-                                        <div class="slider">
-                                            <img src="Design Creo/Part 1/Drone1.jpg">
-                                            <img src="Design Creo/Part 1/Drone2.jpg">
-                                            <img src="Design Creo/Part 1/Drone3.jpg">
-                                            <img src="Design Creo/Part 1/Drone4.jpg">
-                                        </div>
-                                        <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
-                                    </div>
-                                </section>
-                            </div>
+    <!-- Modal Footer Specs & Thumbnail Strip -->
+    <div class="px-6 py-4 border-t border-white/10 bg-black/40 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="text-xs text-bgBone/70 font-mono">
+        <span id="modal-desc">2D Drawing & Parametric Model Views</span>
+      </div>
 
-                            <!--========= Part 2 ============-->
+      <!-- Thumbnail Selector Strip -->
+      <div id="modal-thumbnails" class="flex items-center space-x-2 overflow-x-auto max-w-full py-1">
+        <!-- Thumbnails dynamic -->
+      </div>
+    </div>
 
-                            <li class="solid">
-                                <img src="Design Creo/Part 2/prt2.0.jpg">
-                                <div class="creolayer">
-                                    <h3>Part 2</h3>
-                                    <button class="creoexplore-btn" onclick="openSlider('creoslider2')">Explore More</button>
-                                </div>
-                            </li>
+  </div>
 
-                            <!-- Popup Slider -->
-                            <div class="slider-modal" id="creoslider2">
-                                <button class="close-btn" onclick="closeSlider('creoslider2')">✕</button>
-                                <section class="img-container1">
-                                    <div class="slider-wrapper">
-                                        <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
-                                        <div class="slider">
-                                            <img src="Design Creo/Part 2/prt2.1.jpg">
-                                            <img src="Design Creo/Part 2/prt2.2.jpg">
-                                            <img src="Design Creo/Part 2/prt2.3.jpg">
-                                            <img src="Design Creo/Part 2/prt2.4.jpg">
-                                            <img src="Design Creo/Part 2/prt2.5.jpg">
-                                        </div>
-                                        <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
-                                    </div>
-                                </section>
-                            </div>
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // Complete CAD Portfolio Projects Dataset
+    const allProjects = [
+      // SOLIDWORKS PARTS 1 to 19 + DRAWINGS
+      {
+        id: "sw-1",
+        title: "SolidWorks Part 1 Design & 2D Drawing",
+        category: "solidworks",
+        categoryLabel: "SolidWorks • Part Modeling & Drawing",
+        cover: "Design SDW/1/1.1.png",
+        images: ["Design SDW/1/1.1.png", "Design SDW/1/1.2.png", "Design SDW/1/1.3.JPG", "Design SDW/1/Part1 2D.JPG"],
+        software: "SolidWorks",
+      },
+      {
+        id: "sw-2",
+        title: "SolidWorks Part 2 Design & 2D Drawing",
+        category: "solidworks",
+        categoryLabel: "SolidWorks • Part Modeling & Drawing",
+        cover: "Design SDW/2/2.0.png",
+        images: ["Design SDW/2/2.1.png", "Design SDW/2/2.2.png",  "Design SDW/2/2.3.png", "Design SDW/2/Part 2 2D.JPG"],
+        software: "SolidWorks",
+      },
+      {
+        id: "sw-3",
+        title: "SolidWorks Part 3 Design & 2D Drawing",
+        category: "solidworks",
+        categoryLabel: "SolidWorks • Part Modeling & Drawing",
+        cover: "Design SDW/3/3.0.png",
+        images: ["Design SDW/3/3.1.png", "Design SDW/3/3.2.png", "Design SDW/3/Part 3 2D.JPG"],
+        software: "SolidWorks",
+      },
+      {
+        id: "sw-4",
+        title: "SolidWorks Part 4 Design & 2D Drawing",
+        category: "solidworks",
+        categoryLabel: "SolidWorks • Part Modeling & Drawing",
+        cover: "Design SDW/4/4.0.png",
+        images: ["Design SDW/4/4.1.png", "Design SDW/4/4.2.png", "Design SDW/4/4.3.png", "Design SDW/4/4.4.png", "Design SDW/4/4.5.png", "Design SDW/4/Part 4 2D.JPG"],
+        software: "SolidWorks",
+      },
+      {
+        id: "sw-5",
+        title: "SolidWorks Part 5 Design & 2D Drawing",
+        category: "solidworks",
+        categoryLabel: "SolidWorks • Part Modeling & Drawing",
+        cover: "Design SDW/5/5.0.png",
+        images: ["Design SDW/5/5.1.png", "Design SDW/5/5.2.png", "Design SDW/5/5.3.png", "Design SDW/5/5.4.png", "Design SDW/5/Part 5 2D.JPG"],
+        software: "SolidWorks",
+      },
+      {
+        id: "sw-6",
+        title: "SolidWorks Part 6 Design & 2D Drawing",
+        category: "solidworks",
+        categoryLabel: "SolidWorks • Part Modeling & Drawing",
+        cover: "Design SDW/6/6.0.png",
+        images: ["Design SDW/6/6.1.png", "Design SDW/6/6.2.png", "Design SDW/6/6.3.png", "Design SDW/6/6.4.png", "Design SDW/6/Part 6 2D.JPG"],
+        software: "SolidWorks",
+      },
+      {
+        id: "sw-7",
+        title: "SolidWorks Part 7 Design & 2D Drawing",
+        category: "solidworks",
+        categoryLabel: "SolidWorks • Part Modeling & Drawing",
+        cover: "Design SDW/7/7.0.png",
+        images: ["Design SDW/7/7.1.png", "Design SDW/7/7.2.png", "Design SDW/7/7.3.png", "Design SDW/7/Part 7 2D.JPG"],
+        software: "SolidWorks",
+      },
+      {
+        id: "sw-8",
+        title: "SolidWorks Part 8 Design & 2D Drawing",
+        category: "solidworks",
+        categoryLabel: "SolidWorks • Part Modeling & Drawing",
+        cover: "Design SDW/8/8.0.png",
+        images: ["Design SDW/8/8.1.png", "Design SDW/8/8.2.png", "Design SDW/8/8.3.png", "Design SDW/8/Part 8 2D.JPG"],
+        software: "SolidWorks",
+      },
+      {
+        id: "sw-9",
+        title: "SolidWorks Part 9 Design & 2D Drawing",
+        category: "solidworks",
+        categoryLabel: "SolidWorks • Part Modeling & Drawing",
+        cover: "Design SDW/9/9.0.png",
+        images: ["Design SDW/9/9.1.png", "Design SDW/9/9.2.png", "Design SDW/9/9.3.png", "Design SDW/9/Part 9 2D.JPG"],
+        software: "SolidWorks",
+      },
+      {
+        id: "sw-10",
+        title: "SolidWorks Part 10 Design & 2D Drawing",
+        category: "solidworks",
+        categoryLabel: "SolidWorks • Part Modeling & Drawing",
+        cover: "Design SDW/10/10.0.png",
+        images: ["Design SDW/10/10.1.png", "Design SDW/10/10.2.png", "Design SDW/10/10.3.png", "Design SDW/10/10.4.png", "Design SDW/10/10.5.png", "Design SDW/10/Part 10 2D.JPG"],
+        software: "SolidWorks",
+      },
+      {
+        id: "sw-11",
+        title: "SolidWorks Part 11 Design & 2D Drawing",
+        category: "solidworks",
+        categoryLabel: "SolidWorks • Part Modeling & Drawing",
+        cover: "Design SDW/11/11.0.png",
+        images: ["Design SDW/11/11.1.png", "Design SDW/11/11.2.png", "Design SDW/11/11.3.png", "Design SDW/11/11.4.png", "Design SDW/11/11.5.png", "Design SDW/11/Part 11 2D.JPG"],
+        software: "SolidWorks",
+      },
+      {
+        id: "sw-12",
+        title: "SolidWorks Part 12 Design & 2D Drawing",
+        category: "solidworks",
+        categoryLabel: "SolidWorks • Part Modeling & Drawing",
+        cover: "Design SDW/12/12.0.png",
+        images: ["Design SDW/12/12.1.png", "Design SDW/12/12.2.png", "Design SDW/12/12.3.png", "Design SDW/12/Part 12 2D.JPG"],
+        software: "SolidWorks",
+      },
+      {
+        id: "sw-13",
+        title: "SolidWorks Part 13 Design & 2D Drawing",
+        category: "solidworks",
+        categoryLabel: "SolidWorks • Part Modeling & Drawing",
+        cover: "Design SDW/13/13.0.png",
+        images: ["Design SDW/13/13.1.png", "Design SDW/13/13.2.png", "Design SDW/13/13.3.png", "Design SDW/13/Part 13 2D.JPG"],
+        software: "SolidWorks",
+      },
+      {
+        id: "sw-14",
+        title: "SolidWorks Part 14 Design & 2D Drawing",
+        category: "solidworks",
+        categoryLabel: "SolidWorks • Part Modeling & Drawing",
+        cover: "Design SDW/14/14.0.png",
+        images: ["Design SDW/14/14.1.png", "Design SDW/14/14.2.png", "Design SDW/14/14.3.png", "Design SDW/14/Part 14 2D.JPG"],
+        software: "SolidWorks",
+      },
+      {
+        id: "sw-15",
+        title: "SolidWorks Part 15 Design & 2D Drawing",
+        category: "solidworks",
+        categoryLabel: "SolidWorks • Part Modeling & Drawing",
+        cover: "Design SDW/15/15.0.png",
+        images: ["Design SDW/15/15.1.png", "Design SDW/15/15.2.png", "Design SDW/15/15.3.png", "Design SDW/15/15.4.png", "Design SDW/15/Part 15 2D.JPG"],
+        software: "SolidWorks",
+      },
+      {
+        id: "sw-16",
+        title: "SolidWorks Part 16 Design & 2D Drawing",
+        category: "solidworks",
+        categoryLabel: "SolidWorks • Part Modeling & Drawing",
+        cover: "Design SDW/16/16.0.png",
+        images: ["Design SDW/16/16.1.png", "Design SDW/16/16.2.png", "Design SDW/16/16.3.png", "Design SDW/16/16.4.png", "Design SDW/16/Part 16 2D.JPG"],
+        software: "SolidWorks",
+      },
+      {
+        id: "sw-17",
+        title: "SolidWorks Part 17 Design & 2D Drawing",
+        category: "solidworks",
+        categoryLabel: "SolidWorks • Part Modeling & Drawing",
+        cover: "Design SDW/17/17.0.jpeg",
+        images: ["Design SDW/17/17.1.jpg", "Design SDW/17/17.2.jpg", "Design SDW/17/17.3.jpg", "Design SDW/17/17.4.jpg"],
+        software: "SolidWorks",
+      },
+      {
+        id: "sw-18",
+        title: "SolidWorks Part 18 Design & 2D Drawing",
+        category: "solidworks",
+        categoryLabel: "SolidWorks • Part Modeling & Drawing",
+        cover: "Design SDW/18/18.0.jpeg",
+        images: ["Design SDW/18/18.1.jpg", "Design SDW/18/18.2.jpg", "Design SDW/18/18.3.jpg", "Design SDW/18/18.4.jpg"],
+        software: "SolidWorks",
+      },
+      {
+        id: "sw-19",
+        title: "SolidWorks Part 19 Design & 2D Drawing",
+        category: "solidworks",
+        categoryLabel: "SolidWorks • Part Modeling & Drawing",
+        cover: "Design SDW/19/19.0.jpeg",
+        images: ["Design SDW/19/19.1.jpg", "Design SDW/19/19.2.jpg", "Design SDW/19/19.3.jpg", "Design SDW/19/19.4.jpg"],
+        software: "SolidWorks",
+      },
 
-                            <!--========= Part 3 ============-->
+      // FUSION 360 & 3D PRINTING PROJECTS
+      {
+        id: "f-bmw",
+        title: "BMW MPower Design Showcase",
+        category: "fusion",
+        categoryLabel: "Fusion 360 • 3D-Print",
+        cover: "Design 3D Print/BMW MPower/BMW.png",
+        images: ["Design 3D Print/BMW MPower/BMW1.png", "Design 3D Print/BMW MPower/BMW2.png", "Design 3D Print/BMW MPower/BMW3.png"],
+        software: "Fusion 360 & 3D Printing",
+      },
+      {
+        id: "f-temple",
+        title: "Temple Tower Architectural Prototype",
+        category: "fusion",
+        categoryLabel: "Fusion 360 • 3D-Print",
+        cover: "Design 3D Print/Temple Tower/TT.png",
+        images: ["Design 3D Print/Temple Tower/TT1.png", "Design 3D Print/Temple Tower/TT2.png", "Design 3D Print/Temple Tower/TT3.png", "Design 3D Print/Temple Tower/TT4.png"],
+        software: "Fusion 360 & 3D Printing",
+      },
+      {
+        id: "f-stand",
+        title: "Ergonomic Phone & iWatch Charging Stand",
+        category: "fusion",
+        categoryLabel: "Fusion 360 • 3D-Print",
+        cover: "Design 3D Print/IPhone Stand/Phn holder.png",
+        images: ["Design 3D Print/IPhone Stand/IP1.png", "Design 3D Print/IPhone Stand/IP2.png", "Design 3D Print/IPhone Stand/IP3.png", "Design 3D Print/IPhone Stand/IP4.png", "Design 3D Print/IPhone Stand/IP5.png"],
+        software: "Fusion 360 & 3D Printing",
+      },
+      {
+        id: "f-mandapam",
+        title: "Temple Mandapam Model",
+        category: "fusion",
+        categoryLabel: "Fusion 360 • 3D-Print",
+        cover: "Design 3D Print/Temple Mandapam/Temple.png",
+        images: ["Design 3D Print/Temple Mandapam/TM1.jpeg", "Design 3D Print/Temple Mandapam/TM2.jpeg", "Design 3D Print/Temple Mandapam/TM3.jpeg", "Design 3D Print/Temple Mandapam/TM4.jpeg"],
+        software: "Fusion 360 & 3D Printing",
+      },
+      {
+        id: "f-knife",
+        title: "Utility Knife Mechanical Design",
+        category: "fusion",
+        categoryLabel: "Fusion 360 • 3D-Print",
+        cover: "Design 3D Print/Utility Knife/Blade.png",
+        images: ["Design 3D Print/Utility Knife/Blade1.png", "Design 3D Print/Utility Knife/Blade2.png", "Design 3D Print/Utility Knife/Blade3.png"],
+        software: "Fusion 360 & 3D Printing",
+      },
+      {
+        id: "f-horn",
+        title: "Viking Horn Display Stand",
+        category: "fusion",
+        categoryLabel: "Fusion 360 • 3D-Print",
+        cover: "Design 3D Print/Viking Horn/Horn Stand.png",
+        images: ["Design 3D Print/Viking Horn/Horn1.png", "Design 3D Print/Viking Horn/Horn2.png", "Design 3D Print/Viking Horn/Horn3.png", "Design 3D Print/Viking Horn/Horn4.png"],
+        software: "Fusion 360 & 3D Printing",
+      },
+      {
+        id: "f-insulin",
+        title: "Insulin Pen & Lantus Case",
+        category: "fusion",
+        categoryLabel: "Fusion 360 • 3D-Print",
+        cover: "Design 3D Print/Insu Pen/Insu.jpeg",
+        images: ["Design 3D Print/Insu Pen/Insu1.jpg", "Design 3D Print/Insu Pen/Insu2.jpg", "Design 3D Print/Insu Pen/Insu3.jpg"],
+        software: "Fusion 360 & 3D Printing",
+      },
+      {
+        id: "f-pot",
+        title: "Parametric Flower Pot",
+        category: "fusion",
+        categoryLabel: "Fusion 360 • 3D-Print",
+        cover: "Design 3D Print/Flower Pot/Pot.png",
+        images: ["Design 3D Print/Flower Pot/Pot1.jpg", "Design 3D Print/Flower Pot/Pot2.jpg", "Design 3D Print/Flower Pot/Pot3.jpg", "Design 3D Print/Flower Pot/Pot4.jpg"],
+        software: "Fusion 360 & 3D Printing",
+      },
+      {
+        id: "f-animograph",
+        title: "Animograph Kinematic Mechanism",
+        category: "fusion",
+        categoryLabel: "Fusion 360 • 3D-Print",
+        cover: "Design 3D Print/Animograph/Animograph.png",
+        images: ["Design 3D Print/Animograph/Ani1.png", "Design 3D Print/Animograph/Ani2.png", "Design 3D Print/Animograph/Ani3.png", "Design 3D Print/Animograph/Ani4.png", "Design 3D Print/Animograph/Ani5.png", "Design 3D Print/Animograph/Ani6.png", "Design 3D Print/Animograph/Ani7.png"],
+        software: "Fusion 360 & 3D Printing",
+      },
 
-                            <li class="solid">
-                                <img src="Design Creo/Part 3/prt3.0.jpg">
-                                <div class="creolayer">
-                                    <h3>Part 3</h3>
-                                    <button class="creoexplore-btn" onclick="openSlider('creoslider3')">Explore More</button>
-                                </div>
-                            </li>
+      // PTC CREO PARTS 1 to 7
+      {
+        id: "creo-1",
+        title: "PTC Creo Part 1 Design",
+        category: "creo",
+        categoryLabel: "PTC Creo • Parametric Part & Assembly",
+        cover: "Design Creo/Part 1/Drone0.jpg",
+        images: ["Design Creo/Part 1/Drone1.jpg", "Design Creo/Part 1/Drone2.jpg", "Design Creo/Part 1/Drone3.jpg", "Design Creo/Part 1/Drone4.jpg"],
+        software: "PTC Creo",
+      },
+      {
+        id: "creo-2",
+        title: "PTC Creo Part 2 Machined Component",
+        category: "creo",
+        categoryLabel: "PTC Creo • Parametric Part",
+        cover: "Design Creo/Part 2/prt2.0.jpg",
+        images: ["Design Creo/Part 2/prt2.1.jpg", "Design Creo/Part 2/prt2.2.jpg", "Design Creo/Part 2/prt2.3.jpg", "Design Creo/Part 2/prt2.4.jpg", "Design Creo/Part 2/prt2.5.jpg"],
+        software: "PTC Creo",
+      },
+      {
+        id: "creo-3",
+        title: "PTC Creo Part 3 Structural Arm",
+        category: "creo",
+        categoryLabel: "PTC Creo • Parametric Part",
+        cover: "Design Creo/Part 3/prt3.0.jpg",
+        images: ["Design Creo/Part 3/prt3.1.jpg", "Design Creo/Part 3/prt3.2.jpg", "Design Creo/Part 3/prt3.3.jpg", "Design Creo/Part 3/prt3.4.jpg"],
+        software: "PTC Creo",
+      },
+      {
+        id: "creo-4",
+        title: "PTC Creo Part 4 Flanged Mount",
+        category: "creo",
+        categoryLabel: "PTC Creo • Parametric Part",
+        cover: "Design Creo/Part 4/prt4.0.jpg",
+        images: ["Design Creo/Part 4/prt4.1.jpg", "Design Creo/Part 4/prt4.2.jpg", "Design Creo/Part 4/prt4.3.jpg", "Design Creo/Part 4/prt4.4.jpg", "Design Creo/Part 4/prt4.5.jpg"],
+        software: "PTC Creo",
+      },
+      {
+        id: "creo-5",
+        title: "PTC Creo Part 5 Gear Blank",
+        category: "creo",
+        categoryLabel: "PTC Creo • Parametric Part",
+        cover: "Design Creo/Part 5/prt5.0.jpg",
+        images: ["Design Creo/Part 5/prt5.1.jpg", "Design Creo/Part 5/prt5.2.jpg", "Design Creo/Part 5/prt5.3.jpg"],
+        software: "PTC Creo",
+      },
+      {
+        id: "creo-6",
+        title: "PTC Creo Part 6 Lever Arm",
+        category: "creo",
+        categoryLabel: "PTC Creo • Parametric Part",
+        cover: "Design Creo/Part 6/prt6.0.jpg",
+        images: ["Design Creo/Part 6/prt6.1.jpg", "Design Creo/Part 6/prt6.2.jpg", "Design Creo/Part 6/prt6.3.jpg", "Design Creo/Part 6/prt6.4.jpg", "Design Creo/Part 6/prt6.5.jpg"],
+        software: "PTC Creo",
+      },
+      {
+        id: "creo-7",
+        title: "PTC Creo Part 7 Housing Cover",
+        category: "creo",
+        categoryLabel: "PTC Creo • Parametric Part",
+        cover: "Design Creo/Part 7/prt7.0.jpg",
+        images: ["Design Creo/Part 7/prt7.1.jpg", "Design Creo/Part 7/prt7.2.jpg", "Design Creo/Part 7/prt7.3.jpg", "Design Creo/Part 7/prt7.4.jpg"],
+        software: "PTC Creo",
+      }
+    ];
 
-                            <!-- Popup Slider -->
-                            <div class="slider-modal" id="creoslider3">
-                                <button class="close-btn" onclick="closeSlider('creoslider3')">✕</button>
-                                <section class="img-container1">
-                                    <div class="slider-wrapper">
-                                        <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
-                                        <div class="slider">
-                                            <img src="Design Creo/Part 3/prt3.1.jpg">
-                                            <img src="Design Creo/Part 3/prt3.2.jpg">
-                                            <img src="Design Creo/Part 3/prt3.3.jpg">
-                                            <img src="Design Creo/Part 3/prt3.4.jpg">
-                                        </div>
-                                        <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
-                                    </div>
-                                </section>
-                            </div>
+    // State Management for Lightbox Modal
+    let activeProject = null;
+    let currentImgIndex = 0;
 
-                            <!--========= Part 4 ============-->
+    // Render Projects into Masonry Grid
+    function renderProjectsGrid(category = 'all') {
+      const grid = document.getElementById('projects-grid');
+      grid.innerHTML = '';
 
-                            <li class="solid">
-                                <img src="Design Creo/Part 4/prt4.0.jpg">
-                                <div class="creolayer">
-                                    <h3>Part 4</h3>
-                                    <button class="creoexplore-btn" onclick="openSlider('creoslider4')">Explore More</button>
-                                </div>
-                            </li>
+      const filtered = category === 'all' 
+        ? allProjects 
+        : allProjects.filter(p => p.category === category);
 
-                            <!-- Popup Slider -->
-                            <div class="slider-modal" id="creoslider4">
-                                <button class="close-btn" onclick="closeSlider('creoslider4')">✕</button>
-                                <section class="img-container1">
-                                    <div class="slider-wrapper">
-                                        <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
-                                        <div class="slider">
-                                            <img src="Design Creo/Part 4/prt4.1.jpg">
-                                            <img src="Design Creo/Part 4/prt4.2.jpg">
-                                            <img src="Design Creo/Part 4/prt4.3.jpg">
-                                            <img src="Design Creo/Part 4/prt4.4.jpg">
-                                            <img src="Design Creo/Part 4/prt4.5.jpg">
-                                        </div>
-                                        <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
-                                    </div>
-                                </section>
-                            </div>
+      filtered.forEach((p) => {
+        const card = document.createElement('div');
+        card.className = 'group rounded-3xl bg-bgBoneDark border border-charcoal/10 overflow-hidden hover:border-charcoal transition-all duration-300 flex flex-col cursor-pointer';
+        card.setAttribute('onclick', `openLightbox('${p.id}')`);
+        card.setAttribute('onmouseenter', 'cursorHover(true)');
+        card.setAttribute('onmouseleave', 'cursorHover(false)');
 
-                            <!--========= Part 5 ============-->
-
-                            <li class="solid">
-                                <img src="Design Creo/Part 5/prt5.0.jpg">
-                                <div class="creolayer">
-                                    <h3>Part 5</h3>
-                                    <button class="creoexplore-btn" onclick="openSlider('creoslider5')">Explore More</button>
-                                </div>
-                            </li>
-
-                            <!-- Popup Slider -->
-                            <div class="slider-modal" id="creoslider5">
-                                <button class="close-btn" onclick="closeSlider('creoslider5')">✕</button>
-                                <section class="img-container1">
-                                    <div class="slider-wrapper">
-                                        <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
-                                        <div class="slider">
-                                            <img src="Design Creo/Part 5/prt5.1.jpg">
-                                            <img src="Design Creo/Part 5/prt5.2.jpg">
-                                            <img src="Design Creo/Part 5/prt5.3.jpg">
-                                        </div>
-                                        <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
-                                    </div>
-                                </section>
-                            </div>
-
-                            <!--========= Part 6 ============-->
-
-                            <li class="solid">
-                                <img src="Design Creo/Part 6/prt6.0.jpg">
-                                <div class="creolayer">
-                                    <h3>Part 6</h3>
-                                    <button class="creoexplore-btn" onclick="openSlider('creoslider6')">Explore More</button>
-                                </div>
-                            </li>
-
-                            <!-- Popup Slider -->
-                            <div class="slider-modal" id="creoslider6">
-                                <button class="close-btn" onclick="closeSlider('creoslider6')">✕</button>
-                                <section class="img-container1">
-                                    <div class="slider-wrapper">
-                                        <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
-                                        <div class="slider">
-                                            <img src="Design Creo/Part 6/prt6.1.jpg">
-                                            <img src="Design Creo/Part 6/prt6.2.jpg">
-                                            <img src="Design Creo/Part 6/prt6.3.jpg">
-                                            <img src="Design Creo/Part 6/prt6.4.jpg">
-                                            <img src="Design Creo/Part 6/prt6.5.jpg">
-                                        </div>
-                                        <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
-                                    </div>
-                                </section>
-                            </div>
-
-                            <!--========= Part 7 ============-->
-
-                            <li class="solid">
-                                <img src="Design Creo/Part 7/prt7.0.jpg">
-                                <div class="creolayer">
-                                    <h3>Part 7</h3>
-                                    <button class="creoexplore-btn" onclick="openSlider('creoslider7')">Explore More</button>
-                                </div>
-                            </li>
-
-                            <!-- Popup Slider -->
-                            <div class="slider-modal" id="creoslider7">
-                                <button class="close-btn" onclick="closeSlider('creoslider7')">✕</button>
-                                <section class="img-container1">
-                                    <div class="slider-wrapper">
-                                        <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
-                                        <div class="slider">
-                                            <img src="Design Creo/Part 7/prt7.1.jpg">
-                                            <img src="Design Creo/Part 7/prt7.2.jpg">
-                                            <img src="Design Creo/Part 7/prt7.3.jpg">
-                                            <img src="Design Creo/Part 7/prt7.4.jpg">
-                                        </div>
-                                        <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
-                                    </div>
-                                </section>
-                            </div>
-
-                    </ul>
-                     
-                </div>
-
-<!----------------------------------------->
-        </div>
-    </section>
-
-<!--=================================================== Contact ===============================================================================-->
-    <br><br><br><br><br><br>
-    <section id="contact">
-        <h1 class="title">Contact</h1>    <br><br>
-        <div class="containers">
-            <div class="row">
-                <div class="contact-buttons">
-
-                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=vidurmanoharan@gmail.com" 
-                        target="_blank" class="btn1">
-                        <i class="fa-solid fa-envelope"></i>&nbsp; Email Me
-                    </a>
-
-                    <a href="https://www.linkedin.com/in/vidur-varshan-manoharan/" class="btn1">
-                    <i class="fa-brands fa-linkedin"></i>&nbsp;LinkedIn
-                    </a>
-
-                    <a href="Vidur Varshan Manoharan CV.pdf" class="btn1">
-                    <i class="fa-solid fa-download"></i>&nbsp;Download CV
-                    </a>
-                </div>
-                
-    
-                <div class="contact-right">
-                    <form name="submit-to-google-sheet">
-                    <input type="text" name="Name" placeholder="Your Name" required>
-                    <input type="email" name="Email" placeholder="Your Email" required>
-                    <textarea name="Message" rows="" placeholder="Your Message"></textarea>
-                    <button type="submit" class="btn2">Submit</button>
-                    </form>
-    
-                    <span id="msg"></span>
-    
-                </div>
+        card.innerHTML = `
+          <!-- Image Box (CHANGE THE HEIGHT CLASS HERE) -->
+          <div class="w-full aspect-[3/4] bg-gray-200 overflow-hidden relative">
+            <img src="${p.cover}" alt="${p.title}" 
+                 onerror="this.onerror=null; this.src='https://placehold.co/800x600/1c1d20/f4f4f0?text=CAD+Preview';"
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute top-4 right-4 bg-charcoal/80 text-bgBone px-3 py-1 rounded-full text-[10px] uppercase font-mono font-bold backdrop-blur-sm">
+              ${p.images.length} View${p.images.length > 1 ? 's' : ''}
             </div>
-        </div>
-    </section>
+          </div>
 
-<div class="copyright">
-    <p>Copyright © Vidur Manoharan</p>
-</div>
+          <!-- Card Content -->
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+            <div>
+              <span class="text-[10px] uppercase font-mono font-bold tracking-widest text-accentOrange block mb-1">${p.categoryLabel}</span>
+              <h3 class="text-xl font-bold font-display text-charcoal group-hover:text-accentOrange transition-colors">${p.title}</h3>
+            </div>
 
-    <script src="design.js"></script> 
+            <div class="pt-4 hairline-t flex items-center justify-between text-xs font-semibold">
+              <span class="font-mono text-mutedGray text-[11px]">${p.software}</span>
+              <span class="flex items-center space-x-1 text-charcoal group-hover:translate-x-1 transition-transform">
+                <span>View Gallery</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </span>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
 
+      // Update Counts
+      document.getElementById('count-all').textContent = allProjects.length;
+      document.getElementById('count-solidworks').textContent = allProjects.filter(p => p.category === 'solidworks').length;
+      document.getElementById('count-fusion').textContent = allProjects.filter(p => p.category === 'fusion').length;
+      document.getElementById('count-creo').textContent = allProjects.filter(p => p.category === 'creo').length;
 
-<!--=================================================================== Solid Java ================================================-->
-
-<script>
-/* ===========================
-   SOLIDWORKS SLIDER FUNCTIONALITY
-=========================== */
-
-// OPEN MODAL
-function openSlider(modalId) {
-    const modal = document.getElementById(modalId);
-
-    if (modal) {
-        modal.classList.add("show");
-        document.body.style.overflow = "hidden";
-    }
-}
-
-// CLOSE MODAL
-function closeSlider(modalId) {
-    const modal = document.getElementById(modalId);
-
-    if (modal) {
-        modal.classList.remove("show");
-        document.body.style.overflow = "auto";
-    }
-}
-
-
-/* ===========================
-   SLIDER NAVIGATION
-=========================== */
-
-document.querySelectorAll(".slider-modal").forEach((modal) => {
-
-    const slider = modal.querySelector(".slider");
-    const nextBtn = modal.querySelector(".next-btn");
-    const prevBtn = modal.querySelector(".prev-btn");
-
-    // Prevent errors if elements don't exist
-    if (!slider || !nextBtn || !prevBtn) return;
-
-    // Width of one image
-    const getSlideWidth = () => {
-        return slider.querySelector("img").clientWidth;
-    };
-
-    // NEXT BUTTON
-    nextBtn.addEventListener("click", () => {
-
-        const slideWidth = getSlideWidth();
-
-        slider.scrollBy({
-            left: slideWidth,
-            behavior: "smooth"
-        });
-
-    });
-
-    // PREV BUTTON
-    prevBtn.addEventListener("click", () => {
-
-        const slideWidth = getSlideWidth();
-
-        slider.scrollBy({
-            left: -slideWidth,
-            behavior: "smooth"
-        });
-
-    });
-
-});
-
-
-/* ===========================
-   CLOSE MODAL WHEN CLICKING OUTSIDE
-=========================== */
-
-document.querySelectorAll(".slider-modal").forEach((modal) => {
-
-    modal.addEventListener("click", (e) => {
-
-        if (e.target === modal) {
-            modal.classList.remove("show");
-            document.body.style.overflow = "auto";
-        }
-
-    });
-
-});
-
-
-/* ===========================
-   ESC KEY CLOSE
-=========================== */
-
-document.addEventListener("keydown", (e) => {
-
-    if (e.key === "Escape") {
-
-        document.querySelectorAll(".slider-modal.show").forEach((modal) => {
-            modal.classList.remove("show");
-        });
-
-        document.body.style.overflow = "auto";
+      lucide.createIcons();
     }
 
-});
-</script>
+    // Category Filter Handler
+    function filterCategory(cat, e) {
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('bg-charcoal', 'text-bgBone');
+        btn.classList.add('text-charcoal', 'border-charcoal/20');
+      });
+      if(e && e.target) {
+        e.target.closest('button').classList.add('bg-charcoal', 'text-bgBone');
+      }
+      renderProjectsGrid(cat);
+    }
 
-<script>
-const scriptURL = 'https://script.google.com/macros/s/AKfycbzgT4Aywd89xQEeb_YFiFwTWGJuV2-CcOLIlT2qq0TSGyiIreU-xSn9FgxSQO2nD64C/exec';
+    // Lightbox Gallery Functions
+    function openLightbox(id) {
+      const proj = allProjects.find(p => p.id === id);
+      if (!proj) return;
 
-const form = document.forms['submit-to-google-sheet'];
-const msg  = document.getElementById('msg');
+      activeProject = proj;
+      currentImgIndex = 0;
 
-if (form){
-    form.addEventListener('submit', async e => {
-        e.preventDefault();
-        const btn = form.querySelector('button');
-        btn.disabled = true;
+      document.getElementById('modal-title').textContent = proj.title;
+      document.getElementById('modal-category').textContent = proj.categoryLabel;
+      document.getElementById('modal-desc').textContent = `${proj.software} Engineering Showcase`;
 
-        try{
-            await fetch(scriptURL, {
-                method: 'POST',
-                body: new FormData(form),
-                mode: 'no-cors'
-            });
-            msg.textContent = 'Message sent successfully';
-            form.reset();
-        }catch(err){
-            console.error('Form error:', err);
-            msg.textContent = 'Could not send. Please try again.';
-        }
+      updateModalImage();
 
-        btn.disabled = false;
-        setTimeout(() => msg.textContent = '', 3000);
+      const modal = document.getElementById('gallery-lightbox');
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+    }
+
+    function closeModal() {
+      closeLightbox();
+    }
+
+    function closeLightbox() {
+      const modal = document.getElementById('gallery-lightbox');
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      activeProject = null;
+    }
+
+    function updateModalImage() {
+      if (!activeProject) return;
+
+      const imgEl = document.getElementById('modal-active-img');
+      const counter = document.getElementById('modal-counter');
+      const thumbsContainer = document.getElementById('modal-thumbnails');
+
+      const imgSrc = activeProject.images[currentImgIndex];
+      imgEl.src = imgSrc;
+      imgEl.onerror = function() {
+        this.src = 'https://placehold.co/1200x800/1c1d20/f4f4f0?text=CAD+Technical+Drawing+View';
+      };
+
+      counter.textContent = `${currentImgIndex + 1} / ${activeProject.images.length}`;
+
+      // Render Thumbnails
+      thumbsContainer.innerHTML = '';
+      activeProject.images.forEach((img, idx) => {
+        const thumb = document.createElement('button');
+        thumb.className = `w-12 h-12 rounded-lg overflow-hidden border-2 transition-all shrink-0 ${idx === currentImgIndex ? 'border-accentOrange scale-105' : 'border-white/20 opacity-50 hover:opacity-100'}`;
+        thumb.setAttribute('onclick', `setModalImage(${idx})`);
+        thumb.innerHTML = `<img src="${img}" onerror="this.src='https://placehold.co/100/1c1d20/f4f4f0?text=CAD';" class="w-full h-full object-cover">`;
+        thumbsContainer.appendChild(thumb);
+      });
+    }
+
+    function setModalImage(idx) {
+      currentImgIndex = idx;
+      updateModalImage();
+    }
+
+    function nextImage() {
+      if (!activeProject) return;
+      currentImgIndex = (currentImgIndex + 1) % activeProject.images.length;
+      updateModalImage();
+    }
+
+    function prevImage() {
+      if (!activeProject) return;
+      currentImgIndex = (currentImgIndex - 1 + activeProject.images.length) % activeProject.images.length;
+      updateModalImage();
+    }
+
+    // Keyboard controls for lightbox
+    document.addEventListener('keydown', (e) => {
+      if (!activeProject) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') nextImage();
+      if (e.key === 'ArrowLeft') prevImage();
     });
-}
-</script>
 
-<!--==================================================================================================================================-->
+    // Custom Cursor Movement
+    const cursor = document.getElementById('custom-cursor');
+    const cursorText = document.getElementById('cursor-text');
+
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = `${e.clientX}px`;
+      cursor.style.top = `${e.clientY}px`;
+    });
+
+    function cursorHover(isHovering) {
+      if (isHovering) {
+        cursor.classList.add('active-view');
+        cursorText.textContent = "VIEW";
+        cursorText.classList.remove('opacity-0');
+      } else {
+        cursor.classList.remove('active-view');
+        cursorText.classList.add('opacity-0');
+      }
+    }
+
+    // Real-time IST Clock Update
+    function updateClock() {
+      const now = new Date();
+      const options = { timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit', hour12: false };
+      const timeStr = now.toLocaleTimeString('en-US', options) + ' IST';
+      const clockEl = document.getElementById('live-time');
+      if (clockEl) clockEl.textContent = timeStr;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // Form Submission Handler
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submit-btn');
+      const status = document.getElementById('form-status');
+
+      btn.innerHTML = `<span>Sending...</span>`;
+      btn.disabled = true;
+
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbzgT4Aywd89xQEeb_YFiFwTWGJuV2-CcOLIlT2qq0TSGyiIreU-xSn9FgxSQO2nD64C/exec';
+      const formData = new FormData(e.target);
+
+      fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' })
+        .then(() => {
+          btn.innerHTML = `<span>Message Sent</span>`;
+          btn.classList.remove('bg-charcoal');
+          btn.classList.add('bg-emerald-600');
+
+          status.textContent = "Thank you! Your message has been sent successfully.";
+          status.classList.remove('hidden');
+          status.classList.add('bg-emerald-100', 'text-emerald-900', 'border', 'border-emerald-300');
+
+          e.target.reset();
+        })
+        .catch(() => {
+          btn.innerHTML = `<span>Send Message</span>`;
+          btn.disabled = false;
+          status.textContent = "Could not send. Please try again.";
+          status.classList.remove('hidden');
+          status.classList.add('bg-red-100', 'text-red-900', 'border', 'border-red-300');
+        });
+    }
+
+    // Page Load Setup
+    window.onload = function() {
+      lucide.createIcons();
+      renderProjectsGrid('all');
+    }
+  </script>
 </body>
 </html>
