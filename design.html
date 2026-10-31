@@ -14,7 +14,7 @@
   <!-- Google Fonts: Archivo, IBM Plex Sans, Space Grotesk -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,300..900;1,300..900&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,300..900;1,300..900&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
@@ -31,6 +31,7 @@
             sans: ['IBM Plex Sans', 'sans-serif'],
             display: ['Archivo', 'Space Grotesk', 'sans-serif'],
             mono: ['Space Grotesk', 'monospace'],
+            cursive: ['Great Vibes', 'cursive'],
           }
         }
       }
@@ -38,7 +39,7 @@
   </script>
 
   <style>
-    /* Luxury Dennis Snellenberg Editorial Aesthetics */
+    /* Luxury Aesthetics */
     body {
       background-color: #f4f4f0;
       color: #1c1d20;
@@ -100,8 +101,8 @@
     }
     .animate-marquee {
       display: flex;
-      width: 200%;
-      animation: marquee 28s linear infinite;
+      width: max-content;
+      animation: marquee 25s linear infinite;
     }
     .animate-marquee:hover { animation-play-state: paused; }
 
@@ -124,14 +125,190 @@
     ::-webkit-scrollbar-track { background: #f4f4f0; }
     ::-webkit-scrollbar-thumb { background: #c2c1bc; border-radius: 3px; }
     ::-webkit-scrollbar-thumb:hover { background: #1c1d20; }
+
+    /* INTRO SLIDE ANIMATION OVERLAY STYLES */
+    #intro-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9000;
+      background-color: #f4f4f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
+    }
+
+    /* Seamless Repeatable Engineering Line-Art Wallpaper Pattern (Reference Style) */
+    .doodle-bg-pattern {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.22;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280' viewBox='0 0 280 280'%3E%3Cg stroke='%231c1d20' stroke-width='1.2' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3C!-- Gears --%3E%3Cg transform='translate(15, 15)'%3E%3Ccircle cx='18' cy='18' r='10'/%3E%3Ccircle cx='18' cy='18' r='4'/%3E%3Cpath d='M18 4v4M18 28v4M4 18h4M28 18h4M8 8l3 3M25 25l3 3M8 28l3-3M25 11l3-3'/%3E%3C/g%3E%3C!-- Vernier Caliper --%3E%3Cg transform='translate(75, 20)'%3E%3Crect x='0' y='10' width='50' height='6' rx='1'/%3E%3Cpath d='M5 10V22M12 10V16M19 10V16M26 10V16M33 10V22M40 10V16M47 10V16'/%3E%3Cpath d='M8 10V2L14 6L20 10'/%3E%3C/g%3E%3C!-- Micrometer --%3E%3Cg transform='translate(155, 15)'%3E%3Cpath d='M0 12c0-8 18-8 18 12v6H0z'/%3E%3Crect x='18' y='6' width='22' height='12' rx='1'/%3E%3Cline x1='40' y1='12' x2='50' y2='12'/%3E%3C/g%3E%3C!-- Piston --%3E%3Cg transform='translate(225, 15)'%3E%3Crect x='0' y='0' width='22' height='18' rx='2'/%3E%3Cline x1='3' y1='5' x2='19' y2='5'/%3E%3Cline x1='3' y1='9' x2='19' y2='9'/%3E%3Ccircle cx='11' cy='13' r='2'/%3E%3Cpath d='M10 15l-3 20M12 15l3 20'/%3E%3Ccircle cx='11' cy='37' r='3'/%3E%3C/g%3E%3C!-- Wrench / Spanner --%3E%3Cg transform='translate(20, 85)'%3E%3Cpath d='M5 0a8 8 0 0 1 12 0l-4 8 18 18a4 4 0 0 1 0 6l-2 2a4 4 0 0 1-6 0L5 16l8-4a8 8 0 0 1 0-12z'/%3E%3C/g%3E%3C!-- Bearing --%3E%3Cg transform='translate(85, 85)'%3E%3Ccircle cx='18' cy='18' r='16'/%3E%3Ccircle cx='18' cy='18' r='9'/%3E%3Ccircle cx='18' cy='6' r='2.5' fill='%231c1d20' fill-opacity='0.2'/%3E%3Ccircle cx='30' cy='18' r='2.5' fill='%231c1d20' fill-opacity='0.2'/%3E%3Ccircle cx='18' cy='30' r='2.5' fill='%231c1d20' fill-opacity='0.2'/%3E%3Ccircle cx='6' cy='18' r='2.5' fill='%231c1d20' fill-opacity='0.2'/%3E%3C/g%3E%3C!-- Spring --%3E%3Cg transform='translate(150, 80)'%3E%3Cpath d='M10 0v6l-8 3 16 4-16 4 16 4-16 4 16 4-8 3v6'/%3E%3C/g%3E%3C!-- 3D Printer Nozzle --%3E%3Cg transform='translate(200, 85)'%3E%3Crect x='5' y='0' width='20' height='12' rx='1'/%3E%3Cpath d='M9 12l6 10l6-10z' fill='%231c1d20' fill-opacity='0.15'/%3E%3Cline x1='15' y1='22' x2='15' y2='30' stroke-dasharray='2 2'/%3E%3C/g%3E%3C!-- Hex Bolt %26 Nut --%3E%3Cg transform='translate(20, 160)'%3E%3Cpath d='M10 0l8 4v8l-8 4l-8-4V4z'/%3E%3Crect x='7' y='16' width='6' height='20'/%3E%3Cline x1='7' y1='22' x2='13' y2='22'/%3E%3Cline x1='7' y1='28' x2='13' y2='28'/%3E%3C/g%3E%3C!-- Formula %26 GD%26T --%3E%3Cg transform='translate(75, 165)' stroke='none' fill='%231c1d20' font-family='Space Grotesk, monospace' font-size='10'%3E%3Ctext x='0' y='10'%3EF = m·a%3C/text%3E%3Ctext x='0' y='24'%3E⌖ ⌀0.02%3C/text%3E%3C/g%3E%3C!-- Lightbulb Idea --%3E%3Cg transform='translate(145, 155)'%3E%3Cpath d='M12 0a11 11 0 0 0-7 18c1.5 2 2 3.5 2 6h10c0-2.5 0.5-4 2-6a11 11 0 0 0-7-18z'/%3E%3Cline x1='8' y1='28' x2='16' y2='28'/%3E%3Cline x1='9' y1='32' x2='15' y2='32'/%3E%3C/g%3E%3C!-- PCB Traces --%3E%3Cg transform='translate(210, 160)'%3E%3Crect x='5' y='5' width='25' height='25' rx='3'/%3E%3Ccircle cx='17' cy='17' r='3'/%3E%3Cpath d='M30 10h10l5 5v10M0 20h5'/%3E%3C/g%3E%3C!-- CAD Axis Triad --%3E%3Cg transform='translate(25, 225)'%3E%3Cpath d='M5 25V5M5 25h20M5 25l-4 4'/%3E%3Ctext x='25' y='28' stroke='none' fill='%231c1d20' font-family='sans-serif' font-size='8'%3EX%3C/text%3E%3Ctext x='3' y='3' stroke='none' fill='%231c1d20' font-family='sans-serif' font-size='8'%3EY%3C/text%3E%3C/g%3E%3C!-- Small Accent Gears %26 Dots --%3E%3Cg transform='translate(100, 230)'%3E%3Ccircle cx='12' cy='12' r='8'/%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3Cpath d='M12 2v2M12 20v2M2 12h2M20 12h2'/%3E%3C/g%3E%3Cg transform='translate(180, 230)'%3E%3Ccircle cx='10' cy='10' r='6'/%3E%3Ccircle cx='10' cy='10' r='2'/%3E%3C/g%3E%3Ccircle cx='60' cy='140' r='1.5' fill='%231c1d20'/%3E%3Ccircle cx='250' cy='140' r='1.5' fill='%231c1d20'/%3E%3Ccircle cx='130' cy='60' r='1.5' fill='%231c1d20'/%3E%3Ccircle cx='260' cy='220' r='1.5' fill='%231c1d20'/%3E%3C/g%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 280px 280px;
+    }
+
+    /* Soft Center Radial Mask / Vignette for Clear Readability of Welcome Text */
+    .center-vignette {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(244,244,240,0.92) 20%, rgba(244,244,240,0.4) 65%, rgba(244,244,240,0) 100%);
+      pointer-events: none;
+    }
+
+    /* Floating Ambient Mechanical Doodle Elements */
+    .floating-doodle {
+      position: absolute;
+      stroke: #1c1d20;
+      stroke-width: 1.5;
+      fill: none;
+      opacity: 0.28;
+      transition: transform 0.3s ease;
+    }
+
+    /* Rotating Gears */
+    .gear-spin-cw {
+      animation: gearSpin 24s linear infinite;
+      transform-origin: center;
+    }
+    .gear-spin-ccw {
+      animation: gearSpinCCW 18s linear infinite;
+      transform-origin: center;
+    }
+
+    @keyframes gearSpin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes gearSpinCCW {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(-360deg); }
+    }
+
+    /* iPhone "Hello" Style SVG Cursive "Welcome" Write-On Stroke Animation */
+    .welcome-svg-path {
+      stroke-dasharray: 1200;
+      stroke-dashoffset: 1200;
+      animation: writeWelcome 2.8s cubic-bezier(0.45, 0, 0.15, 1) forwards 0.3s;
+    }
+
+    @keyframes writeWelcome {
+      0% {
+        stroke-dashoffset: 1200;
+        opacity: 0.2;
+      }
+      15% {
+        opacity: 1;
+      }
+      100% {
+        stroke-dashoffset: 0;
+        opacity: 1;
+      }
+    }
+
+    /* Subtle glow flare on completion */
+    .welcome-glow {
+      filter: drop-shadow(0px 0px 8px rgba(223, 77, 38, 0.25));
+    }
+
+    /* Mechanical Iris / Curtain Exit Wipe Animation Classes */
+    .iris-closing-top {
+      transform: translateY(-100%);
+    }
+    .iris-closing-bottom {
+      transform: translateY(100%);
+    }
+
+    .shutter-panel {
+      position: absolute;
+      width: 100%;
+      height: 50%;
+      background-color: #1c1d20;
+      z-index: 9100;
+      transition: transform 0.75s cubic-bezier(0.85, 0, 0.15, 1);
+    }
+    .shutter-top { top: 0; transform: translateY(-100%); }
+    .shutter-bottom { bottom: 0; transform: translateY(100%); }
+
+    .shutter-active .shutter-top { transform: translateY(0%); }
+    .shutter-active .shutter-bottom { transform: translateY(0%); }
+
+   /* Drifting doodle wallpaper */
+.doodle-bg-pattern {
+  animation: doodleDrift 25s linear infinite;
+}
+@keyframes doodleDrift {
+  from { background-position: 0 0; }
+  to   { background-position: 280px 280px; }
+}
+
+/* Piston moving up and down */
+.piston-move {
+  animation: pistonMove 1.6s ease-in-out infinite alternate;
+}
+@keyframes pistonMove {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-22px); }
+}
+
   </style>
 </head>
+
+
+
 <body class="antialiased selection:bg-charcoal selection:text-bgBone">
 
   <!-- Custom Floating Cursor -->
   <div id="custom-cursor">
     <span id="cursor-text" class="opacity-0 transition-opacity duration-200"></span>
   </div>
+
+    <!-- INTRO TRANSITION OVERLAY SCREEN -->
+  <div id="intro-overlay">
+    <!-- Faint Blueprint Grid & Mechanical Doodle Wallpaper Background -->
+    <div class="doodle-bg-pattern"></div>
+    <div class="center-vignette"></div>
+
+    <!-- Center Content: iPhone Hello Style Cursive "Welcome" Write-On SVG -->
+    <div class="relative z-10 text-center px-4 flex flex-col items-center justify-center">
+
+      <div class="relative w-[290px] sm:w-[420px] md:w-[560px] h-[130px] sm:h-[180px] md:h-[220px] welcome-glow">
+        <svg class="w-full h-full overflow-visible" viewBox="0 0 600 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <text x="50%" y="65%" text-anchor="middle"
+                class="font-cursive welcome-svg-path text-[110px] sm:text-[140px] md:text-[160px]"
+                fill="none"
+                stroke="#1c1d20"
+                stroke-width="3.2"
+                stroke-linecap="round"
+                stroke-linejoin="round">
+            Welcome
+          </text>
+        </svg>
+      </div>
+
+      <div id="intro-subtext" class="opacity-0 transition-opacity duration-700 ease-out mt-2 flex items-center space-x-3 text-xs sm:text-sm font-mono tracking-widest uppercase text-mutedGray">
+        <span class="w-2 h-2 rounded-full bg-accentOrange animate-ping"></span>
+        <span>Vidur Manoharan • Mechanical Engineering Portfolio</span>
+      </div>
+    </div>
+
+    <!-- Skip Intro Button -->
+    <button onclick="skipIntro()" class="absolute top-6 right-6 z-20 px-5 py-2.5 rounded-full border border-charcoal/20 bg-bgBone/80 backdrop-blur-md text-charcoal text-xs font-mono font-bold tracking-wider hover:bg-charcoal hover:text-bgBone transition-all flex items-center space-x-2 shadow-sm">
+      <span>SKIP INTRO</span>
+      <i data-lucide="skip-forward" class="w-3.5 h-3.5"></i>
+    </button>
+  </div>
+
+  <!-- MECHANICAL SHUTTER CURTAIN PANELS -->
+  <div id="shutter-wrapper" class="pointer-events-none fixed inset-0 z-[9500]">
+    <div id="shutter-top" class="shutter-panel shutter-top"></div>
+    <div id="shutter-bottom" class="shutter-panel shutter-bottom"></div>
+  </div>
+
 
   <!-- NAVIGATION HEADER -->
   <header class="fixed top-0 left-0 w-full z-40 bg-bgBone/90 backdrop-blur-md hairline-b transition-all duration-300">
@@ -213,13 +390,8 @@
             </svg>
             <span>LinkedIn</span>
           </a>
-
-          <!-- 3D-Print Website Button -->
-          <a href="https://spookylabs3d.github.io/spookylabs/" target="_blank" class="magnetic-btn px-6 py-3.5 rounded-full border border-charcoal/30 bg-bgBone text-charcoal text-xs font-bold uppercase tracking-wider hover:bg-charcoal hover:text-bgBone transition-all flex items-center space-x-2.5">
-            <i data-lucide="box" class="w-4 h-4"></i>
-            <span>3D-Print Website</span>
-          </a>
         </div>
+
 
       <!-- Quick Metrics Bar -->
       <div class="mt-8 pt-8 hairline-t grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -895,6 +1067,53 @@
     // State Management for Lightbox Modal
     let activeProject = null;
     let currentImgIndex = 0;
+    let introFinished = false;
+
+    // INTRO ANIMATION CONTROLLER
+    function runIntroSequence() {
+      // Step 1: Reveal Subtext halfway into write-on
+      setTimeout(() => {
+        const subtext = document.getElementById('intro-subtext');
+        if (subtext) subtext.classList.remove('opacity-0');
+      }, 1800);
+
+      // Step 2: Auto Trigger Mechanical Close Transition after ~3.2s
+      setTimeout(() => {
+        if (!introFinished) triggerCloseTransition();
+      }, 3400);
+    }
+
+    // Skip Intro Manual Handler
+    function skipIntro() {
+      if (!introFinished) {
+        triggerCloseTransition();
+      }
+    }
+
+    // MECHANICAL SHUTTER / IRIS CLOSE TRANSITION
+    function triggerCloseTransition() {
+      introFinished = true;
+      const overlay = document.getElementById('intro-overlay');
+      const shutterWrapper = document.getElementById('shutter-wrapper');
+      
+      // Phase 1: Snap shutter shut
+      shutterWrapper.classList.add('shutter-active');
+
+      setTimeout(() => {
+        // Phase 2: Hide overlay underneath shutter
+        overlay.style.display = 'none';
+        
+        // Phase 3: Open shutter panels vertically
+        shutterWrapper.classList.remove('shutter-active');
+        
+        // Final cleanup
+        setTimeout(() => {
+          shutterWrapper.style.display = 'none';
+        }, 750);
+
+      }, 550);
+    }
+
 
     // Render Projects into Masonry Grid
     function renderProjectsGrid(category = 'all') {
@@ -1118,7 +1337,11 @@
     window.onload = function() {
       lucide.createIcons();
       renderProjectsGrid('all');
+      runIntroSequence();
     }
+
+    
+
   </script>
 </body>
 </html>
